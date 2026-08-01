@@ -1187,15 +1187,17 @@
     </div>
   </div>
 
-  <!-- Certificate Result Modal (精密金邊邊框 + 四邊形尚學文教 Logo 鋼印) -->
+  <!-- Certificate Result Modal (關閉按鈕擺在紙張外，繪圖下載不會包含 ✕) -->
   <div class="cert-modal" id="cert-modal">
-    <div style="text-align: center; max-width: 580px; width: 100%;">
+    <div style="text-align: center; max-width: 580px; width: 100%; position: relative;">
+      <!-- 關閉按鈕放在紙卡外面右上角 -->
+      <button class="lightbox-close" onclick="closeCertModal()" style="position: absolute; top: -18px; right: -18px; z-index: 10010;">✕</button>
+      
       <div class="cert-paper" id="cert-paper-target">
         <span class="cert-corner-flower corner-tl">✦</span>
         <span class="cert-corner-flower corner-tr">✦</span>
         <span class="cert-corner-flower corner-bl">✦</span>
         <span class="cert-corner-flower corner-br">✦</span>
-        <button class="lightbox-close" onclick="closeCertModal()">✕</button>
         <p style="color: #C96D45; font-weight: 900; letter-spacing: 0.18em; font-size: 13px; margin-bottom: 6px;">HONOR CERTIFICATE</p>
         <h2>2026 暑期頂尖計劃 · 結業證書</h2>
         <p style="color: #64748B; font-size: 14px; margin-top: 8px;">特此證明學員：</p>
@@ -1208,7 +1210,7 @@
         </p>
         <!-- 四邊形尚學文教官方 Logo 鋼印 -->
         <img class="cert-rect-logo" src="./shangxue-logo-transparent.png" alt="尚學文教官方 Logo"/>
-        <p style="font-size: 11px; color: #94A3B8; margin-top: 6px; letter-spacing: 0.05em;">2026 年 7 月 31 日 · 成果展紀念版</p>
+        <p style="font-size: 11px; color: #94A3B8; margin-top: 6px; letter-spacing: 0.05em;">2026 年 8 月 1 日 · 成果展紀念版</p>
       </div>
       <div>
         <button class="btn-download-cert" onclick="downloadCertificateImage()">
