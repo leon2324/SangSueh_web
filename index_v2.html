@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>這個夏天，我們把好奇種進日常｜尚學文教</title>
+  <meta name="description" content="尚學文教 2026 暑期頂尖計劃七月學習成果誌：食農教育、科學探究、閱讀與寫作。"/>
+  <link rel="shortcut icon" href="./shangxue-logo-transparent.png" type="image/png"/>
+  <link rel="icon" href="./shangxue-logo-transparent.png" type="image/png"/>
+  <link rel="apple-touch-icon" href="./shangxue-logo-transparent.png"/>
+
+  <!-- Local Official Stylesheet -->
+  <link rel="stylesheet" href="./index.css"/>
+  
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <!-- HTML2Canvas CDN (用於將結業證書轉為圖片下載至手機相簿) -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+  <style>
+    /* Custom Paper Scrapbook Modal (替代原生內建 alert 視窗) */
+    .custom-modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 10005;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .custom-modal-overlay.show {
+      display: flex;
+    }
+    .custom-modal-card {
+      background: #FFFDF8;
+      border: 3px double #C96D45;
+      border-radius: 20px;
+      padding: 30px 24px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+      position: relative;
+      animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes modalPop {
+      0% { transform: scale(0.85); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .custom-modal-icon {
+      font-size: 44px;
+      margin-bottom: 8px;
+    }
+    .custom-modal-title {
+      font-family: Noto Serif TC, serif;
+      font-size: 22px;
+      color: #24312E;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .custom-modal-body {
+      color: #59615E;
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .btn-custom-modal-close {
+      background: #477B65;
+      color: #FFF;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 #E8C968;
+    }
+
+    /* Lightbox Modal Overlay */
+    .lightbox-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .lightbox-modal.show {
+      display: flex;
+    }
+    .lightbox-content {
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 24px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    .lightbox-content img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: #F3F4F6;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      font-weight: 800;
+      color: #374151;
+    }
+
+    /* On-site Live Interactive Section Styles */
+    .onsite-interactive {
+      background: #F4EFE6;
+      border-top: 2px dashed #24312E2A;
+      border-bottom: 2px dashed #24312E2A;
+      padding: 100px 7vw;
+    }
+    .onsite-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 50px;
+    }
+    .onsite-header h2 {
+      margin: 12px 0;
+      font: 800 clamp(36px, 4vw, 58px)/1.25 Noto Serif TC, Songti TC, serif;
+      color: #24312E;
+    }
+    .onsite-header p {
+      color: #59615E;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    /* 1. Treasure Hunt Stamps Grid */
+    .treasure-card {
+      background: #FFFDF8;
+      border: 1px solid #24312E26;
+      border-radius: 18px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px #24312e12;
+    }
+    .treasure-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .treasure-title h3 {
+      font-size: 22px;
+      font-family: Noto Serif TC, serif;
+      color: #477B65;
+    }
+    .stamp-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .stamp-item {
+      background: #FAF6EE;
+      border: 2px dashed #477B6550;
+      border-radius: 16px;
+      padding: 20px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .stamp-item:hover {
+      transform: translateY(-3px);
+      border-color: #477B65;
+    }
+    .stamp-item.active {
+      background: #DBE7D0;
+      border-style: solid;
+      border-color: #477B65;
+    }
+    .stamp-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    .stamp-label {
+      font-weight: 800;
+      font-size: 15px;
+      color: #24312E;
+    }
+    .stamp-status {
+      font-size: 12px;
+      color: #68706D;
+      margin-top: 4px;
+    }
+    .stamp-badge {
+      display: none;
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #C96D45;
+      color: #FFF;
+      font-size: 10px;
+      font-weight: 900;
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+    .stamp-item.active .stamp-badge {
+      display: block;
+    }
+
+    /* 3. Live Voting Section */
+    .voting-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .vote-card {
+      background: #FFFDF8;
+      border: 1px solid #24312E20;
+      border-radius: 18px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 8px 24px #24312e10;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .vote-card h4 {
+      font-size: 18px;
+      color: #C96D45;
+      margin-bottom: 8px;
+      font-family: Noto Serif TC, serif;
+    }
+    .vote-card p {
+      font-size: 13px;
+      color: #68706D;
+      margin-bottom: 16px;
+    }
+    .vote-count-num {
+      font-size: 36px;
+      font-weight: 900;
+      color: #477B65;
+      font-family: serif;
+    }
+    .btn-vote {
+      background: #24312E;
+      color: #FFF;
+      border: none;
+      border-radius: 999px;
+      padding: 10px 20px;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 12px;
+      box-shadow: 3px 3px 0 #E8C968;
+    }
+
+    /* 4. On-site Photo Upload Wall */
+    .onsite-upload-box {
+      background: #FFFDF8;
+      border: 2px dashed #C96D4580;
+      border-radius: 18px;
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .upload-btn-label {
+      background: #C96D45;
+      color: #FFF;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 4px 4px 0 #24312E;
+      margin-top: 12px;
+    }
+    .onsite-photo-wall {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .onsite-polaroid {
+      background: #FFF;
+      padding: 10px 10px 28px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transform: rotate(-1deg);
+      position: relative;
+    }
+    .onsite-polaroid img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .onsite-polaroid span {
+      font-size: 11px;
+      color: #68706D;
+      position: absolute;
+      bottom: 8px;
+      left: 10px;
+    }
+
+    /* Comment Card Enhancements: Likes & Selective Delete */
+    .comment-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(0, 0, 0, 0.1);
+    }
+    .btn-like-comment {
+      background: #FFF;
+      border: 1px solid #477B65;
+      color: #477B65;
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .btn-like-comment.liked {
+      background: #477B65;
+      color: #FFF;
+    }
+    .btn-delete-comment {
+      background: #FEE2E2;
+      border: 1px solid #EF4444;
+      color: #B91C1C;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    /* 5. On-site Certificate Generator */
+    .certificate-card {
+      background: linear-gradient(135deg, #FFFDF8 0%, #F5DFCF 100%);
+      border: 3px double #C96D45;
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    }
+    .cert-inputs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      max-width: 500px;
+      margin: 20px auto;
+    }
+    .cert-inputs input {
+      padding: 12px 16px;
+      border: 1px solid #24312E30;
+      border-radius: 10px;
+      font-size: 14px;
+      width: 50%;
+      outline: none;
+    }
+    .btn-generate-cert {
+      background: #477B65;
+      color: #FFF;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 4px 4px 0 #E8C968;
+    }
+
+    /* Certificate Result Modal (精密雙層金邊 + 四邊形尚學文教 Logo 鋼印) */
+    .cert-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .cert-modal.show {
+      display: flex;
+    }
+    .cert-paper {
+      background: linear-gradient(145deg, #FFFDF8 0%, #FAF2DF 100%);
+      border: 5px double #D4AF37;
+      outline: 2px solid #C59B27;
+      outline-offset: -10px;
+      border-radius: 16px;
+      max-width: 580px;
+      width: 100%;
+      padding: 44px 36px 36px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4), inset 0 0 40px rgba(212, 175, 55, 0.12);
+    }
+    .cert-corner-flower {
+      position: absolute;
+      font-size: 16px;
+      color: #D4AF37;
+      line-height: 1;
+    }
+    .corner-tl { top: 14px; left: 14px; }
+    .corner-tr { top: 14px; right: 14px; }
+    .corner-bl { bottom: 14px; left: 14px; }
+    .corner-br { bottom: 14px; right: 14px; }
+
+    .cert-paper h2 {
+      font-family: Noto Serif TC, Songti TC, serif;
+      color: #1A2B25;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      margin: 8px 0 12px;
+    }
+    .cert-paper .cert-child-name {
+      font-size: 32px;
+      color: #2D5A46;
+      font-weight: 900;
+      font-family: Noto Serif TC, Songti TC, serif;
+      border-bottom: 2px solid #D4AF37;
+      display: inline-block;
+      padding: 2px 24px;
+      margin: 14px 0 18px;
+      letter-spacing: 0.06em;
+    }
+    .cert-rect-logo {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+      margin: 20px auto 8px;
+      display: block;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
+    }
+    .btn-download-cert {
+      background: #C96D45;
+      color: #FFF;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 3px 3px 0 #24312E;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .stamp-grid, .voting-grid, .onsite-photo-wall {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .cert-inputs {
+        flex-direction: column;
+      }
+      .cert-inputs input {
+        width: 100%;
+      }
+    }
+  
+    /* 四邊形 Logo 再放大 400% (4倍大) */
+    .brand-logo {
+      height: 140px !important;
+      max-height: 140px !important;
+      width: auto !important;
+    }
+    .hero-logo {
+      height: 240px !important;
+      max-height: 240px !important;
+      width: auto !important;
+    }
+    .footer-logo {
+      height: 160px !important;
+      max-height: 160px !important;
+      width: auto !important;
+    }
+    .cert-rect-logo {
+      height: 240px !important;
+      max-height: 240px !important;
+      width: auto !important;
+    }
+    .site-header {
+      padding: 20px 7vw !important;
+    }
+
+    /* Social Media Hub (FB, IG, Threads, YouTube, Google Map) */
+    footer {
+      background: #1A2522 !important;
+      color: #E2E8F0 !important;
+      padding: 50px 7vw 30px !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-main-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+    }
+    .social-hub-title {
+      font-family: Noto Serif TC, serif;
+      font-size: 16px;
+      color: #E8C968;
+      font-weight: 800;
+      margin-bottom: 14px;
+      text-align: left;
+    }
+    .social-links-grid {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      color: #FFF !important;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .social-btn.facebook { background: #1877F2; }
+    .social-btn.facebook:hover { background: #0d65d9; transform: translateY(-2px); }
+    .social-btn.instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+    .social-btn.instagram:hover { opacity: 0.9; transform: translateY(-2px); }
+    .social-btn.threads { background: #000000; border: 1px solid #333; }
+    .social-btn.threads:hover { background: #222; transform: translateY(-2px); }
+    .social-btn.youtube { background: #FF0000; }
+    .social-btn.youtube:hover { background: #cc0000; transform: translateY(-2px); }
+    .social-btn.map { background: #34A853; }
+    .social-btn.map:hover { background: #2d9248; transform: translateY(-2px); }
+    
+    .footer-bottom-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      color: #94A3B8;
+      font-size: 13px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom-row p { margin: 0; }
+</style>
+</head>
+
+<body class="__variable_geist_0tvmz3h __variable_geist_mono_1diim1n antialiased">
+  <main>
+    <!-- Site Header -->
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="回到首頁">
+        <img class="brand-logo" src="./shangxue-logo-transparent.png" alt="尚學文教"/>
+      </a>
+      <nav aria-label="主要導覽">
+        <a href="#about">夏日序章</a>
+        <a href="#farm">食農教育</a>
+        <a href="#science">科學探究</a>
+        <a href="#writing">閱讀寫作</a>
+        <a href="#trip">一日農夫</a>
+        <a href="#onsite" style="color: #C96D45; font-weight: 900;">🎪 現場互動</a>
+      </nav>
+      <a class="mini-cta" href="#finale">成果展</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="top">
+      <div class="scribble scribble-one" aria-hidden="true">✦</div>
+      <div class="hero-copy">
+        <img class="hero-logo" src="./shangxue-logo-transparent.png" alt="尚學文教 Logo"/>
+        <p class="issue">給家長的七月學習成果 · 2026</p>
+        <h1>這個夏天，<span>我們把好奇種進日常。</span></h1>
+        <p class="hero-intro">
+          從一塊土地、一個問題，到一張寫滿想法的紙。<br/>這是為家長整理的七月電子學習成果頁。
+        </p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#onsite">📱 成果展現場即時互動</a>
+          <span>手機、平板與電腦都能直接閱讀</span>
+        </div>
+        <div class="cover-qr">
+          <img src="./cover-qr-code.png" alt="尚學文教 QR Code"/>
+          <div>
+            <strong>SCAN ME</strong>
+            <span>掃描 QR Code<br/>認識更多尚學活動</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-collage" aria-label="夏令營活動照片精選">
+        <figure class="photo-card hero-main">
+          <img src="./photos/digital/img-05.jpg" alt="孩子完成食農教育活動後合照"/>
+          <figcaption>把這個夏天的成長，完整分享給家長</figcaption>
+        </figure>
+        <figure class="photo-card hero-small top">
+          <img src="./photos/digital/img-10.jpg" alt="孩子上台發表科學探究成果"/>
+        </figure>
+        <figure class="photo-card hero-small bottom">
+          <img src="./photos/digital/img-15.jpg" alt="孩子在寫作課堂中開心合照"/>
+        </figure>
+        <span class="tape tape-one" aria-hidden="true"></span>
+        <span class="stamp">JULY<br/>2026</span>
+      </div>
+    </section>
+
+    <!-- Opening Section -->
+    <section class="opening" id="about">
+      <p class="vertical-note">OUR SUMMER STORY</p>
+      <div class="opening-title">
+        <span>序章</span>
+        <h2>學習，不只發生在課本裡</h2>
+      </div>
+      <div class="opening-copy">
+        <p>孩子在這次夏令營，從土地與餐桌出發，親手種植、澆水、 觀察與採收，並從生活中發現值得研究的問題。</p>
+        <p>他們也把這個夏天的好奇與努力，變成一項項看得見、 說得清楚的研究成果。</p>
+        <div class="stats" aria-label="活動摘要">
+          <div><strong>4</strong><span>學習主題</span></div>
+          <div><strong>24+</strong><span>紀錄日程</span></div>
+          <div><strong>∞</strong><span>新的問題</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 01: Farm -->
+    <section class="chapter chapter-green farm-chapter" id="farm">
+      <div class="chapter-head">
+        <div class="chapter-number">01</div>
+        <div>
+          <p>食農教育 · 從育苗到記錄</p>
+          <h2>從一株菜苗開始，孩子學會的不只是種植。</h2>
+        </div>
+        <span class="chapter-day">JULY / CHAPTER 1</span>
+      </div>
+      <div class="farm-journey">
+        <div class="farm-intro">
+          <p>孩子從育苗場認識植物生命的起點，接著親手整地、種植、除草、觀察與測量。從一次次照顧中，他們不只理解作物如何成長，也逐漸培養耐心、責任與合作。</p>
+          <ul>
+            <li>認識育苗</li>
+            <li>親手種植</li>
+            <li>觀察測量</li>
+          </ul>
+        </div>
+        <div class="farm-journey-grid">
+          <figure class="farm-step">
+            <div class="farm-photo-wrap">
+              <img src="./photos/farm-journey/01-nursery.jpg" alt="老師帶孩子觀察育苗場的穴盤苗"/>
+              <span>01</span>
+            </div>
+            <figcaption>
+              <strong>認識育苗場</strong>
+              <p>老師在整排穴盤苗前解說，孩子近距離觀察不同菜苗的外形。</p>
+            </figcaption>
+          </figure>
+
+          <figure class="farm-step">
+            <div class="farm-photo-wrap">
+              <img src="./photos/farm-journey/02-plan.jpg" alt="孩子查看紅色圍線標示的種植區"/>
+              <span>02</span>
+            </div>
+            <figcaption>
+              <strong>規劃種植區</strong>
+              <p>孩子站在紅色圍線內查看土地，確認接下來要使用的種植範圍。</p>
+            </figcaption>
+          </figure>
+
+          <figure class="farm-step">
+            <div class="farm-photo-wrap">
+              <img src="./photos/farm-journey/03-soil.jpg" alt="孩子使用鋤頭與小鏟整理土壤"/>
+              <span>03</span>
+            </div>
+            <figcaption>
+              <strong>整地鬆土</strong>
+              <p>孩子分別使用鋤頭與小鏟鬆開土壤，整理出適合種植的區域。</p>
+            </figcaption>
+          </figure>
+
+          <figure class="farm-step farm-main">
+            <div class="farm-photo-wrap">
+              <img src="./photos/farm-journey/04-plant-main.jpg" alt="老師與孩子一起種植菜苗"/>
+              <span>04</span>
+            </div>
+            <figcaption>
+              <strong>親手種植</strong>
+              <p>老師蹲在田畦旁示範，孩子一起把菜苗放入整理好的土壤中。</p>
+            </figcaption>
+          </figure>
+
+          <figure class="farm-step">
+            <div class="farm-photo-wrap">
+              <img src="./photos/farm-journey/05-secure.jpg" alt="孩子用雙手壓實菜苗周圍的土"/>
+              <span>05</span>
+            </div>
+            <figcaption>
+              <strong>固定菜苗</strong>
+              <p>孩子用雙手將菜苗周圍的土壓實，讓剛種下的菜苗穩定站立。</p>
+            </figcaption>
+          </figure>
+
+          <figure class="farm-step">
+            <div class="farm-photo-wrap">
+              <img src="./photos/farm-journey/06-team-care.jpg" alt="孩子分散在田畦間分工整理菜苗"/>
+              <span>06</span>
+            </div>
+            <figcaption>
+              <strong>分工照顧</strong>
+              <p>孩子分散在田畦間種植與整理，依各自位置完成手上的工作。</p>
+            </figcaption>
+          </figure>
+
+          <figure class="farm-step">
+            <div class="farm-photo-wrap">
+              <img src="./photos/farm-journey/07-observe.jpg" alt="孩子蹲在菜苗旁觀察生長情形"/>
+              <span>07</span>
+            </div>
+            <figcaption>
+              <strong>觀察生長</strong>
+              <p>孩子蹲下查看菜苗與周圍雜草，逐株觀察種植後的生長情形。</p>
+            </figcaption>
+          </figure>
+
+          <figure class="farm-step">
+            <div class="farm-photo-wrap">
+              <img src="./photos/farm-journey/08-measure.jpg" alt="孩子用布尺測量菜苗高度"/>
+              <span>08</span>
+            </div>
+            <figcaption>
+              <strong>測量記錄</strong>
+              <p>孩子把布尺垂直立在菜苗旁，實際測量植株目前的高度。</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 02: Science -->
+    <section class="chapter chapter-blue" id="science">
+      <div class="chapter-head">
+        <div class="chapter-number">02</div>
+        <div>
+          <p>把好奇變成可以研究的問題</p>
+          <h2>科學探究</h2>
+        </div>
+        <span class="chapter-day">JULY / CHAPTER 2</span>
+      </div>
+      <div class="chapter-layout reverse">
+        <div class="chapter-story">
+          <p class="lead">從生活裡發現問題，再經過討論、假設、測試與修正。孩子不只等待答案，而是練習用證據說明自己的想法。</p>
+          <blockquote>原來一次沒成功，不代表失敗，而是多得到一條線索。</blockquote>
+          <ul>
+            <li>提出問題</li>
+            <li>動手實驗</li>
+            <li>成果發表</li>
+          </ul>
+        </div>
+        <div class="chapter-gallery">
+          <figure class="gallery-photo photo-1">
+            <img src="./photos/digital/img-06.jpg" alt="孩子完成的實驗作品與海報"/>
+          </figure>
+          <figure class="gallery-photo photo-2">
+            <img src="./photos/digital/img-07.jpg" alt="孩子繪製實驗海報與心智圖"/>
+          </figure>
+          <figure class="gallery-photo photo-3">
+            <img src="./photos/digital/img-08.jpg" alt="孩子分組討論科學問題"/>
+          </figure>
+          <figure class="gallery-photo photo-4">
+            <img src="./photos/digital/img-09.jpg" alt="孩子動手組裝實驗器材與模型"/>
+          </figure>
+          <span class="paper-clip" aria-hidden="true">⌁</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 03: Writing -->
+    <section class="chapter chapter-orange" id="writing">
+      <div class="chapter-head">
+        <div class="chapter-number">03</div>
+        <div>
+          <p>把經驗整理成自己的話</p>
+          <h2>閱讀與寫作</h2>
+        </div>
+        <span class="chapter-day">JULY / CHAPTER 3</span>
+      </div>
+      <div class="chapter-layout">
+        <div class="chapter-story">
+          <p class="lead">孩子從心智圖發想，把零散的觀察排成有順序的內容；再透過朗讀與分享，學會讓別人聽懂自己的故事。</p>
+          <blockquote>寫作不是把字填滿，而是把心裡真正想說的話找出來。</blockquote>
+          <ul>
+            <li>心智圖</li>
+            <li>邏輯表達</li>
+            <li>朗讀分享</li>
+          </ul>
+        </div>
+        <div class="chapter-gallery">
+          <figure class="gallery-photo photo-1">
+            <img src="./photos/digital/img-11.jpg" alt="老師帶領孩子以心智圖發想"/>
+          </figure>
+          <figure class="gallery-photo photo-2">
+            <img src="./photos/digital/img-12.jpg" alt="孩子完成的作文稿紙與作品"/>
+          </figure>
+          <figure class="gallery-photo photo-3">
+            <img src="./photos/digital/img-13.jpg" alt="孩子專心撰寫作文"/>
+          </figure>
+          <figure class="gallery-photo photo-4">
+            <img src="./photos/digital/img-14.jpg" alt="孩子朗讀並分享自己的作品"/>
+          </figure>
+          <span class="paper-clip" aria-hidden="true">⌁</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 04: Trip -->
+    <section class="chapter chapter-yellow" id="trip">
+      <div class="chapter-head">
+        <div class="chapter-number">04</div>
+        <div>
+          <p>讓課堂知識走進真實生活</p>
+          <h2>一日農夫</h2>
+        </div>
+        <span class="chapter-day">JULY / CHAPTER 4</span>
+      </div>
+      <div class="chapter-layout reverse">
+        <div class="chapter-story">
+          <p class="lead">走進鴻旗農場，孩子從農場導覽、認識作物，到親手採摘鳳梨與體驗搗麻糬，在真實情境中理解食物的來源。</p>
+          <blockquote>親眼看見、親手完成，課本裡的知識就成了真正記得住的經驗。</blockquote>
+          <ul>
+            <li>農場導覽</li>
+            <li>採果體驗</li>
+            <li>傳統手作</li>
+          </ul>
+        </div>
+        <div class="chapter-gallery">
+          <figure class="gallery-photo photo-1">
+            <img src="./photos/digital/img-16.jpg" alt="孩子參加農場導覽"/>
+          </figure>
+          <figure class="gallery-photo photo-2">
+            <img src="./photos/digital/img-17.jpg" alt="鴻旗農場的自然風光"/>
+          </figure>
+          <figure class="gallery-photo photo-3">
+            <img src="./photos/digital/img-18.jpg" alt="孩子體驗採摘鳳梨"/>
+          </figure>
+          <figure class="gallery-photo photo-4">
+            <img src="./photos/digital/img-19.jpg" alt="孩子體驗搗麻糬手作"/>
+          </figure>
+          <span class="paper-clip" aria-hidden="true">⌁</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline Journey -->
+    <section class="timeline" aria-labelledby="timeline-title">
+      <div class="timeline-heading">
+        <p class="issue">LEARNING JOURNEY</p>
+        <h2 id="timeline-title">一個月，從體驗走到表達</h2>
+        <p>往下滑動，快速看見孩子如何一步步把活動變成自己的能力。</p>
+      </div>
+      <div class="timeline-track">
+        <article class="timeline-card">
+          <span>01</span>
+          <h3>親身體驗</h3>
+          <p>走進土地、農場與真實情境</p>
+        </article>
+        <article class="timeline-card">
+          <span>02</span>
+          <h3>觀察提問</h3>
+          <p>從生活中找到想研究的問題</p>
+        </article>
+        <article class="timeline-card">
+          <span>03</span>
+          <h3>動手驗證</h3>
+          <p>透過合作、實驗與紀錄修正想法</p>
+        </article>
+        <article class="timeline-card">
+          <span>04</span>
+          <h3>整理表達</h3>
+          <p>完成作品，練習分享自己的發現</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Moments Gallery (85 張全完整相片資料庫) -->
+    <section class="moments" id="moments">
+      <div class="moments-heading">
+        <div>
+          <p class="issue">MORE MOMENTS</p>
+          <h2>更多學習現場 (共 85 張精選相片)</h2>
+        </div>
+        <p>選擇主題瀏覽，點一下照片即可放大。</p>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar" aria-label="照片主題篩選" id="filter-bar">
+        <button class="active" type="button" data-filter="all" aria-pressed="true">全部 (85)</button>
+        <button type="button" data-filter="agri" aria-pressed="false">食農教育 (20)</button>
+        <button type="button" data-filter="science" aria-pressed="false">科學探究 (20)</button>
+        <button type="button" data-filter="writing" aria-pressed="false">閱讀寫作 (24)</button>
+        <button type="button" data-filter="outdoor" aria-pressed="false">一日農夫 (21)</button>
+      </div>
+
+      <!-- Moments Grid -->
+      <div class="moments-grid" id="moments-grid">
+        <!-- Photo Items rendered via JS -->
+      </div>
+    </section>
+
+    <!-- ON-SITE LIVE INTERACTIVE SECTION -->
+    <section class="onsite-interactive" id="onsite">
+      <div class="onsite-header">
+        <p class="issue">EXHIBITION LIVE HUB</p>
+        <h2>🎪 成果展發表會 · 現場親子互動專區</h2>
+        <p>歡迎家長與孩子在發表會現場拿著手機共同參與！點擊攤位集章、發表會現場投票、上傳現場拍立得合照與領取電子結業證書。</p>
+      </div>
+
+      <!-- 1. 現場展區尋寶集章卡 -->
+      <div class="treasure-card">
+        <div class="treasure-title">
+          <h3>📍 1. 現場展區尋寶打卡卡</h3>
+          <span style="font-weight: 800; color: #C96D45;" id="stamp-progress-text">已解鎖 0 / 4 展區</span>
+        </div>
+        <p style="color: #68706D; font-size: 14px; margin-bottom: 16px;">走到發表會現場攤位前，點擊下方按鈕蓋章打卡：</p>
+        <div class="stamp-grid">
+          <div class="stamp-item" id="stamp-zone-1" onclick="toggleStamp(this, '食農展示區', 1)">
+            <span class="stamp-badge">已集章 ✓</span>
+            <div class="stamp-icon">🌱</div>
+            <div class="stamp-label">食農展示區</div>
+            <div class="stamp-status">點擊蓋章</div>
+          </div>
+          <div class="stamp-item" id="stamp-zone-2" onclick="toggleStamp(this, '科學探究區', 2)">
+            <span class="stamp-badge">已集章 ✓</span>
+            <div class="stamp-icon">🔬</div>
+            <div class="stamp-label">科學探究區</div>
+            <div class="stamp-status">點擊蓋章</div>
+          </div>
+          <div class="stamp-item" id="stamp-zone-3" onclick="toggleStamp(this, '寫作作品區', 3)">
+            <span class="stamp-badge">已集章 ✓</span>
+            <div class="stamp-icon">✍️</div>
+            <div class="stamp-label">寫作作品區</div>
+            <div class="stamp-status">點擊蓋章</div>
+          </div>
+          <div class="stamp-item" id="stamp-zone-4" onclick="toggleStamp(this, '農夫體驗區', 4)">
+            <span class="stamp-badge">已集章 ✓</span>
+            <div class="stamp-icon">🍍</div>
+            <div class="stamp-label">農夫體驗區</div>
+            <div class="stamp-status">點擊蓋章</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. 發表會現場成果即時票選 -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: Noto Serif TC, serif; font-size: 22px; color: #24312E; margin-bottom: 12px;">🗳️ 3. 發表會現場成果即時票選</h3>
+        <p style="color: #68706D; font-size: 14px; margin-bottom: 20px;">欣賞完各組孩子的上台發表與現場作品，為您印象最深刻的亮點投下一票：</p>
+        <div class="voting-grid">
+          <div class="vote-card">
+            <h4>💡 最具創意發想獎</h4>
+            <p>作品靈感獨特，想法充滿童趣與想像力</p>
+            <div class="vote-count-num" id="vote-count-1">12</div>
+            <button class="btn-vote" onclick="castVote(1)">投票支持 👏</button>
+          </div>
+          <div class="vote-card">
+            <h4>🔍 最具邏輯探究獎</h4>
+            <p>實驗步驟嚴謹，觀察與紀錄非常精準</p>
+            <div class="vote-count-num" id="vote-count-2">18</div>
+            <button class="btn-vote" onclick="castVote(2)">投票支持 👏</button>
+          </div>
+          <div class="vote-card">
+            <h4>🤝 最佳團隊合作獎</h4>
+            <p>同儕分工默契極佳，互助完成精彩成果展</p>
+            <div class="vote-count-num" id="vote-count-3">15</div>
+            <button class="btn-vote" onclick="castVote(3)">投票支持 👏</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. 今日發表會 · 親子現場拍立得即時上傳 -->
+      <div class="onsite-upload-box">
+        <h3 style="font-family: Noto Serif TC, serif; font-size: 22px; color: #C96D45; margin-bottom: 8px;">📸 4. 發表會現場拍立得合照牆</h3>
+        <p style="color: #59615E; font-size: 14px;">在現場拍下孩子展示作品或家長與孩子的合照，即時上傳到現場動態牆！</p>
+        <input type="file" id="onsite-photo-input" accept="image/*" style="display: none;" onchange="handleOnsiteUpload(event)">
+        <label for="onsite-photo-input" class="upload-btn-label">
+          <span>📷 選取/現場拍照上傳</span>
+        </label>
+        <div class="onsite-photo-wall" id="onsite-photo-wall">
+          <div class="onsite-polaroid">
+            <img src="./photos/digital/img-05.jpg" alt="現場紀念照片"/>
+            <span>2026.07.31 成果展現場</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. 現場頒獎典禮 · 電子結業證書頒發 -->
+      <div class="certificate-card">
+        <h3 style="font-family: Noto Serif TC, serif; font-size: 26px; color: #24312E; margin-bottom: 8px;">🎓 5. 2026 暑期頂尖計劃 · 電子結業證書</h3>
+        <p style="color: #59615E; font-size: 15px;">成果展頒獎環節，輸入孩子與家長姓名，現場生成帶有營隊金印的紀念證書！</p>
+        <div class="cert-inputs">
+          <input type="text" id="cert-child-input" placeholder="孩子姓名（例如：陳小明）"/>
+          <input type="text" id="cert-parent-input" placeholder="家長姓名（例如：陳爸爸）"/>
+        </div>
+        <button class="btn-generate-cert" onclick="generateCertificate()">🎓 現場生成結業證書</button>
+      </div>
+    </section>
+
+    <!-- Family Interactions (Quiz, Cheer & Comments) -->
+    <section class="family-interactions" aria-label="家長互動區">
+      <!-- Parent Poll (家長投票區) -->
+      <section class="parent-quiz">
+        <div class="interaction-title">
+          <p class="issue">FAMILY POLL</p>
+          <h2>家長投票區</h2>
+          <p>看完孩子們的學習歷程，哪一項成長最讓您驚喜？</p>
+        </div>
+        <form id="quiz-form">
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="growth" value="主動觀察"/>
+              <span>主動觀察</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="growth" value="動手實作"/>
+              <span>動手實作</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="growth" value="整理資料"/>
+              <span>整理資料</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="growth" value="勇敢表達"/>
+              <span>勇敢表達</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="growth" value="團隊合作"/>
+              <span>團隊合作</span>
+            </label>
+          </div>
+          <button class="paper-button" type="submit" id="btn-quiz-submit" disabled>送出我的投票 🗳️</button>
+        </form>
+
+        <!-- 家長投票即時統計資料區 -->
+        <div class="poll-stats-box" id="poll-stats-box" style="margin-top: 36px; padding-top: 24px; border-top: 1px dashed rgba(0,0,0,0.15);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h3 style="font-family: Noto Serif TC, serif; font-size: 18px; color: #24312E; margin: 0;">📊 家長投票即時統計結果</h3>
+            <span style="font-size: 13px; color: #C96D45; font-weight: 800;" id="poll-total-count">累積 105 票</span>
+          </div>
+          <div id="poll-bars-list" style="display: flex; flex-direction: column; gap: 12px;">
+            <!-- Bar items rendered dynamically via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Parent Cheer -->
+      <section class="parent-cheer" id="cheer-section">
+        <div class="confetti" aria-hidden="true">
+          <span>✦</span><span>★</span><span>✧</span><span>●</span><span>✦</span><span>★</span>
+        </div>
+        <p class="issue">A NOTE FROM FAMILY</p>
+        <h2>為孩子鼓掌</h2>
+        <p class="cheer-count"><strong id="cheer-counter">0</strong><span>次累積掌聲</span></p>
+        <p>為這個夏天認真探索、勇敢表達的孩子，送上一個溫暖的掌聲。</p>
+        <button type="button" id="btn-cheer">👏 為孩子鼓掌</button>
+      </section>
+
+      <!-- Comment Wall (支援按讚與「僅能刪除自己留言」的權限設定) -->
+      <section class="comment-wall" id="comments">
+        <div class="comment-intro">
+          <p class="issue">FAMILY MESSAGE WALL</p>
+          <h2>家長留言牆</h2>
+          <p>留下一句鼓勵，讓孩子知道自己的努力有被看見。</p>
+          <p class="privacy-note">請勿填寫孩子全名、電話、地址或其他個人資料。</p>
+        </div>
+
+        <div class="quick-messages" aria-label="快速鼓勵語" id="quick-messages">
+          <button type="button" data-text="看見你認真完成每一步，真的很棒！">看見你認真完成每一步，真的很棒！</button>
+          <button type="button" data-text="謝謝你勇敢嘗試，也願意和同伴合作！">謝謝你勇敢嘗試，也願意和同伴合作！</button>
+          <button type="button" data-text="繼續保持好奇，期待你下一次的新發現！">繼續保持好奇，期待你下一次的新發現！</button>
+        </div>
+
+        <form class="comment-form" id="comment-form">
+          <label>暱稱（可留空）
+            <input maxLength="20" placeholder="例如：一位家長" id="input-author"/>
+          </label>
+          <label>想對孩子說的話
+            <textarea minLength="2" maxLength="80" required placeholder="謝謝你們認真完成每一次觀察，繼續保持好奇！" id="input-msg"></textarea>
+          </label>
+          <div class="comment-submit">
+            <span id="char-counter">0/80</span>
+            <button type="submit">送出鼓勵</button>
+          </div>
+        </form>
+
+        <div class="comment-list" aria-live="polite" id="comment-list">
+          <p class="empty-comments">成為第一位留下鼓勵的家長吧！</p>
+        </div>
+      </section>
+    </section>
+
+    <!-- Finale -->
+    <section class="finale" id="finale">
+      <p class="issue">TO BE CONTINUED</p>
+      <h2>這不是夏天的結尾，<br/>而是孩子開始相信自己的起點。</h2>
+      <p>每一次觀察、每一張紀錄、每一次站上台分享， 都讓「我可以」變得更清楚。</p>
+      <a href="#top">回到本期封面 ↑</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-main-row">
+          <div class="brand footer-brand">
+            <img class="footer-logo" src="./shangxue-logo-transparent.png" alt="尚學文教 Logo"/>
+          </div>
+
+          <!-- 6 大官方社群與地圖專區 -->
+          <div class="social-media-hub">
+            <p class="social-hub-title">關注尚學文教社群 · 探索更多活動花絮與紀錄</p>
+            <div class="social-links-grid">
+              <a href="https://www.facebook.com/cms.edu/" target="_blank" rel="noopener" class="social-btn facebook" aria-label="尚學文教 Facebook 大帳">
+                <span>📘 FB 粉絲專頁</span>
+              </a>
+              <a href="https://www.facebook.com/sunshueh.edu" target="_blank" rel="noopener" class="social-btn facebook" aria-label="尚學文教 Facebook 小帳">
+                <span>📘 FB 尚學文教</span>
+              </a>
+              <a href="https://www.instagram.com/sangsueh_education/" target="_blank" rel="noopener" class="social-btn instagram" aria-label="尚學文教 Instagram">
+                <span>📸 Instagram</span>
+              </a>
+              <a href="https://www.threads.com/@sangsueh_education?hl=zh-tw" target="_blank" rel="noopener" class="social-btn threads" aria-label="尚學文教 Threads">
+                <span>🧵 Threads</span>
+              </a>
+              <a href="https://www.youtube.com/@sangsueh.education" target="_blank" rel="noopener" class="social-btn youtube" aria-label="尚學文教 YouTube">
+                <span>🔴 YouTube 頻道</span>
+              </a>
+              <a href="https://maps.app.goo.gl/XZvRkG2DrFg5kXQS6" target="_blank" rel="noopener" class="social-btn map" aria-label="尚學文教 Google 地圖">
+                <span>📍 Google 地圖導航</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom-row">
+          <p>2026 暑期頂尖計劃 · 七月電子學習成果</p>
+          <p>尚學文教 版權所有 · 讓孩子開心學習，快樂成長</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightbox-modal">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="btn-close-lightbox">✕</button>
+      <img id="lightbox-img" src="" alt="照片放大"/>
+      <div style="margin-top: 14px;">
+        <strong id="lightbox-title" style="font-size: 1.1rem; color: #1E293B; display: block; margin-bottom: 4px;"></strong>
+        <p id="lightbox-desc" style="font-size: 0.9rem; color: #64748B; line-height: 1.5;"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certificate Result Modal (精密金邊邊框 + 四邊形尚學文教 Logo 鋼印) -->
+  <div class="cert-modal" id="cert-modal">
+    <div style="text-align: center; max-width: 580px; width: 100%;">
+      <div class="cert-paper" id="cert-paper-target">
+        <span class="cert-corner-flower corner-tl">✦</span>
+        <span class="cert-corner-flower corner-tr">✦</span>
+        <span class="cert-corner-flower corner-bl">✦</span>
+        <span class="cert-corner-flower corner-br">✦</span>
+        <button class="lightbox-close" onclick="closeCertModal()">✕</button>
+        <p style="color: #C96D45; font-weight: 900; letter-spacing: 0.18em; font-size: 13px; margin-bottom: 6px;">HONOR CERTIFICATE</p>
+        <h2>2026 暑期頂尖計劃 · 結業證書</h2>
+        <p style="color: #64748B; font-size: 14px; margin-top: 8px;">特此證明學員：</p>
+        <div class="cert-child-name" id="modal-cert-child">陳小明</div>
+        <p style="color: #334155; font-size: 15px; line-height: 1.8; max-width: 450px; margin: 0 auto; font-family: Noto Serif TC, serif;">
+          完成七月食農教育、科學探究與閱讀寫作等四大專題課程，展現優秀的自主觀察力、探究思考力與團隊表達力！
+        </p>
+        <p style="font-size: 14px; color: #C96D45; font-weight: 800; margin-top: 14px;" id="modal-cert-parent">
+          家長陪伴：陳爸爸
+        </p>
+        <!-- 四邊形尚學文教官方 Logo 鋼印 -->
+        <img class="cert-rect-logo" src="./shangxue-logo-transparent.png" alt="尚學文教官方 Logo"/>
+        <p style="font-size: 11px; color: #94A3B8; margin-top: 6px; letter-spacing: 0.05em;">2026 年 7 月 31 日 · 成果展紀念版</p>
+      </div>
+      <div>
+        <button class="btn-download-cert" onclick="downloadCertificateImage()">
+          <span>📥 下載 / 保存金邊證書照片至手機相簿</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 自訂剪貼簿風格 Modal 彈窗 -->
+  <div class="custom-modal-overlay" id="custom-modal">
+    <div class="custom-modal-card">
+      <div class="custom-modal-icon" id="custom-modal-icon">🎉</div>
+      <div class="custom-modal-title" id="custom-modal-title">提示</div>
+      <div class="custom-modal-body" id="custom-modal-body">內容描述...</div>
+      <button class="btn-custom-modal-close" onclick="closeCustomModal()">我知道了 ✦</button>
+    </div>
+  </div>
+
+  <!-- Client JavaScript -->
+  <script>
+    // ----------------------------------------------------
+    // 本地裝置識別碼 (用於判斷是否為自己留的言，只有自己能刪除)
+    // ----------------------------------------------------
+    const MY_DEVICE_ID = localStorage.getItem('shangxue_device_id') || ('dev_' + Math.random().toString(36).substring(2, 9) + Date.now().toString(36));
+    localStorage.setItem('shangxue_device_id', MY_DEVICE_ID);
+
+    // ----------------------------------------------------
+    // 自訂手作風 Modal 視窗
+    // ----------------------------------------------------
+    function showCustomModal(title, message, icon = '🎉') {
+      document.getElementById('custom-modal-icon').innerText = icon;
+      document.getElementById('custom-modal-title').innerText = title;
+      document.getElementById('custom-modal-body').innerText = message;
+      document.getElementById('custom-modal').classList.add('show');
+    }
+    function closeCustomModal() {
+      document.getElementById('custom-modal').classList.remove('show');
+    }
+
+    // ----------------------------------------------------
+    // 資料持久化系統 (localStorage)
+    // ----------------------------------------------------
+    const STORAGE_KEY = 'shangxue_2026_magazine_data';
+
+    function getStoredData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function saveStoredData(data) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      } catch (e) {
+        console.error('LocalStorage Save Error:', e);
+      }
+    }
+
+    let persistentData = getStoredData() || {
+      cheerCount: 0,
+      votes: { 1: 12, 2: 18, 3: 15 },
+      stamps: [false, false, false, false],
+      comments: [
+        { id: 'c_default_1', author: '林媽媽', msg: '看見你認真完成每一步，真的很棒！', time: '10:15', likes: 5, deviceId: 'system' },
+        { id: 'c_default_2', author: '張爸爸', msg: '謝謝老師們的用心照料與引導，孩子回家一直講農場的故事！', time: '10:42', likes: 8, deviceId: 'system' }
+      ],
+      polaroids: []
+    };
+
+    function renderCommentsUI() {
+      const commentList = document.getElementById('comment-list');
+      if (!persistentData.comments || persistentData.comments.length === 0) {
+        commentList.innerHTML = '<p class="empty-comments">成為第一位留下鼓勵的家長吧！</p>';
+        return;
+      }
+
+      commentList.innerHTML = persistentData.comments.map(c => {
+        const isMine = c.deviceId === MY_DEVICE_ID;
+        const deleteBtnHtml = isMine 
+          ? `<button class="btn-delete-comment" onclick="deleteComment('${c.id}')">🗑️ 刪除我的留言</button>` 
+          : '';
+
+        return `
+          <article class="comment-card" id="comment-card-${c.id}">
+            <p>${c.msg}</p>
+            <footer>
+              <strong>${c.author}</strong>
+              <span>${c.time}</span>
+            </footer>
+            <div class="comment-actions">
+              <button class="btn-like-comment ${c.likedByMe ? 'liked' : ''}" onclick="toggleLikeComment('${c.id}')">
+                ❤️ 讚 <span>${c.likes || 0}</span>
+              </button>
+              ${deleteBtnHtml}
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function toggleLikeComment(commentId) {
+      const comment = persistentData.comments.find(c => c.id === commentId);
+      if (!comment) return;
+
+      if (comment.likedByMe) {
+        comment.likes = Math.max(0, (comment.likes || 1) - 1);
+        comment.likedByMe = false;
+      } else {
+        comment.likes = (comment.likes || 0) + 1;
+        comment.likedByMe = true;
+        confetti({ particleCount: 30, spread: 40, origin: { y: 0.8 } });
+      }
+
+      saveStoredData(persistentData);
+      renderCommentsUI();
+    }
+
+    function deleteComment(commentId) {
+      persistentData.comments = persistentData.comments.filter(c => c.id !== commentId);
+      saveStoredData(persistentData);
+      renderCommentsUI();
+      showCustomModal('留言已刪除', '已為您刪除該筆留言。', '🗑️');
+    }
+
+    function loadPersistedUI() {
+      // 1. 掌聲累計
+      document.getElementById('cheer-counter').innerText = persistentData.cheerCount;
+
+      // 2. 投票數據
+      document.getElementById('vote-count-1').innerText = persistentData.votes[1] || 12;
+      document.getElementById('vote-count-2').innerText = persistentData.votes[2] || 18;
+      document.getElementById('vote-count-3').innerText = persistentData.votes[3] || 15;
+
+      // 3. 尋寶集章狀態
+      let activeCount = 0;
+      for (let i = 1; i <= 4; i++) {
+        const el = document.getElementById(`stamp-zone-${i}`);
+        if (persistentData.stamps[i - 1]) {
+          el.classList.add('active');
+          activeCount++;
+        }
+      }
+      document.getElementById('stamp-progress-text').innerText = `已解鎖 ${activeCount} / 4 展區`;
+
+      // 4. 留言牆
+      renderCommentsUI();
+      renderPollStats();
+
+      // 5. 現場拍立得合照牆
+      if (persistentData.polaroids && persistentData.polaroids.length > 0) {
+        const wall = document.getElementById('onsite-photo-wall');
+        persistentData.polaroids.forEach(p => {
+          const polaroid = document.createElement('div');
+          polaroid.className = 'onsite-polaroid';
+          polaroid.style.transform = `rotate(${p.rot}deg)`;
+          polaroid.innerHTML = `
+            <img src="${p.src}" alt="現場拍立得合照"/>
+            <span>${p.time} 成果展現場 (已儲存)</span>
+          `;
+          wall.prepend(polaroid);
+        });
+      }
+    }
+
+    // ----------------------------------------------------
+    // Complete Photo Dataset: 包含 20原版 + 5寫作 + 60額外 = 共 85 張全相片
+    // ----------------------------------------------------
+    const momentsData = [
+      // 5張使用者寫作照片
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/writing/user_writing_1.jpg', title: '孩子專注於作文稿紙上書寫', desc: '手握筆桿專心一字一句寫下自己的觀察與感受。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/writing/user_writing_2.jpg', title: '孩子細心撰寫字詞與思考', desc: '認真推敲句子結構，練習將思路轉化為清晰文字。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/writing/user_writing_3.jpg', title: '孩子認真進行文字創作', desc: '在課堂桌前沉浸寫作，將想法整理成完整的篇章。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/writing/user_writing_4.jpg', title: '同學專心完成課堂寫作', desc: '同儕間一起專注寫作，展現充沛的學習專注度。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/writing/user_writing_5.jpg', title: '孩子思考並修飾文章細節', desc: '反覆閱讀自己的文字，修飾細節並準備與大家分享。' },
+
+      // 60張全紀錄相片 (Dropbox 擴充)
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_1.jpg', title: '親子觀察育苗場菜苗細節', desc: '細心比對不同菜苗的葉片形狀與顏色。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_2.jpg', title: '專心為幼苗灌溉與觀察', desc: '學習拿捏水量與灌溉時間，用心照料作物。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_3.jpg', title: '測量菜苗高度生長日誌', desc: '使用直尺量測幼苗高度並記錄在生長日誌。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_4.jpg', title: '觀察與指認菜園作物成長', desc: '站在田區圍線旁伸手指認蔬菜植株，討論菜苗發芽與生長狀況。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_5.jpg', title: '認識土壤結構與有機質', desc: '用雙手觸摸感受土壤濕度與鬆軟程度。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_6.jpg', title: '紀錄植物葉脈與生長狀態', desc: '繪製植物結構圖並標示各部位名稱。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_7.jpg', title: '老師指導綁紮菜園圍線', desc: '蹲在菜園旁細心綁紮紅色標示線，為孩子劃分清晰的種植區塊。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_8.jpg', title: '測試田區灌溉水管與水流', desc: '合作拉起橘色水管測試水流，確保菜園土壤獲得充足灌溉。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_9.jpg', title: '組裝園區灌溉水管與工具', desc: '蹲在地上專注修剪與連接橘色灌溉水管，準備農園的澆水系統。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_10.jpg', title: '學習使用專業農具工具', desc: '在導師指導下安全使用鏟子與耙子。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_11.jpg', title: '採收成熟蔬菜成果特寫', desc: '享受親手採收新鮮蔬菜的收穫喜悅。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_12.jpg', title: '分類收拾採收的菜葉成果', desc: '將採收的蔬果整理乾淨並盛盤展示。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_13.jpg', title: '觀察菜葉上的昆蟲生態', desc: '學習生態防治與天然除蟲的好方法。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_14.jpg', title: '紀錄一週作物成長曲線', desc: '將數據繪製成視覺化曲線圖進行比對。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_15.jpg', title: '親手整地與拔除田間雜草', desc: '蹲在田畦間親手清除作物周圍的雜草，維護植物良好的生長環境。' },
+
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_1.jpg', title: '繪製科學探究觀察紀錄', desc: '手握彩色筆專注利用膠帶圓環輔助，在繪圖紙上記錄實驗結構。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_2.jpg', title: '導師一對一專注輔導與交流', desc: '導師耐心地與學生面對面討論問題，協助引導思考與表達。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_3.jpg', title: '紀錄實驗數據與對照組', desc: '嚴謹紀錄實驗組與對照組的數值差異。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_4.jpg', title: '專心繪製專題心智圖', desc: '手握鉛筆專注在桌前發想，將零散想法整理成心智圖架構。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_5.jpg', title: '戶外展示 AI 垃圾桶模型與海報', desc: '孩子手提自製「AI垃圾桶」紙箱模型與研究海報，向同儕展示創作成果。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_6.jpg', title: '發表科學探究海報成果', desc: '站上講台自信介紹小組的研究成果。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_7.jpg', title: '課堂發表與專題海報討論', desc: '老師與同學們圍繞著攤開的大型專題海報，專注進行發表與討論。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_8.jpg', title: '組裝電路與動手實作模型', desc: '小組成員圍在桌前協力連接線路與馬達，完成手作模型測試。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_9.jpg', title: '討論實驗失敗原因與修正', desc: '比對步驟瑕疵，重新設計測試流程。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_10.jpg', title: '戶外漫步與攜帶海報前往展場', desc: '走在綠意盎然的公園步道上，攜帶製作完成的海報準備進行展示。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_11.jpg', title: '動手剪裁與組裝紙箱模型', desc: '專注使用剪刀與美工刀進行紙箱裁切，組裝專題作品模型。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_science_12.jpg', title: '專注撰寫與繪製學習筆記', desc: '手握黑筆低頭專注記錄觀察所得，細心描繪課堂練習單。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_13.jpg', title: '小組發表研究心得與問答', desc: '回答同儕提問，展現專業的探究素養。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_14.jpg', title: '公園戶外發表專題心智圖海報', desc: '合力張開大型心智圖海報，向長輩自信介紹探究成果。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_15.jpg', title: '公園步道漫步與活動參與', desc: '學員們結伴走在公園步道上，拿著創作資料準備進行活動發表。' },
+
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_1.jpg', title: '用心智圖發想寫作靈感', desc: '先列出關鍵字與分支，再展開豐富文章。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_2.jpg', title: '專注在稿紙上記錄觀察', desc: '手握筆桿一字一句修飾語感與描寫。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_3.jpg', title: '老師個別給予寫作建議', desc: '引導孩子挖掘內心感受，點亮文采。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_4.jpg', title: '朗讀自己的創作與分享', desc: '用有感情的聲音把自己的故事讀給大家聽。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_5.jpg', title: '同儕互相閱讀與鼓勵回饋', desc: '在彼此的文章下留下讚賞與建設性建議。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_6.jpg', title: '練習使用修辭與摹寫技巧', desc: '把視覺、聽覺與觸覺寫進動人的文章裡。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_7.jpg', title: '閱讀優良範文與結構拆解', desc: '學習文章開頭、轉折與結尾的精采佈局。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_8.jpg', title: '創作個人夏日微型故事集', desc: '將夏令營的回憶集結成專屬的文字作品。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_9.jpg', title: '修改語句並加強段落連貫', desc: '反覆閱讀順稿，使全篇文字更加流暢。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_10.jpg', title: '構思繪本腳本與文字說明', desc: '結合文字與插畫，呈現原創圖文故事。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_11.jpg', title: '分享寫作時的心情與轉變', desc: '暢談從害怕寫到愛上表達的成長心路。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_12.jpg', title: '記錄生活細節與感官體驗', desc: '把小小的發現寫成引人入勝的優美短文。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_13.jpg', title: '小組進行故事接龍創作', desc: '輪流接續情節，激盪出令人驚喜的奇幻故事。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_14.jpg', title: '整理個人寫作作品輯目錄', desc: '為自己的作品輯加上精美標題與目錄。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_15.jpg', title: '心智圖發想與思考我的爸爸', desc: '專注思考文章架構，將對爸爸的觀察與情感繪製成詳細心智圖。' },
+
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_1.jpg', title: '鴻旗農場園區植物導覽', desc: '跟著解說員走進農場，認識豐富多樣的作物。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_2.jpg', title: '展示鮮採芭樂成果', desc: '提著保護套包覆的新鮮芭樂，開心展示在果園採收的豐碩成果。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_3.jpg', title: '體驗傳統手工搗麻糬步驟', desc: '兩人齊心協力輪流搗麻糬，感受傳統手作樂趣。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_4.jpg', title: '穿梭火龍果園與享用點心', desc: '戴上花布斗笠手提餐盤漫步於火龍果園區，享受自然農場風光。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_5.jpg', title: '觀察農場生態池昆蟲植物', desc: '在池畔觀察水生植物與蜻蜓的飛翔姿態。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_6.jpg', title: '細心觀察親手採摘的小果實', desc: '拿著剛採下的新鮮小果實放在掌心，露出充滿成就感的笑容。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_7.jpg', title: '戴著花布斗笠拍照留念', desc: '穿戴農夫裝備，留下趣味滿滿的戶外寫真。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/replacement_outdoor_8.jpg', title: '同儕協力繪製發表海報', desc: '兩人在課桌前合作腦力激盪，共同將發想成果標示在發表海報上。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_9.jpg', title: '摘採葉片與感官觀察體驗', desc: '戴著花布斗笠跟隨解說，親手採摘並觸摸觀察樹葉質感與香氣。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/replacement_outdoor_10.jpg', title: '園區導覽與體驗心得交流', desc: '在農場綠蔭下與夥伴分享心得，紀錄充滿知性與歡笑的體驗。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_11.jpg', title: '戴著花布斗笠觀察園區植物', desc: '戴上傳統花布斗笠走進果園，近距離觀察農作物葉片與生態。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_12.jpg', title: '享用農場特調消暑冰茶', desc: '在體驗空檔於休息區排隊倒特調檸檬冰茶，消暑補充水分。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_13.jpg', title: '開心展示採摘水果與芭樂', desc: '提著整袋鮮採檸檬與芭樂，在水果園裡開心展示採收成果。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/replacement_outdoor_14.jpg', title: '採收蔬果裝袋與紀錄', desc: '蹲在田區線旁將採收的新鮮蔬果裝入袋中，開心收穫農作果實。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_15.jpg', title: '聆聽農場生態與活動解說', desc: '在農場簡報室專心聆聽講師解說有機農業與今日體驗行程。' },
+
+      // 原版精選照片
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/showcase/showcase-21.jpg', title: '專注填寫食農教育學習單', desc: '在課堂上記錄食農觀察心得，將心得填寫於心智圖學習單上。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/showcase/showcase-22.jpg', title: '孩子參與寫作課程', desc: '從生活經驗取材，練習將觀察轉化為文字。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/showcase/showcase-23.jpg', title: '專心撰寫作文稿紙', desc: '沉浸在寫作時光中，將思緒一字一句記錄在稿紙上。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/showcase/showcase-24.jpg', title: '孩子用心智圖發想', desc: '先用心智圖整理人物、事件與感受，再開始寫作。' },
+
+      { cat: 'agri', tag: '食農教育', img: './photos/farm-journey/more-01-nursery.jpg', title: '育苗場裡整齊排列的穴盤苗', desc: '育苗場內整齊排列著不同階段的穴盤苗，孩子從現場認識育苗環境。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/farm-journey/more-02-boundary.jpg', title: '孩子敲入木樁固定種植區圍線', desc: '孩子用鐵鎚將木樁打入土中，協助固定紅色圍線的位置。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/farm-journey/more-03-trowel.jpg', title: '孩子使用小鏟挖開土壤', desc: '孩子蹲在地面使用小鏟挖土，為後續放入菜苗準備空間。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/farm-journey/more-04-field.jpg', title: '孩子查看種植區裡的菜苗', desc: '孩子蹲在已種植的菜苗間，查看田區內的植株與雜草。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/farm-journey/more-05-weeding.jpg', title: '兩人清理菜苗周圍的雜草', desc: '兩人分別蹲在菜苗旁，以手清理植株周圍長出的雜草。' },
+      
+      { cat: 'science', tag: '科學探究', img: './photos/showcase/showcase-11.jpg', title: '孩子發表科學探究成果', desc: '練習說明研究問題、實驗方法與觀察結果。' },
+      { cat: 'science', tag: '科學探究', img: './photos/showcase/showcase-12.jpg', title: '繪製科學探究海報', desc: '用彩色筆將小組研究與發現用心智圖整理在海報上。' },
+      { cat: 'science', tag: '科學探究', img: './photos/showcase/showcase-13.jpg', title: '科學探究課堂紀錄', desc: '從生活問題出發，逐步形成可驗證的研究方向。' },
+      { cat: 'science', tag: '科學探究', img: './photos/showcase/showcase-14.jpg', title: '孩子撰寫科學學習單', desc: '將假設、步驟與觀察結果清楚寫進學習單。' },
+      { cat: 'science', tag: '科學探究', img: './photos/showcase/showcase-15.jpg', title: '孩子整理實驗紀錄', desc: '比對實驗現象，練習用證據修正原本的想法。' },
+
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/showcase/showcase-31.jpg', title: '走訪農場生態園區', desc: '走進鴻旗農場，觀察自然作物與農村風光。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/showcase/showcase-32.jpg', title: '聆聽農場生態解說', desc: '專心聽導覽老師解說作物栽培與自然生態。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/showcase/showcase-33.jpg', title: '開心展示採摘果實', desc: '戴著斗笠展示親手採下的鮮採檸檬，露出燦爛笑容。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/showcase/showcase-35.jpg', title: '享用農場特調冰茶', desc: '在體驗空檔親手倒一杯檸檬冰茶，消暑補充能量。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/showcase/showcase-36.jpg', title: '農場園區採果導覽', desc: '戴上花布斗笠走進果園，跟著導覽認識農場作物。' }
+    ];
+
+    // Render Moments Grid
+    function renderMoments(filter = 'all') {
+      const grid = document.getElementById('moments-grid');
+      const filtered = filter === 'all' 
+        ? momentsData 
+        : momentsData.filter(m => m.cat === filter);
+
+      grid.innerHTML = filtered.map((item, idx) => `
+        <button class="moment-photo" type="button" aria-label="放大查看：${item.title}" onclick="openLightbox(${idx}, '${filter}')">
+          <img src="${item.img}" alt="${item.title}"/>
+          <span>${item.tag}</span>
+          <div class="moment-caption">
+            <strong>${item.title}</strong>
+            <small>${item.desc}</small>
+          </div>
+        </button>
+      `).join('');
+    }
+
+    // Filter Buttons
+    document.querySelectorAll('#filter-bar button').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('#filter-bar button').forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        const filter = btn.getAttribute('data-filter');
+        renderMoments(filter);
+      });
+    });
+
+    // Lightbox Modal
+    let activeMomentsList = momentsData;
+    function openLightbox(idx, filter = 'all') {
+      activeMomentsList = filter === 'all' ? momentsData : momentsData.filter(m => m.cat === filter);
+      const item = activeMomentsList[idx];
+      if (!item) return;
+
+      document.getElementById('lightbox-img').src = item.img;
+      document.getElementById('lightbox-title').innerText = item.title;
+      document.getElementById('lightbox-desc').innerText = item.desc;
+      document.getElementById('lightbox-modal').classList.add('show');
+    }
+
+    document.getElementById('btn-close-lightbox').addEventListener('click', () => {
+      document.getElementById('lightbox-modal').classList.remove('show');
+    });
+
+    document.getElementById('lightbox-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox-modal') {
+        document.getElementById('lightbox-modal').classList.remove('show');
+      }
+    });
+
+    // 1. Treasure Hunt Stamps Logic
+    function toggleStamp(elem, zoneName, zoneIdx) {
+      const isCurrentlyActive = elem.classList.contains('active');
+      if (isCurrentlyActive) {
+        elem.classList.remove('active');
+        persistentData.stamps[zoneIdx - 1] = false;
+      } else {
+        elem.classList.add('active');
+        persistentData.stamps[zoneIdx - 1] = true;
+        confetti({ particleCount: 40, spread: 50, origin: { y: 0.8 } });
+      }
+
+      saveStoredData(persistentData);
+
+      const activeCount = persistentData.stamps.filter(Boolean).length;
+      document.getElementById('stamp-progress-text').innerText = `已解鎖 ${activeCount} / 4 展區`;
+
+      if (activeCount === 4) {
+        setTimeout(() => {
+          showCustomModal('展區集章解鎖！', '🎉 恭喜！您已在發表會現場集滿 4 大展區蓋章！可以向現場老師領取紀念小卡！', '🎖️');
+        }, 300);
+      }
+    }
+
+    // 3. Live Voting Logic
+    function castVote(idx) {
+      persistentData.votes[idx] = (persistentData.votes[idx] || 10) + 1;
+      document.getElementById(`vote-count-${idx}`).innerText = persistentData.votes[idx];
+      saveStoredData(persistentData);
+
+      confetti({ particleCount: 60, spread: 60, origin: { y: 0.7 } });
+      showCustomModal('現場投票成功', '感謝您的現場投票與支持！已為該組別計入 1 票 👏', '🗳️');
+    }
+
+    // 4. On-site Photo Upload Logic
+    function handleOnsiteUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const src = e.target.result;
+        const rot = (Math.random() * 6 - 3).toFixed(1);
+        const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        const photoObj = { src, rot, time: timeStr };
+        if (!persistentData.polaroids) persistentData.polaroids = [];
+        persistentData.polaroids.unshift(photoObj);
+        saveStoredData(persistentData);
+
+        const wall = document.getElementById('onsite-photo-wall');
+        const polaroid = document.createElement('div');
+        polaroid.className = 'onsite-polaroid';
+        polaroid.style.transform = `rotate(${rot}deg)`;
+        polaroid.innerHTML = `
+          <img src="${src}" alt="現場拍立得合照"/>
+          <span>${timeStr} 成果展現場 (已自動儲存)</span>
+        `;
+        wall.prepend(polaroid);
+
+        confetti({ particleCount: 50, spread: 50 });
+        showCustomModal('拍立得上傳成功', '已將您在發表會現場拍下的照片發佈至合照牆！', '📸');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 5. Certificate Generator & Image Download Logic
+    function generateCertificate() {
+      const childName = document.getElementById('cert-child-input').value.trim() || '陳小明';
+      const parentName = document.getElementById('cert-parent-input').value.trim() || '家長';
+
+      document.getElementById('modal-cert-child').innerText = childName;
+      document.getElementById('modal-cert-parent').innerText = `家長陪伴：${parentName}`;
+      document.getElementById('cert-modal').classList.add('show');
+
+      confetti({
+        particleCount: 120,
+        spread: 80,
+        origin: { y: 0.6 }
+      });
+    }
+
+    function closeCertModal() {
+      document.getElementById('cert-modal').classList.remove('show');
+    }
+
+    // 下載證書照片至手機相簿
+    function downloadCertificateImage() {
+      const target = document.getElementById('cert-paper-target');
+      showCustomModal('正在生成證書照片...', '請稍候，系統正在為您產出高畫質 PNG 結業證書！', '⏳');
+
+      html2canvas(target, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#FFFDF8'
+      }).then(canvas => {
+        closeCustomModal();
+        const link = document.createElement('a');
+        const childName = document.getElementById('modal-cert-child').innerText || '學員';
+        link.download = `2026尚學暑期頂尖計劃_結業證書_${childName}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        showCustomModal('證書已下載完成！', '高畫質 PNG 結業證書圖檔已儲存至您的手機下載/相簿中！', '📥');
+      }).catch(err => {
+        closeCustomModal();
+        showCustomModal('下載失敗', '請嘗試截圖保存畫面或長按證書圖片進行保存。', '⚠️');
+      });
+    }
+
+    // Parent Poll Logic (家長投票區與即時統計資料)
+    function renderPollStats() {
+      if (!persistentData.parentPoll) {
+        persistentData.parentPoll = { '主動觀察': 18, '動手實作': 28, '整理資料': 14, '勇敢表達': 22, '團隊合作': 26 };
+      }
+      const pollData = persistentData.parentPoll;
+      let totalVotes = 0;
+      Object.values(pollData).forEach(v => totalVotes += v);
+
+      const countElem = document.getElementById('poll-total-count');
+      if (countElem) countElem.innerText = `累積 ${totalVotes} 票`;
+
+      const container = document.getElementById('poll-bars-list');
+      if (!container) return;
+
+      const options = ['主動觀察', '動手實作', '整理資料', '勇敢表達', '團隊合作'];
+
+      container.innerHTML = options.map(opt => {
+        const count = pollData[opt] || 0;
+        const pct = totalVotes > 0 ? Math.round((count / totalVotes) * 100) : 0;
+        return `
+          <div style="text-align: left;">
+            <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: 800; color: #24312E; margin-bottom: 4px;">
+              <span>${opt}</span>
+              <span style="color: #477B65;">${pct}% (${count} 票)</span>
+            </div>
+            <div style="background: #EFE9DD; height: 12px; border-radius: 999px; overflow: hidden;">
+              <div style="background: #477B65; height: 100%; width: ${pct}%; border-radius: 999px; transition: width 0.6s ease;"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    const quizForm = document.getElementById('quiz-form');
+    const quizSubmitBtn = document.getElementById('btn-quiz-submit');
+
+    if (quizForm) {
+      quizForm.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+          quizSubmitBtn.disabled = false;
+          quizForm.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
+          radio.closest('.quiz-option').classList.add('selected');
+        });
+      });
+
+      quizForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const val = quizForm.querySelector('input[type="radio"]:checked')?.value;
+        if (!val) return;
+
+        if (!persistentData.parentPoll) {
+          persistentData.parentPoll = { '主動觀察': 18, '動手實作': 28, '整理資料': 14, '勇敢表達': 22, '團隊合作': 26 };
+        }
+
+        persistentData.parentPoll[val] = (persistentData.parentPoll[val] || 0) + 1;
+        saveStoredData(persistentData);
+
+        renderPollStats();
+        confetti({ particleCount: 60, spread: 60, origin: { y: 0.8 } });
+        showCustomModal('投票成功！', `感謝您的參與！您投給了「${val}」，下方已即時更新所有家長投票統計結果！`, '📊');
+      });
+    }
+
+    // Cheer Counter & Confetti (持久化)
+    const cheerSection = document.getElementById('cheer-section');
+    document.getElementById('btn-cheer').addEventListener('click', () => {
+      persistentData.cheerCount++;
+      document.getElementById('cheer-counter').innerText = persistentData.cheerCount;
+      saveStoredData(persistentData);
+
+      cheerSection.classList.add('is-cheered');
+      setTimeout(() => cheerSection.classList.remove('is-cheered'), 1200);
+
+      confetti({
+        particleCount: 90,
+        spread: 70,
+        origin: { y: 0.7 }
+      });
+    });
+
+    // Comment Wall Textarea & Chips
+    const inputMsg = document.getElementById('input-msg');
+    const charCounter = document.getElementById('char-counter');
+
+    inputMsg.addEventListener('input', () => {
+      charCounter.innerText = `${inputMsg.value.length}/80`;
+    });
+
+    document.querySelectorAll('#quick-messages button').forEach(chip => {
+      chip.addEventListener('click', () => {
+        inputMsg.value = chip.getAttribute('data-text');
+        charCounter.innerText = `${inputMsg.value.length}/80`;
+      });
+    });
+
+    // Comment Form Submit (持久化與裝置辨識)
+    document.getElementById('comment-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const author = document.getElementById('input-author').value.trim() || '一位家長';
+      const msg = inputMsg.value.trim();
+      if (!msg) return;
+
+      const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const commentId = 'c_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6);
+
+      const newComment = {
+        id: commentId,
+        author: author,
+        msg: msg,
+        time: timeStr,
+        likes: 0,
+        likedByMe: false,
+        deviceId: MY_DEVICE_ID
+      };
+
+      if (!persistentData.comments) persistentData.comments = [];
+      persistentData.comments.unshift(newComment);
+      saveStoredData(persistentData);
+
+      renderCommentsUI();
+
+      inputMsg.value = '';
+      document.getElementById('input-author').value = '';
+      charCounter.innerText = '0/80';
+
+      showCustomModal('留言發表成功', '感謝您的溫暖鼓勵，留言已發佈並自動保存於留言牆！', '💬');
+    });
+
+    // Initial render & Load persisted data
+    renderMoments('all');
+    loadPersistedUI();
+  </script>
+</body>
+</html>
