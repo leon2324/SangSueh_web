@@ -1476,7 +1476,7 @@
 
       grid.innerHTML = filtered.map((item, idx) => `
         <button class="moment-photo" type="button" aria-label="放大查看：${item.title}" onclick="openLightbox(${idx}, '${filter}')">
-          <img src="${item.img}" alt="${item.title}"/>
+          <img src="${item.img}" alt="${item.title}" loading="lazy" decoding="async"/>
           <span>${item.tag}</span>
           <div class="moment-caption">
             <strong>${item.title}</strong>
