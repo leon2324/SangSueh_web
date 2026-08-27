@@ -635,6 +635,164 @@
       line-height: 1.8;
     }
 
+
+    /* Modern Robust Magazine Chapter Layout (Zero Overlap, Zero CLS) */
+    .chapter {
+      padding: 90px 7vw 100px !important;
+      overflow: hidden !important;
+      position: relative !important;
+    }
+    .chapter-layout {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      align-items: center !important;
+      gap: 5vw !important;
+      max-width: 1200px !important;
+      margin: 0 auto !important;
+    }
+    .chapter-layout.reverse {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    .chapter-layout.reverse .chapter-story {
+      order: 2 !important;
+    }
+    .chapter-layout.reverse .chapter-showcase {
+      order: 1 !important;
+    }
+    .chapter-story {
+      max-width: 520px !important;
+      position: relative !important;
+      z-index: 2 !important;
+    }
+    .chapter-story p.lead {
+      font-size: 19px !important;
+      line-height: 1.8 !important;
+      color: #24312E !important;
+      font-weight: 700 !important;
+      margin-bottom: 18px !important;
+      font-family: Noto Serif TC, Songti TC, serif !important;
+    }
+    .chapter-story blockquote {
+      border-left: 3px solid #C96D45 !important;
+      padding-left: 16px !important;
+      margin: 18px 0 !important;
+      color: #59615E !important;
+      font-size: 15px !important;
+      font-style: italic !important;
+      line-height: 1.7 !important;
+    }
+    .chapter-story ul {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 10px !important;
+      padding: 0 !important;
+      list-style: none !important;
+      margin-top: 20px !important;
+    }
+    .chapter-story li {
+      background: rgba(255,255,255,0.85) !important;
+      border: 1px solid rgba(0,0,0,0.12) !important;
+      border-radius: 999px !important;
+      padding: 8px 16px !important;
+      font-size: 13px !important;
+      font-weight: 800 !important;
+      color: #24312E !important;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04) !important;
+    }
+    
+    .chapter-showcase {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 16px !important;
+      position: relative !important;
+      z-index: 2 !important;
+    }
+    .chapter-showcase .showcase-card {
+      background: #FFFFFF !important;
+      padding: 10px 10px 14px !important;
+      border-radius: 16px !important;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08) !important;
+      border: 1px solid rgba(0,0,0,0.06) !important;
+      text-align: center !important;
+      transition: transform 0.25s ease !important;
+    }
+    .chapter-showcase .showcase-card:hover {
+      transform: translateY(-3px) !important;
+    }
+    .chapter-showcase .showcase-card img {
+      width: 100% !important;
+      height: 230px !important;
+      object-fit: cover !important;
+      object-position: center 25% !important;
+      border-radius: 10px !important;
+      display: block !important;
+      background: #E2E8F0 !important;
+    }
+    .chapter-showcase .showcase-card figcaption {
+      margin-top: 8px !important;
+      font-size: 12px !important;
+      color: #59615E !important;
+      font-weight: 800 !important;
+      line-height: 1.4 !important;
+    }
+
+    /* Chapter Colors */
+    .chapter-green { background: #EEF5F0 !important; }
+    .chapter-blue { background: #EEF4F8 !important; }
+    .chapter-orange { background: #FFF6EE !important; }
+    .chapter-yellow { background: #FEF9E7 !important; }
+    .chapter-purple { background: #F6EEFD !important; }
+    .chapter-teal { background: #EAF8F5 !important; }
+    .chapter-amber { background: #FFF9E6 !important; }
+    .chapter-indigo { background: #EEF2FC !important; }
+
+    .august-divider {
+      background: linear-gradient(135deg, #1A2B25 0%, #2D5A46 100%) !important;
+      color: #FFF !important;
+      padding: 70px 8vw !important;
+      text-align: center !important;
+      position: relative !important;
+    }
+    .august-divider p.issue {
+      color: #E8C968 !important;
+      letter-spacing: 0.2em !important;
+      font-weight: 900 !important;
+      font-size: 13px !important;
+      margin-bottom: 10px !important;
+    }
+    .august-divider h2 {
+      font-family: Noto Serif TC, Songti TC, serif !important;
+      font-size: clamp(30px, 4vw, 48px) !important;
+      margin: 0 0 14px !important;
+      color: #FFF !important;
+    }
+    .august-divider p.sub {
+      font-size: 16px !important;
+      color: #D1E7DD !important;
+      max-width: 650px !important;
+      margin: 0 auto !important;
+      line-height: 1.8 !important;
+    }
+
+    @media (max-width: 900px) {
+      .chapter-layout, .chapter-layout.reverse {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+      }
+      .chapter-layout.reverse .chapter-story {
+        order: 1 !important;
+      }
+      .chapter-layout.reverse .chapter-showcase {
+        order: 2 !important;
+      }
+      .chapter-showcase {
+        grid-template-columns: 1fr 1fr !important;
+      }
+      .chapter-showcase .showcase-card img {
+        height: 180px !important;
+      }
+    }
+
 </style>
 </head>
 
@@ -713,7 +871,11 @@
     </section>
 
     <!-- Chapter 01: Farm -->
-    <section class="chapter chapter-green farm-chapter" id="farm">
+    
+    <!-- ==================== JULY CHAPTERS (01 - 04) ==================== -->
+
+    <!-- Chapter 01: 食農教育 -->
+    <section class="chapter chapter-green" id="farm">
       <div class="chapter-head">
         <div class="chapter-number">01</div>
         <div>
@@ -722,108 +884,30 @@
         </div>
         <span class="chapter-day">JULY / CHAPTER 1</span>
       </div>
-      <div class="farm-journey">
-        <div class="farm-intro">
-          <p>孩子從育苗場認識植物生命的起點，接著親手整地、種植、除草、觀察與測量。從一次次照顧中，他們不只理解作物如何成長，也逐漸培養耐心、責任與合作。</p>
+      <div class="chapter-layout">
+        <div class="chapter-story">
+          <p class="lead">孩子從育苗場認識植物生命的起點，接著親手整地、種植、除草、觀察與測量。從一次次照顧中，他們不只理解作物如何成長，也逐漸培養耐心、責任與合作。</p>
+          <blockquote>親手碰觸泥土與菜苗，生命的成長不再只是課本裡的文字。</blockquote>
           <ul>
             <li>認識育苗</li>
             <li>親手種植</li>
             <li>觀察測量</li>
           </ul>
         </div>
-        <div class="farm-journey-grid">
-          <figure class="farm-step">
-            <div class="farm-photo-wrap">
-              <img src="./photos/farm-journey/01-nursery.jpg" alt="老師帶孩子觀察育苗場的穴盤苗"/>
-              <span>01</span>
-            </div>
-            <figcaption>
-              <strong>認識育苗場</strong>
-              <p>老師在整排穴盤苗前解說，孩子近距離觀察不同菜苗的外形。</p>
-            </figcaption>
+        <div class="chapter-showcase">
+          <figure class="showcase-card">
+            <img src="./photos/farm-journey/01-nursery.jpg" alt="孩子在育苗場觀察幼苗" loading="lazy" decoding="async"/>
+            <figcaption>認識育苗場的幼苗生長環境</figcaption>
           </figure>
-
-          <figure class="farm-step">
-            <div class="farm-photo-wrap">
-              <img src="./photos/farm-journey/02-plan.jpg" alt="孩子查看紅色圍線標示的種植區"/>
-              <span>02</span>
-            </div>
-            <figcaption>
-              <strong>規劃種植區</strong>
-              <p>孩子站在紅色圍線內查看土地，確認接下來要使用的種植範圍。</p>
-            </figcaption>
-          </figure>
-
-          <figure class="farm-step">
-            <div class="farm-photo-wrap">
-              <img src="./photos/farm-journey/03-soil.jpg" alt="孩子使用鋤頭與小鏟整理土壤"/>
-              <span>03</span>
-            </div>
-            <figcaption>
-              <strong>整地鬆土</strong>
-              <p>孩子分別使用鋤頭與小鏟鬆開土壤，整理出適合種植的區域。</p>
-            </figcaption>
-          </figure>
-
-          <figure class="farm-step farm-main">
-            <div class="farm-photo-wrap">
-              <img src="./photos/farm-journey/04-plant-main.jpg" alt="老師與孩子一起種植菜苗"/>
-              <span>04</span>
-            </div>
-            <figcaption>
-              <strong>親手種植</strong>
-              <p>老師蹲在田畦旁示範，孩子一起把菜苗放入整理好的土壤中。</p>
-            </figcaption>
-          </figure>
-
-          <figure class="farm-step">
-            <div class="farm-photo-wrap">
-              <img src="./photos/farm-journey/05-secure.jpg" alt="孩子用雙手壓實菜苗周圍的土"/>
-              <span>05</span>
-            </div>
-            <figcaption>
-              <strong>固定菜苗</strong>
-              <p>孩子用雙手將菜苗周圍的土壓實，讓剛種下的菜苗穩定站立。</p>
-            </figcaption>
-          </figure>
-
-          <figure class="farm-step">
-            <div class="farm-photo-wrap">
-              <img src="./photos/farm-journey/06-team-care.jpg" alt="孩子分散在田畦間分工整理菜苗"/>
-              <span>06</span>
-            </div>
-            <figcaption>
-              <strong>分工照顧</strong>
-              <p>孩子分散在田畦間種植與整理，依各自位置完成手上的工作。</p>
-            </figcaption>
-          </figure>
-
-          <figure class="farm-step">
-            <div class="farm-photo-wrap">
-              <img src="./photos/farm-journey/07-observe.jpg" alt="孩子蹲在菜苗旁觀察生長情形"/>
-              <span>07</span>
-            </div>
-            <figcaption>
-              <strong>觀察生長</strong>
-              <p>孩子蹲下查看菜苗與周圍雜草，逐株觀察種植後的生長情形。</p>
-            </figcaption>
-          </figure>
-
-          <figure class="farm-step">
-            <div class="farm-photo-wrap">
-              <img src="./photos/farm-journey/08-measure.jpg" alt="孩子用布尺測量菜苗高度"/>
-              <span>08</span>
-            </div>
-            <figcaption>
-              <strong>測量記錄</strong>
-              <p>孩子把布尺垂直立在菜苗旁，實際測量植株目前的高度。</p>
-            </figcaption>
+          <figure class="showcase-card">
+            <img src="./photos/farm-journey/04-plant-main.jpg" alt="孩子親手將菜苗植入泥土" loading="lazy" decoding="async"/>
+            <figcaption>親手整地並將菜苗植入田畦</figcaption>
           </figure>
         </div>
       </div>
     </section>
 
-    <!-- Chapter 02: Science -->
+    <!-- Chapter 02: 科學探究 -->
     <section class="chapter chapter-blue" id="science">
       <div class="chapter-head">
         <div class="chapter-number">02</div>
@@ -843,25 +927,20 @@
             <li>成果發表</li>
           </ul>
         </div>
-        <div class="chapter-gallery">
-          <figure class="gallery-photo photo-1">
-            <img src="./photos/digital/img-06.jpg" alt="孩子完成的實驗作品與海報"/>
+        <div class="chapter-showcase">
+          <figure class="showcase-card">
+            <img src="./photos/digital/img-06.jpg" alt="孩子完成的實驗作品與海報" loading="lazy" decoding="async"/>
+            <figcaption>分組討論與繪製實驗心智圖</figcaption>
           </figure>
-          <figure class="gallery-photo photo-2">
-            <img src="./photos/digital/img-07.jpg" alt="孩子繪製實驗海報與心智圖"/>
+          <figure class="showcase-card">
+            <img src="./photos/curated_v3/ch02_sci_2.jpg" alt="孩子動手測試實驗數據" loading="lazy" decoding="async"/>
+            <figcaption>動手測試變因並記錄實驗數據</figcaption>
           </figure>
-          <figure class="gallery-photo photo-3">
-            <img src="./photos/digital/img-08.jpg" alt="孩子分組討論科學問題"/>
-          </figure>
-          <figure class="gallery-photo photo-4">
-            <img src="./photos/digital/img-09.jpg" alt="孩子動手組裝實驗器材與模型"/>
-          </figure>
-          <span class="paper-clip" aria-hidden="true">⌁</span>
         </div>
       </div>
     </section>
 
-    <!-- Chapter 03: Writing -->
+    <!-- Chapter 03: 閱讀寫作 -->
     <section class="chapter chapter-orange" id="writing">
       <div class="chapter-head">
         <div class="chapter-number">03</div>
@@ -876,30 +955,25 @@
           <p class="lead">孩子從心智圖發想，把零散的觀察排成有順序的內容；再透過朗讀與分享，學會讓別人聽懂自己的故事。</p>
           <blockquote>寫作不是把字填滿，而是把心裡真正想說的話找出來。</blockquote>
           <ul>
-            <li>心智圖</li>
+            <li>心智圖發想</li>
             <li>邏輯表達</li>
             <li>朗讀分享</li>
           </ul>
         </div>
-        <div class="chapter-gallery">
-          <figure class="gallery-photo photo-1">
-            <img src="./photos/digital/img-11.jpg" alt="老師帶領孩子以心智圖發想"/>
+        <div class="chapter-showcase">
+          <figure class="showcase-card">
+            <img src="./photos/writing/user_writing_1.jpg" alt="孩子在稿紙上專注寫作" loading="lazy" decoding="async"/>
+            <figcaption>專注於稿紙上一字一句寫下心得</figcaption>
           </figure>
-          <figure class="gallery-photo photo-2">
-            <img src="./photos/digital/img-12.jpg" alt="孩子完成的作文稿紙與作品"/>
+          <figure class="showcase-card">
+            <img src="./photos/writing/user_writing_2.jpg" alt="孩子展示寫作學習單" loading="lazy" decoding="async"/>
+            <figcaption>以心智圖梳理脈絡並自信朗讀</figcaption>
           </figure>
-          <figure class="gallery-photo photo-3">
-            <img src="./photos/digital/img-13.jpg" alt="孩子專心撰寫作文"/>
-          </figure>
-          <figure class="gallery-photo photo-4">
-            <img src="./photos/digital/img-14.jpg" alt="孩子朗讀並分享自己的作品"/>
-          </figure>
-          <span class="paper-clip" aria-hidden="true">⌁</span>
         </div>
       </div>
     </section>
 
-    <!-- Chapter 04: Trip -->
+    <!-- Chapter 04: 一日農夫 -->
     <section class="chapter chapter-yellow" id="trip">
       <div class="chapter-head">
         <div class="chapter-number">04</div>
@@ -911,7 +985,7 @@
       </div>
       <div class="chapter-layout reverse">
         <div class="chapter-story">
-          <p class="lead">走進鴻旗農場，孩子從農場導覽、認識作物，到親手採摘鳳梨與體驗搗麻糬，在真實情境中理解食物的來源。</p>
+          <p class="lead">走進鴻旗農場，孩子從農場導覽、認識作物，到親手採摘鮮果與體驗搗麻糬，在真實情境中理解食物的來源。</p>
           <blockquote>親眼看見、親手完成，課本裡的知識就成了真正記得住的經驗。</blockquote>
           <ul>
             <li>農場導覽</li>
@@ -919,29 +993,24 @@
             <li>傳統手作</li>
           </ul>
         </div>
-        <div class="chapter-gallery">
-          <figure class="gallery-photo photo-1">
-            <img src="./photos/digital/img-16.jpg" alt="孩子參加農場導覽"/>
+        <div class="chapter-showcase">
+          <figure class="showcase-card">
+            <img src="./photos/showcase/showcase-31.jpg" alt="農場採果體驗" loading="lazy" decoding="async"/>
+            <figcaption>戴上斗笠走進果園親手採摘鮮果</figcaption>
           </figure>
-          <figure class="gallery-photo photo-2">
-            <img src="./photos/digital/img-17.jpg" alt="鴻旗農場的自然風光"/>
+          <figure class="showcase-card">
+            <img src="./photos/showcase/showcase-35.jpg" alt="享用農場冰茶" loading="lazy" decoding="async"/>
+            <figcaption>在自然農場中感受土地的豐盛</figcaption>
           </figure>
-          <figure class="gallery-photo photo-3">
-            <img src="./photos/digital/img-18.jpg" alt="孩子體驗採摘鳳梨"/>
-          </figure>
-          <figure class="gallery-photo photo-4">
-            <img src="./photos/digital/img-19.jpg" alt="孩子體驗搗麻糬手作"/>
-          </figure>
-          <span class="paper-clip" aria-hidden="true">⌁</span>
         </div>
       </div>
     </section>
 
-    <!-- ==================== AUGUST SPECIAL PROJECTS ==================== -->
+    <!-- ==================== AUGUST CHAPTERS (05 - 08) ==================== -->
     <section class="august-divider" id="august-section">
       <p class="issue">AUGUST ADVANCED ADVENTURES</p>
       <h2>八月進階專題 · 跨域探索與深化實踐</h2>
-      <p class="sub">從七月的基礎觀察與實驗探究，延伸至八月的動手實作、歷史古蹟走讀、全球永續視野與大自然野外冒險！</p>
+      <p class="sub">從七月的基礎觀察與實驗探究，延伸至八月的公眾策展發表、黏土創客美學、歷史古蹟走讀與野外大冒險！</p>
     </section>
 
     <!-- Chapter 05: 8/1 科學探究博覽會 -->
@@ -964,58 +1033,48 @@
             <li>小農市集</li>
           </ul>
         </div>
-        <div class="chapter-gallery">
-          <figure class="gallery-photo photo-1">
-            <img src="./photos/august_chapters/ch5_photo_1.jpg" alt="科學探究博覽會開幕與家長交流" loading="lazy" decoding="async"/>
+        <div class="chapter-showcase">
+          <figure class="showcase-card">
+            <img src="./photos/curated_v3/ch05_expo_1.jpg" alt="科學探究博覽會向家長解說" loading="lazy" decoding="async"/>
+            <figcaption>自信向家長與評審解說研究心智圖</figcaption>
           </figure>
-          <figure class="gallery-photo photo-2">
-            <img src="./photos/august_chapters/ch5_photo_2.jpg" alt="解說研究心智圖海報" loading="lazy" decoding="async"/>
+          <figure class="showcase-card">
+            <img src="./photos/curated_v3/ch05_expo_2.jpg" alt="展示研究成果模型" loading="lazy" decoding="async"/>
+            <figcaption>操作發明模型並熱情介紹小農蔬菜</figcaption>
           </figure>
-          <figure class="gallery-photo photo-3">
-            <img src="./photos/august_chapters/ch5_photo_3.jpg" alt="AI 智慧垃圾桶原型展示" loading="lazy" decoding="async"/>
-          </figure>
-          <figure class="gallery-photo photo-4">
-            <img src="./photos/august_chapters/ch5_photo_4.jpg" alt="小農市集蔬菜義賣攤位" loading="lazy" decoding="async"/>
-          </figure>
-          <span class="paper-clip" aria-hidden="true">⌁</span>
         </div>
       </div>
     </section>
 
-    <!-- Chapter 06: 動手實作 × STEAM玩具競賽 -->
+    <!-- Chapter 06: 動手實作 (全部為黏土創作) -->
     <section class="chapter chapter-teal" id="toys">
       <div class="chapter-head">
         <div class="chapter-number">06</div>
         <div>
-          <p>把物理力學與電路原理變成好玩玩具</p>
-          <h2>動手實作 × STEAM玩具競賽</h2>
+          <p>指尖上的三原色色彩學與立體雕塑</p>
+          <h2>動手實作</h2>
         </div>
         <span class="chapter-day">AUGUST / CHAPTER 6</span>
       </div>
       <div class="chapter-layout reverse">
         <div class="chapter-story">
-          <p class="lead">孩子們化身為小小工程師，從馬達迴路、齒輪傳動到力學平衡，親手組裝與改良能跑、能跳的動力模型。</p>
-          <blockquote>動手做才能發現問題，每一次微調齒輪與電路，都是工程思維的累積。</blockquote>
+          <p class="lead">揉合紅、黃、藍三原色黏土，孩子們在指尖變幻出繽紛世界。從父親節手作相框、立體小玩偶到造型鑰匙圈與磁鐵，將無限想像轉化為實體藝術作品。</p>
+          <blockquote>動手捏塑的不只是形狀，更是對色彩的敏銳度與耐心的磨練。</blockquote>
           <ul>
-            <li>動力電路</li>
-            <li>齒輪機構</li>
-            <li>競賽實測</li>
+            <li>三原色調配</li>
+            <li>立體微縮雕塑</li>
+            <li>父親節相框</li>
           </ul>
         </div>
-        <div class="chapter-gallery">
-          <figure class="gallery-photo photo-1">
-            <img src="./photos/august_chapters/ch6_photo_1.jpg" alt="組裝馬達動力迴路" loading="lazy" decoding="async"/>
+        <div class="chapter-showcase">
+          <figure class="showcase-card">
+            <img src="./photos/curated_v3/ch06_clay_1.jpg" alt="孩子專注捏塑彩色黏土" loading="lazy" decoding="async"/>
+            <figcaption>專注調配黏土色彩並捏塑微縮造型</figcaption>
           </figure>
-          <figure class="gallery-photo photo-2">
-            <img src="./photos/august_chapters/ch6_photo_2.jpg" alt="力學結構測試與調校" loading="lazy" decoding="async"/>
+          <figure class="showcase-card">
+            <img src="./photos/curated_v3/ch06_clay_2.jpg" alt="精美的黏土作品展示" loading="lazy" decoding="async"/>
+            <figcaption>完成父親節相框與創意立體作品</figcaption>
           </figure>
-          <figure class="gallery-photo photo-3">
-            <img src="./photos/august_chapters/ch6_photo_3.jpg" alt="跑道競速實測" loading="lazy" decoding="async"/>
-          </figure>
-          <figure class="gallery-photo photo-4">
-            <img src="./photos/august_chapters/ch6_photo_4.jpg" alt="父親節相框黏土手作" loading="lazy" decoding="async"/>
-          </figure>
-          <span class="paper-clip" aria-hidden="true">⌁</span>
         </div>
       </div>
     </section>
@@ -1040,58 +1099,48 @@
             <li>Buddy雙人制</li>
           </ul>
         </div>
-        <div class="chapter-gallery">
-          <figure class="gallery-photo photo-1">
-            <img src="./photos/august_chapters/ch7_photo_1.jpg" alt="台南司法博物館古蹟巡禮" loading="lazy" decoding="async"/>
+        <div class="chapter-showcase">
+          <figure class="showcase-card">
+            <img src="./photos/curated_v3/ch07_mus_1.jpg" alt="台南司法博物館古蹟巡禮" loading="lazy" decoding="async"/>
+            <figcaption>穿梭司法博物館宏偉的西洋歷史建築</figcaption>
           </figure>
-          <figure class="gallery-photo photo-2">
-            <img src="./photos/august_chapters/ch7_photo_2.jpg" alt="法庭角色扮演體驗" loading="lazy" decoding="async"/>
+          <figure class="showcase-card">
+            <img src="./photos/curated_v3/ch07_mus_2.jpg" alt="水道博物館快濾筒巡禮" loading="lazy" decoding="async"/>
+            <figcaption>走訪歷史法庭與拘留所古蹟長廊</figcaption>
           </figure>
-          <figure class="gallery-photo photo-3">
-            <img src="./photos/august_chapters/ch7_photo_3.jpg" alt="水道博物館快濾筒巡禮" loading="lazy" decoding="async"/>
-          </figure>
-          <figure class="gallery-photo photo-4">
-            <img src="./photos/august_chapters/ch7_photo_4.jpg" alt="古蹟庭園寫生與筆記" loading="lazy" decoding="async"/>
-          </figure>
-          <span class="paper-clip" aria-hidden="true">⌁</span>
         </div>
       </div>
     </section>
 
-    <!-- Chapter 08: 國際SDGs與大自然野外探索 -->
+    <!-- Chapter 08: 國際議題與大坑農場野外探索 -->
     <section class="chapter chapter-indigo" id="sdgs">
       <div class="chapter-head">
         <div class="chapter-number">08</div>
         <div>
-          <p>從全球視野到野外挑戰與宇宙創客</p>
-          <h2>國際SDGs與野外大冒險</h2>
+          <p>從全球視野到大自然野外實踐</p>
+          <h2>國際議題與野外大冒險</h2>
         </div>
         <span class="chapter-day">AUGUST / CHAPTER 8</span>
       </div>
       <div class="chapter-layout reverse">
         <div class="chapter-story">
-          <p class="lead">翻開世界地圖連結日常消費與全球危機，實測 AI 智慧副駕駛；前進大坑農場挑戰森林高空吊橋，並在指尖彩繪太陽系行星與原創小書，為暑期畫下完美句點！</p>
-          <blockquote>從看見世界到挑戰自我，孩子學會了勇敢、同理，以及改變世界的力量。</blockquote>
+          <p class="lead">在國際議題課堂上，老師帶領孩子在白板前熱烈討論文化祭遊戲設計與 SDGs 全球危機；前進大坑休閒農場，孩子們玩彈珠、餵小豬、DIY 冰淇淋與認識昆蟲標本，在歡笑中收穫滿滿！</p>
+          <blockquote>從看見世界到走進大自然，孩子學會了思考、同理與團隊互助的快樂。</blockquote>
           <ul>
-            <li>SDGs全球視野</li>
-            <li>森林繩索吊橋</li>
-            <li>宇宙創客小書</li>
+            <li>文化祭討論</li>
+            <li>餵動物體驗</li>
+            <li>DIY冰淇淋</li>
           </ul>
         </div>
-        <div class="chapter-gallery">
-          <figure class="gallery-photo photo-1">
-            <img src="./photos/august_chapters/ch8_photo_1.jpg" alt="地球冒險家探索地圖" loading="lazy" decoding="async"/>
+        <div class="chapter-showcase">
+          <figure class="showcase-card">
+            <img src="./photos/curated_v3/ch08_sdgs_1.jpg" alt="白板前討論文化祭與國際議題" loading="lazy" decoding="async"/>
+            <figcaption>在白板前熱烈發想文化祭遊戲與倡議</figcaption>
           </figure>
-          <figure class="gallery-photo photo-2">
-            <img src="./photos/august_chapters/ch8_photo_2.jpg" alt="大坑農場高空繩索吊橋" loading="lazy" decoding="async"/>
+          <figure class="showcase-card">
+            <img src="./photos/curated_v3/ch09_daking_1.jpg" alt="大坑休閒農場餵食小動物" loading="lazy" decoding="async"/>
+            <figcaption>大坑農場餵小豬、DIY冰淇淋與生態搶答</figcaption>
           </figure>
-          <figure class="gallery-photo photo-3">
-            <img src="./photos/august_chapters/ch8_photo_3.jpg" alt="可愛動物近距離互動" loading="lazy" decoding="async"/>
-          </figure>
-          <figure class="gallery-photo photo-4">
-            <img src="./photos/august_chapters/ch8_photo_4.jpg" alt="太陽系行星模型彩繪" loading="lazy" decoding="async"/>
-          </figure>
-          <span class="paper-clip" aria-hidden="true">⌁</span>
         </div>
       </div>
     </section>
@@ -1143,12 +1192,11 @@
         <button type="button" data-filter="writing" aria-pressed="false">閱讀寫作</button>
         <button type="button" data-filter="outdoor" aria-pressed="false">一日農夫</button>
         <button type="button" data-filter="expo" aria-pressed="false">8/1博覽會</button>
-        <button type="button" data-filter="toys" aria-pressed="false">科學玩具</button>
-        <button type="button" data-filter="museum" aria-pressed="false">雙館探險</button>
+        <button type="button" data-filter="toys" aria-pressed="false">動手實作(黏土)</button>
+        <button type="button" data-filter="museum" aria-pressed="false">雙館走讀</button>
         <button type="button" data-filter="sdgs" aria-pressed="false">國際議題</button>
         <button type="button" data-filter="daking" aria-pressed="false">大坑農場</button>
         <button type="button" data-filter="space" aria-pressed="false">宇宙星球</button>
-        <button type="button" data-filter="clay" aria-pressed="false">創客黏土</button>
         <button type="button" data-filter="booklet" aria-pressed="false">小書創作</button>
       </div>
 
