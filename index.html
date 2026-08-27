@@ -793,6 +793,206 @@
       }
     }
 
+
+    /* Teacher Observation Box & Core Question */
+    .core-question {
+      font-size: 13px !important;
+      color: #C96D45 !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      margin-bottom: 8px !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+    }
+    .teacher-note {
+      background: rgba(255, 255, 255, 0.75) !important;
+      border-left: 3px solid #2D5A46 !important;
+      padding: 12px 16px !important;
+      border-radius: 0 12px 12px 0 !important;
+      margin: 16px 0 !important;
+      font-size: 14px !important;
+      color: #24312E !important;
+      line-height: 1.7 !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03) !important;
+    }
+    .teacher-note strong {
+      color: #2D5A46 !important;
+      display: block !important;
+      font-size: 12px !important;
+      margin-bottom: 4px !important;
+    }
+
+    /* Student Quote Wall */
+    .quotes-section {
+      background: #FBF8F3 !important;
+      padding: 90px 7vw 100px !important;
+      position: relative !important;
+    }
+    .quotes-head {
+      text-align: center !important;
+      max-width: 680px !important;
+      margin: 0 auto 50px !important;
+    }
+    .quotes-head .issue {
+      color: #C96D45 !important;
+      font-size: 13px !important;
+      font-weight: 900 !important;
+      letter-spacing: 0.15em !important;
+      margin-bottom: 8px !important;
+    }
+    .quotes-head h2 {
+      font-family: Noto Serif TC, Songti TC, serif !important;
+      font-size: clamp(28px, 3.8vw, 44px) !important;
+      color: #1A2B25 !important;
+      margin: 0 0 12px !important;
+    }
+    .quotes-head p {
+      color: #59615E !important;
+      font-size: 16px !important;
+      line-height: 1.8 !important;
+    }
+    .quotes-grid {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+      gap: 24px !important;
+      max-width: 1200px !important;
+      margin: 0 auto !important;
+    }
+    .quote-card {
+      background: #FFFFFF !important;
+      border-radius: 18px !important;
+      padding: 26px 24px 22px !important;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.05) !important;
+      border: 1px solid rgba(0,0,0,0.05) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      position: relative !important;
+      transition: transform 0.25s ease !important;
+    }
+    .quote-card:hover {
+      transform: translateY(-4px) !important;
+    }
+    .quote-card::before {
+      content: "“" !important;
+      position: absolute !important;
+      top: 10px !important;
+      right: 18px !important;
+      font-family: Georgia, serif !important;
+      font-size: 54px !important;
+      color: #E8C968 !important;
+      opacity: 0.45 !important;
+      line-height: 1 !important;
+    }
+    .quote-card p.quote-text {
+      font-size: 15px !important;
+      color: #24312E !important;
+      line-height: 1.8 !important;
+      margin: 0 0 18px !important;
+      font-weight: 500 !important;
+      position: relative !important;
+      z-index: 2 !important;
+    }
+    .quote-card .quote-author {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      border-top: 1px solid rgba(0,0,0,0.06) !important;
+      padding-top: 14px !important;
+    }
+    .quote-card .author-tag {
+      background: #EEF5F0 !important;
+      color: #2D5A46 !important;
+      font-size: 12px !important;
+      font-weight: 800 !important;
+      padding: 4px 10px !important;
+      border-radius: 999px !important;
+    }
+    .quote-card .author-name {
+      font-size: 13px !important;
+      color: #59615E !important;
+      font-weight: 700 !important;
+    }
+
+    /* Dual-Month Learning Roadmap */
+    .roadmap-section {
+      background: linear-gradient(180deg, #1A2B25 0%, #233D30 100%) !important;
+      color: #FFF !important;
+      padding: 90px 7vw 100px !important;
+      position: relative !important;
+    }
+    .roadmap-head {
+      text-align: center !important;
+      max-width: 680px !important;
+      margin: 0 auto 50px !important;
+    }
+    .roadmap-head .issue {
+      color: #E8C968 !important;
+      font-size: 13px !important;
+      font-weight: 900 !important;
+      letter-spacing: 0.18em !important;
+      margin-bottom: 8px !important;
+    }
+    .roadmap-head h2 {
+      font-family: Noto Serif TC, Songti TC, serif !important;
+      font-size: clamp(28px, 3.8vw, 44px) !important;
+      color: #FFF !important;
+      margin: 0 0 14px !important;
+    }
+    .roadmap-head p {
+      color: #D1E7DD !important;
+      font-size: 16px !important;
+      line-height: 1.8 !important;
+    }
+    .roadmap-grid {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+      gap: 24px !important;
+      max-width: 1200px !important;
+      margin: 0 auto !important;
+    }
+    .roadmap-card {
+      background: rgba(255, 255, 255, 0.08) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      border-radius: 18px !important;
+      padding: 28px 24px !important;
+      backdrop-filter: blur(8px) !important;
+    }
+    .roadmap-card .phase-badge {
+      display: inline-block !important;
+      background: #E8C968 !important;
+      color: #1A2B25 !important;
+      font-size: 12px !important;
+      font-weight: 900 !important;
+      padding: 4px 12px !important;
+      border-radius: 999px !important;
+      margin-bottom: 14px !important;
+    }
+    .roadmap-card h3 {
+      font-family: Noto Serif TC, Songti TC, serif !important;
+      font-size: 20px !important;
+      color: #FFF !important;
+      margin: 0 0 12px !important;
+    }
+    .roadmap-card p {
+      font-size: 14px !important;
+      color: #D1E7DD !important;
+      line-height: 1.7 !important;
+      margin: 0 0 16px !important;
+    }
+    .roadmap-card ul {
+      padding-left: 20px !important;
+      margin: 0 !important;
+      color: #E8C968 !important;
+      font-size: 13px !important;
+      line-height: 1.8 !important;
+    }
+    .roadmap-card ul li span {
+      color: #FFF !important;
+    }
+
 </style>
 </head>
 
@@ -875,6 +1075,10 @@
     <!-- ==================== JULY CHAPTERS (01 - 04) ==================== -->
 
     <!-- Chapter 01: 食農教育 -->
+    
+    <!-- ==================== JULY CHAPTERS (01 - 04) ==================== -->
+
+    <!-- Chapter 01: 食農教育 -->
     <section class="chapter chapter-green" id="farm">
       <div class="chapter-head">
         <div class="chapter-number">01</div>
@@ -886,12 +1090,18 @@
       </div>
       <div class="chapter-layout">
         <div class="chapter-story">
-          <p class="lead">孩子從育苗場認識植物生命的起點，接著親手整地、種植、除草、觀察與測量。從一次次照顧中，他們不只理解作物如何成長，也逐漸培養耐心、責任與合作。</p>
+          <div class="core-question">🌱 核心探究問題：一顆種子如何長成餐桌上的食物？</div>
+          <p class="lead">孩子走進育苗場認識生命的起點，親手整地、測量行距、除草與記錄生長。從細心呵護菜苗的過程中，他們不只理解土壤與作物的依存關係，更在日復一日的照料中培養出耐心與責任感。</p>
+          <div class="teacher-note">
+            <strong>💡 課堂觀察手記</strong>
+            孩子第一次把手伸進泥土時有些猶豫，但當看見親手栽種的菜苗隔週冒出嫩綠新芽，眼裡滿是驕傲與珍惜。
+          </div>
           <blockquote>親手碰觸泥土與菜苗，生命的成長不再只是課本裡的文字。</blockquote>
           <ul>
-            <li>認識育苗</li>
-            <li>親手種植</li>
-            <li>觀察測量</li>
+            <li>認識育苗生態</li>
+            <li>親手整地植苗</li>
+            <li>每日生長紀錄</li>
+            <li>團隊分工灌溉</li>
           </ul>
         </div>
         <div class="chapter-showcase">
@@ -912,29 +1122,35 @@
       <div class="chapter-head">
         <div class="chapter-number">02</div>
         <div>
-          <p>把好奇變成可以研究的問題</p>
+          <p>生活裡的實證思維 · 把好奇變成可以研究的問題</p>
           <h2>科學探究</h2>
         </div>
         <span class="chapter-day">JULY / CHAPTER 2</span>
       </div>
       <div class="chapter-layout reverse">
         <div class="chapter-story">
-          <p class="lead">從生活裡發現問題，再經過討論、假設、測試與修正。孩子不只等待答案，而是練習用證據說明自己的想法。</p>
-          <blockquote>原來一次沒成功，不代表失敗，而是多得到一條線索。</blockquote>
+          <div class="core-question">🔬 核心探究問題：如何用紙箱與連動機構打造智慧垃圾桶？</div>
+          <p class="lead">從生活日常尋找痛點，小組經過激烈討論、變因假設、原型製作與反覆測試。孩子不再只是被動接收答案，而是學會運用實驗數據與模型結構，自信說明自己的研究論點。</p>
+          <div class="teacher-note">
+            <strong>💡 課堂觀察手記</strong>
+            面對連動槓桿卡住的挫折，小組沒有放棄，反而圍在一起畫圖重測，真正展現了小小工程師的韌性。
+          </div>
+          <blockquote>原來一次沒成功，不代表失敗，而是多得到一條關鍵線索。</blockquote>
           <ul>
-            <li>提出問題</li>
-            <li>動手實驗</li>
-            <li>成果發表</li>
+            <li>定義研究變因</li>
+            <li>紙箱結構工程</li>
+            <li>數據分析圖表</li>
+            <li>同儕論證修正</li>
           </ul>
         </div>
         <div class="chapter-showcase">
           <figure class="showcase-card">
-            <img src="./photos/digital/img-06.jpg" alt="孩子完成的實驗作品與海報" loading="lazy" decoding="async"/>
-            <figcaption>分組討論與繪製實驗心智圖</figcaption>
+            <img src="./photos/curated_v3/ch02_sci_2.jpg" alt="孩子操作連動模型" loading="lazy" decoding="async"/>
+            <figcaption>測試紙箱感測連動機構模型</figcaption>
           </figure>
           <figure class="showcase-card">
-            <img src="./photos/curated_v3/ch02_sci_2.jpg" alt="孩子動手測試實驗數據" loading="lazy" decoding="async"/>
-            <figcaption>動手測試變因並記錄實驗數據</figcaption>
+            <img src="./photos/digital/img-06.jpg" alt="孩子完成實驗海報展示" loading="lazy" decoding="async"/>
+            <figcaption>組員合作繪製實驗心智圖與結論</figcaption>
           </figure>
         </div>
       </div>
@@ -945,29 +1161,35 @@
       <div class="chapter-head">
         <div class="chapter-number">03</div>
         <div>
-          <p>把經驗整理成自己的話</p>
+          <p>邏輯梳理與情感表達 · 把經驗整理成自己的話</p>
           <h2>閱讀與寫作</h2>
         </div>
         <span class="chapter-day">JULY / CHAPTER 3</span>
       </div>
       <div class="chapter-layout">
         <div class="chapter-story">
-          <p class="lead">孩子從心智圖發想，把零散的觀察排成有順序的內容；再透過朗讀與分享，學會讓別人聽懂自己的故事。</p>
-          <blockquote>寫作不是把字填滿，而是把心裡真正想說的話找出來。</blockquote>
+          <div class="core-question">✍️ 核心探究問題：如何用文字把夏天的感動說得精準又生動？</div>
+          <p class="lead">孩子從放射狀心智圖發想，將零散的觀察片段梳理成有因果邏輯的結構。透過朗讀與同儕互評，學會運用細膩的感官描寫，讓傾聽者彷彿身歷其境感受文字的溫度。</p>
+          <div class="teacher-note">
+            <strong>💡 課堂觀察手記</strong>
+            當孩子站起來朗讀自己寫的文章時，起初微微顫抖的聲音，在獲得全班掌聲後化為了眼底無比燦爛的自信。
+          </div>
+          <blockquote>寫作不是把格子填滿，而是把心裡真正想說的話找出來。</blockquote>
           <ul>
             <li>心智圖發想</li>
-            <li>邏輯表達</li>
-            <li>朗讀分享</li>
+            <li>感官細節描摹</li>
+            <li>邏輯段落架構</li>
+            <li>自信朗讀發表</li>
           </ul>
         </div>
         <div class="chapter-showcase">
           <figure class="showcase-card">
             <img src="./photos/writing/user_writing_1.jpg" alt="孩子在稿紙上專注寫作" loading="lazy" decoding="async"/>
-            <figcaption>專注於稿紙上一字一句寫下心得</figcaption>
+            <figcaption>專注於稿紙上一字一句寫下觀察</figcaption>
           </figure>
           <figure class="showcase-card">
             <img src="./photos/writing/user_writing_2.jpg" alt="孩子展示寫作學習單" loading="lazy" decoding="async"/>
-            <figcaption>以心智圖梳理脈絡並自信朗讀</figcaption>
+            <figcaption>以心智圖梳理脈絡並自信朗讀分享</figcaption>
           </figure>
         </div>
       </div>
@@ -978,19 +1200,25 @@
       <div class="chapter-head">
         <div class="chapter-number">04</div>
         <div>
-          <p>讓課堂知識走進真實生活</p>
+          <p>真實情境大地實踐 · 讓課堂知識走進真實生活</p>
           <h2>一日農夫</h2>
         </div>
         <span class="chapter-day">JULY / CHAPTER 4</span>
       </div>
       <div class="chapter-layout reverse">
         <div class="chapter-story">
-          <p class="lead">走進鴻旗農場，孩子從農場導覽、認識作物，到親手採摘鮮果與體驗搗麻糬，在真實情境中理解食物的來源。</p>
+          <div class="core-question">🌾 核心探究問題：產地到餐桌之間，需要多少人的汗水與智慧？</div>
+          <p class="lead">走進鴻旗農場，戴上花布斗笠踏進果園。孩子從農場導覽、觀察有機農法，到親手採摘鮮甜鳳梨與體驗古法搗麻糬，在大自然的真實情境中體會食物的珍貴與土地的豐盛。</p>
+          <div class="teacher-note">
+            <strong>💡 課堂觀察手記</strong>
+            孩子輪流合力高舉木槌搗麻糬時的歡呼聲，以及大口喝下鮮榨檸檬冰茶時的滿足笑靨，是課堂外最珍貴的學習。
+          </div>
           <blockquote>親眼看見、親手完成，課本裡的知識就成了真正記得住的經驗。</blockquote>
           <ul>
-            <li>農場導覽</li>
-            <li>採果體驗</li>
-            <li>傳統手作</li>
+            <li>生態農場導覽</li>
+            <li>鮮果採摘實作</li>
+            <li>傳統手作麻糬</li>
+            <li>產地餐桌感謝</li>
           </ul>
         </div>
         <div class="chapter-showcase">
@@ -1000,7 +1228,7 @@
           </figure>
           <figure class="showcase-card">
             <img src="./photos/showcase/showcase-35.jpg" alt="享用農場冰茶" loading="lazy" decoding="async"/>
-            <figcaption>在自然農場中感受土地的豐盛</figcaption>
+            <figcaption>在自然農場中感受土地的豐盛與友誼</figcaption>
           </figure>
         </div>
       </div>
@@ -1025,12 +1253,18 @@
       </div>
       <div class="chapter-layout">
         <div class="chapter-story">
-          <p class="lead">8月1日，孩子們迎來了七月學習成果的盛大盛宴。不再只是紙上談兵，而是站在全體家長與評審面前，自信發表研究心智圖與發明模型。</p>
+          <div class="core-question">🎪 核心探究問題：如何向陌生觀眾清楚傳達自己的研究價值？</div>
+          <p class="lead">8月1日，營隊迎來成果展盛宴。小組自主策展佈置展位，從容面對評審提問與家長參觀，展示 AI 智慧垃圾桶運作原理，並熱情義賣親手採收的鮮採蔬果，展現大方的主持台風。</p>
+          <div class="teacher-note">
+            <strong>💡 課堂觀察手記</strong>
+            孩子面對家長與評審的隨機提問毫不怯場，條理清晰地指出海報數據進行說明，那一刻他們已是真正的研究者。
+          </div>
           <blockquote>自己的研究，用自己的話說清楚；站在台上那一刻，我看見孩子眼裡的自信光芒。</blockquote>
           <ul>
-            <li>公眾發表</li>
-            <li>策展導覽</li>
-            <li>小農市集</li>
+            <li>自主策展規劃</li>
+            <li>公眾表達發表</li>
+            <li>小農蔬菜義賣</li>
+            <li>現場答詢互動</li>
           </ul>
         </div>
         <div class="chapter-showcase">
@@ -1058,12 +1292,18 @@
       </div>
       <div class="chapter-layout reverse">
         <div class="chapter-story">
-          <p class="lead">揉合紅、黃、藍三原色黏土，孩子們在指尖變幻出繽紛世界。從父親節手作相框、立體小玩偶到造型鑰匙圈與磁鐵，將無限想像轉化為實體藝術作品。</p>
+          <div class="core-question">🎨 核心探究問題：如何用紅黃藍三原色調配出萬千色彩與立體世界？</div>
+          <p class="lead">孩子們化身為黏土創客，在指尖揉捏按壓。從理解色彩混合比例，到雕塑精緻的微縮小玩偶、父親節心意相框與實用造型磁鐵，將平面想像化為立體手作藝術。</p>
+          <div class="teacher-note">
+            <strong>💡 課堂觀察手記</strong>
+            黏土創作考驗著細膩的手部肌肉控制與耐心。孩子專注於調整作品微小細節的神情，展現了高度的專注力。
+          </div>
           <blockquote>動手捏塑的不只是形狀，更是對色彩的敏銳度與耐心的磨練。</blockquote>
           <ul>
-            <li>三原色調配</li>
-            <li>立體微縮雕塑</li>
-            <li>父親節相框</li>
+            <li>三原色魔法調配</li>
+            <li>微縮立體雕塑</li>
+            <li>父親節心意相框</li>
+            <li>實用造型磁鐵</li>
           </ul>
         </div>
         <div class="chapter-showcase">
@@ -1084,25 +1324,31 @@
       <div class="chapter-head">
         <div class="chapter-number">07</div>
         <div>
-          <p>穿梭百年建築，化身法庭大偵探與水資源工程師</p>
+          <p>穿梭百年建築 · 化身法庭大偵探與水資源工程師</p>
           <h2>台南雙館古蹟走讀</h2>
         </div>
         <span class="chapter-day">AUGUST / CHAPTER 7</span>
       </div>
       <div class="chapter-layout">
         <div class="chapter-story">
-          <p class="lead">8月14日，營隊前進台南。上午穿梭台南司法博物館解開古蹟法庭的歷史謎題，下午探訪台南水道博物館感受百年淨水工程的宏偉。</p>
+          <div class="core-question">🏛️ 核心探究問題：百年古蹟建築如何記錄前人的智慧與社會秩序？</div>
+          <p class="lead">8月14日營隊前進台南。走進司法博物館，站上法官席模擬法庭審判並穿梭舊拘留所；下午探訪水道博物館，漫步十四座黑色鑄鐵快濾筒長廊，落實 Buddy 雙人夥伴制，在歷史走讀中學習自律與同理。</p>
+          <div class="teacher-note">
+            <strong>💡 課堂觀察手記</strong>
+            孩子在古蹟長廊中手拿筆記本認真抄寫導覽老師的講解，並主動照顧身旁的夥伴，表現出極佳的團隊成熟度。
+          </div>
           <blockquote>古蹟不只是過去的建築，更是前人智慧與社會制度演進的最佳見證。</blockquote>
           <ul>
-            <li>法庭角色扮演</li>
-            <li>百年快濾筒</li>
-            <li>Buddy雙人制</li>
+            <li>法庭角色模擬審判</li>
+            <li>舊拘留所歷史解謎</li>
+            <li>百年快濾筒工程</li>
+            <li>Buddy夥伴互助制</li>
           </ul>
         </div>
         <div class="chapter-showcase">
           <figure class="showcase-card">
             <img src="./photos/curated_v3/ch07_mus_1.jpg" alt="台南司法博物館古蹟巡禮" loading="lazy" decoding="async"/>
-            <figcaption>穿梭司法博物館宏偉的西洋歷史建築</figcaption>
+            <figcaption>穿梭司法博物館宏偉古蹟建築</figcaption>
           </figure>
           <figure class="showcase-card">
             <img src="./photos/curated_v3/ch07_mus_2.jpg" alt="水道博物館快濾筒巡禮" loading="lazy" decoding="async"/>
@@ -1124,12 +1370,18 @@
       </div>
       <div class="chapter-layout reverse">
         <div class="chapter-story">
-          <p class="lead">在國際議題課堂上，老師帶領孩子在白板前熱烈討論文化祭遊戲設計與 SDGs 全球危機；前進大坑休閒農場，孩子們玩彈珠、餵小豬、DIY 冰淇淋與認識昆蟲標本，在歡笑中收穫滿滿！</p>
+          <div class="core-question">🌍 核心探究問題：我們能為地球永續做些什麼？大自然能教我們什麼？</div>
+          <p class="lead">在國際議題課堂上，老師帶領孩子在白板前熱烈發想文化祭永續遊戲；8月21日前進大坑休閒農場，孩子們玩彈珠、餵小豬與天竺鼠、DIY 冰淇淋體驗並認識昆蟲標本，在歡笑中收穫充實的野外自然課！</p>
+          <div class="teacher-note">
+            <strong>💡 課堂觀察手記</strong>
+            無論是課堂上為地球危機舉手搶答，還是農場裡溫柔餵食小動物，孩子們的同理心與熱情在此刻完全綻放。
+          </div>
           <blockquote>從看見世界到走進大自然，孩子學會了思考、同理與團隊互助的快樂。</blockquote>
           <ul>
-            <li>文化祭討論</li>
-            <li>餵動物體驗</li>
-            <li>DIY冰淇淋</li>
+            <li>文化祭遊戲創意發想</li>
+            <li>SDGs全球危機研討</li>
+            <li>可愛動物溫柔餵食</li>
+            <li>DIY冰淇淋與生態搶答</li>
           </ul>
         </div>
         <div class="chapter-showcase">
@@ -1141,6 +1393,103 @@
             <img src="./photos/curated_v3/ch09_daking_1.jpg" alt="大坑休閒農場餵食小動物" loading="lazy" decoding="async"/>
             <figcaption>大坑農場餵小豬、DIY冰淇淋與生態搶答</figcaption>
           </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STUDENT QUOTE WALL ==================== -->
+    <section class="quotes-section" id="quotes">
+      <div class="quotes-head">
+        <p class="issue">STUDENT VOICES & REFLECTIONS</p>
+        <h2>孩子的探究筆記與真心話</h2>
+        <p>這些不是標準答案，而是孩子在一次次嘗試、觀察與手作中，發自內心體會到的真實感動。</p>
+      </div>
+      <div class="quotes-grid">
+        <div class="quote-card">
+          <p class="quote-text">「原來菜苗根部喝水那麼快！每天早上第一件事就是跑去看它有沒有長出新葉子，看到綠綠的葉子心情就超好！」</p>
+          <div class="quote-author">
+            <span class="author-tag">食農教育</span>
+            <span class="author-name">小禾（小學三年級）</span>
+          </div>
+        </div>
+        <div class="quote-card">
+          <p class="quote-text">「黏土混色就像魔法！把黃色跟藍色用力搓揉在一起，真的會慢慢變成森林的綠色，捏出相框送給爸爸超有成就感！」</p>
+          <div class="quote-author">
+            <span class="author-tag">動手實作</span>
+            <span class="author-name">安安（小學二年級）</span>
+          </div>
+        </div>
+        <div class="quote-card">
+          <p class="quote-text">「博覽會那天站在家長面前報告，雖然心跳超級快，但當大家認真聽懂我們 AI 垃圾桶連動原理時，覺得自己像真正的發明家！」</p>
+          <div class="quote-author">
+            <span class="author-tag">科學博覽會</span>
+            <span class="author-name">辰辰（小學五年級·小組長）</span>
+          </div>
+        </div>
+        <div class="quote-card">
+          <p class="quote-text">「大坑農場的小豬鼻子熱熱軟軟的，搶著喝ㄋㄟㄋㄟ的樣子超級可愛！我們自己搖出來的冰淇淋吃起來特別甜！」</p>
+          <div class="quote-author">
+            <span class="author-tag">大坑休閒農場</span>
+            <span class="author-name">宥宥（小學三年級）</span>
+          </div>
+        </div>
+        <div class="quote-card">
+          <p class="quote-text">「走進司法博物館的舊拘留所和法庭，才發現法律不是課本上的考試題目，而是保護大家公平生活的規則。」</p>
+          <div class="quote-author">
+            <span class="author-tag">雙館走讀</span>
+            <span class="author-name">宇軒（小學六年級）</span>
+          </div>
+        </div>
+        <div class="quote-card">
+          <p class="quote-text">「以前覺得寫作很難，但在這裡先畫心智圖再寫故事，腦袋裡的想法突然變得好清楚，我還朗讀給全班聽呢！」</p>
+          <div class="quote-author">
+            <span class="author-tag">閱讀寫作</span>
+            <span class="author-name">宣宣（小學四年級）</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== LEARNING ROADMAP ==================== -->
+    <section class="roadmap-section" id="roadmap">
+      <div class="roadmap-head">
+        <p class="issue">TWO-MONTH LEARNING ROADMAP</p>
+        <h2>雙月探究學習里程碑地圖</h2>
+        <p>從七月的「觀察奠基」到八月的「跨域實踐」，看見孩子一步一步累積的核心素養能力。</p>
+      </div>
+      <div class="roadmap-grid">
+        <div class="roadmap-card">
+          <span class="phase-badge">JULY PHASE 1</span>
+          <h3>🌱 觀察感知與實證奠基</h3>
+          <p>從自然生命與生活痛點出發，培養自主提問與實證思維。</p>
+          <ul>
+            <li><span>食農教育：親手育苗與生命觀察記錄</span></li>
+            <li><span>科學探究：變因假設與紙箱工程模型</span></li>
+            <li><span>閱讀寫作：放射心智圖與邏輯表達</span></li>
+            <li><span>鴻旗農場：產地採果與土地共感</span></li>
+          </ul>
+        </div>
+        <div class="roadmap-card">
+          <span class="phase-badge">AUGUST PHASE 2</span>
+          <h3>🚀 公眾發表與跨域深化</h3>
+          <p>將課堂探究轉化為公開展演、手作美學與歷史走讀實踐。</p>
+          <ul>
+            <li><span>8/1博覽會：自信策展與研究發表</span></li>
+            <li><span>動手實作：三原色調色與黏土微縮雕塑</span></li>
+            <li><span>雙館走讀：司法法庭與水道百年古蹟</span></li>
+            <li><span>國際與農場：文化祭發想與野外生態</span></li>
+          </ul>
+        </div>
+        <div class="roadmap-card">
+          <span class="phase-badge">FUTURE PHASE 3</span>
+          <h3>🌟 自主探究的種子持續發芽</h3>
+          <p>將暑期淬鍊出的好奇心、動手力與團隊合作，延續至新學期的每一天。</p>
+          <ul>
+            <li><span>保持對周遭世界的主動提問習慣</span></li>
+            <li><span>面對困難時勇於嘗試修正的韌性</span></li>
+            <li><span>清楚表達觀點並同理他人的協作力</span></li>
+            <li><span>尚學文教陪伴孩子探索更多可能</span></li>
+          </ul>
         </div>
       </div>
     </section>
