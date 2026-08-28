@@ -1051,6 +1051,81 @@
       margin: 0;
     }
 
+  
+    /* Responsive All-Chapter Navigation Bar (Desktop & Mobile) */
+    .site-header {
+      z-index: 100 !important;
+      background: rgba(247, 242, 232, 0.95) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border-bottom: 1px solid rgba(36, 49, 46, 0.12) !important;
+      padding: 10px 4vw !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+    }
+    .site-nav {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      font-size: 13px !important;
+      font-weight: 750 !important;
+      overflow-x: auto !important;
+      white-space: nowrap !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: none !important;
+      padding: 4px 0 !important;
+    }
+    .site-nav::-webkit-scrollbar {
+      display: none !important;
+    }
+    .site-nav a {
+      padding: 6px 12px !important;
+      border-radius: 999px !important;
+      color: #24312E !important;
+      transition: all 0.2s ease !important;
+      background: rgba(36, 49, 46, 0.04) !important;
+      flex-shrink: 0 !important;
+    }
+    .site-nav a:hover {
+      background: rgba(36, 49, 46, 0.12) !important;
+      color: #1A2B25 !important;
+    }
+    .site-nav a.nav-highlight {
+      background: #C96D45 !important;
+      color: #FFFFFF !important;
+      font-weight: 900 !important;
+      box-shadow: 0 2px 6px rgba(201, 109, 69, 0.3) !important;
+    }
+    .site-nav a.nav-highlight:hover {
+      background: #B35830 !important;
+    }
+
+    @media (max-width: 900px) {
+      .site-header {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        padding: 10px 14px 10px !important;
+        height: auto !important;
+      }
+      .site-header-top {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+      }
+      .site-nav {
+        width: 100% !important;
+        padding: 6px 0 2px !important;
+        gap: 8px !important;
+      }
+      .site-nav a {
+        font-size: 12px !important;
+        padding: 5px 10px !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -1058,18 +1133,26 @@
   <main>
     <!-- Site Header -->
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="回到首頁">
-        <img class="brand-logo" src="./shangxue-logo-transparent.png" alt="尚學文教"/>
-      </a>
-      <nav aria-label="主要導覽">
+      <div class="site-header-top">
+        <a class="brand" href="#top" aria-label="回到首頁">
+          <img class="brand-logo" src="./shangxue-logo-transparent.png" alt="尚學文教"/>
+        </a>
+        <a class="mini-cta" href="#onsite" style="background:#C96D45; color:#fff; border-color:#C96D45; font-weight:800;">🎪 現場集章</a>
+      </div>
+      <nav class="site-nav" aria-label="主要導覽">
         <a href="#about">夏日序章</a>
-        <a href="#farm">七月篇章</a>
-        <a href="#august">八月專題</a>
+        <a href="#farm">食農教育</a>
+        <a href="#science">科學探究</a>
+        <a href="#writing">閱讀寫作</a>
+        <a href="#trip">一日農夫</a>
+        <a href="#expo">8/1博覽會</a>
+        <a href="#toys">動手實作</a>
+        <a href="#museum">雙館走讀</a>
+        <a href="#sdgs">國際與大坑</a>
         <a href="#quotes">孩子金句</a>
-        <a href="#roadmap">成長旅程</a>
-        <a href="#onsite" style="color: #C96D45; font-weight: 900;">🎪 現場互動</a>
+        <a href="#moments">照片集</a>
+        <a class="nav-highlight" href="#onsite">🎪 現場互動</a>
       </nav>
-      <a class="mini-cta" href="#finale">成果展</a>
     </header>
 
     <!-- Hero Section -->
@@ -2163,7 +2246,7 @@
       { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_1.jpg?v=6', title: '專注用雙手揉捏彩色黏土', desc: '黑衣男孩坐在木桌前，將黃色與彩色黏土按比例揉合成型。' },
       { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_2.jpg?v=6', title: '老師在教室中細心指導黏土技巧', desc: '老師蹲在桌旁溫柔指導小朋友如何掌握黏土濕度與搓圓手法。' },
       { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_3.jpg?v=6', title: '手指沾著黃色彩泥專注構思作品', desc: '坐在工作墊前，女孩手上黏著彩泥，認真思考下一個要捏塑的甜點配件。' },
-      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_4.jpg?v=6', title: '手比勝利手勢展示黏土點心作品', desc: '男孩開心地坐在木桌前，桌上擺著精緻的黏土餅乾與冰淇淋作品。' },
+      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_4.jpg?v=6', title: 'YA！我的黏土作品完成啦！', desc: '男孩開心地在白板前比出 YA 手勢，為自己親手捏製的精緻黏土點心留下滿滿成就感的合影。' },
       { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_5.jpg?v=6', title: '女孩展示多彩杯子蛋糕黏土相框', desc: '女孩捧著完成的黏土點心作品，在繪有甜筒插畫的背景前留影。' },
       { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_6.jpg?v=6', title: '雙手搓揉黏土長條細節', desc: '戴眼鏡的男孩雙手合十在桌上來回搓揉，製作細長勻稱的黏土線條。' },
       { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_extra_1.jpg?v=6', title: '兩位男孩在透明工作墊上揉塑黏土', desc: '孩子們各自在塑膠墊上操作，身旁擺著水壺與彩泥，沉浸創作中。' },
