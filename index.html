@@ -390,87 +390,8 @@
       box-shadow: 4px 4px 0 #E8C968;
     }
 
-    /* Certificate Result Modal (精密雙層金邊 + 四邊形尚學文教 Logo 鋼印) */
-    .cert-modal {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.85);
-      z-index: 10000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      overflow-y: auto;
-    }
-    .cert-modal.show {
-      display: flex;
-    }
-    .cert-paper {
-      background: linear-gradient(145deg, #FFFDF8 0%, #FAF2DF 100%);
-      border: 5px double #D4AF37;
-      outline: 2px solid #C59B27;
-      outline-offset: -10px;
-      border-radius: 16px;
-      max-width: 580px;
-      width: 100%;
-      padding: 44px 36px 36px;
-      text-align: center;
-      position: relative;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.4), inset 0 0 40px rgba(212, 175, 55, 0.12);
-    }
-    .cert-corner-flower {
-      position: absolute;
-      font-size: 16px;
-      color: #D4AF37;
-      line-height: 1;
-    }
-    .corner-tl { top: 14px; left: 14px; }
-    .corner-tr { top: 14px; right: 14px; }
-    .corner-bl { bottom: 14px; left: 14px; }
-    .corner-br { bottom: 14px; right: 14px; }
-
-    .cert-paper h2 {
-      font-family: Noto Serif TC, Songti TC, serif;
-      color: #1A2B25;
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      margin: 8px 0 12px;
-    }
-    .cert-paper .cert-child-name {
-      font-size: 32px;
-      color: #2D5A46;
-      font-weight: 900;
-      font-family: Noto Serif TC, Songti TC, serif;
-      border-bottom: 2px solid #D4AF37;
-      display: inline-block;
-      padding: 2px 24px;
-      margin: 14px 0 18px;
-      letter-spacing: 0.06em;
-    }
-    .cert-rect-logo {
-      height: 60px;
-      width: auto;
-      object-fit: contain;
-      margin: 20px auto 8px;
-      display: block;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
-    }
-    .btn-download-cert {
-      background: #C96D45;
-      color: #FFF;
-      border: none;
-      padding: 12px 28px;
-      border-radius: 999px;
-      font-weight: 900;
-      font-size: 15px;
-      cursor: pointer;
-      margin-top: 20px;
-      box-shadow: 3px 3px 0 #24312E;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
+    
+    
 
     @media (max-width: 768px) {
       .stamp-grid, .voting-grid, .onsite-photo-wall {
@@ -993,7 +914,143 @@
       color: #FFF !important;
     }
 
-</style>
+
+    /* 1. Stamp Grid (5 大展區專用版面) */
+    .stamp-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+    .stamp-item.stamp-featured {
+      border-color: #8C52FF80;
+      background: #FAF6FF;
+    }
+    .stamp-item.stamp-featured.active {
+      background: #EAE0FF;
+      border-color: #7B3FE4;
+    }
+    @media (max-width: 900px) {
+      .stamp-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .stamp-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stamp-item:nth-child(5) {
+        grid-column: span 2;
+      }
+    }
+
+    /* Certificate Result Modal (手機/電腦極致自適應 + 支援長按儲存與原生分享) */
+    .cert-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 10000;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 30px 16px 50px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .cert-modal.show {
+      display: flex;
+    }
+    .cert-modal-container {
+      text-align: center;
+      max-width: 580px;
+      width: 100%;
+      position: relative;
+      margin: auto 0;
+    }
+    .cert-preview-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      background: #FAF6ED;
+      margin-bottom: 18px;
+    }
+    .cert-preview-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      user-select: auto !important;
+      -webkit-user-select: auto !important;
+      -webkit-touch-callout: default !important;
+    }
+    .cert-actions-hub {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      width: 100%;
+    }
+    .btn-cert-primary {
+      background: #C96D45;
+      color: #FFF;
+      border: 2px solid #24312E;
+      padding: 13px 28px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 15.5px;
+      cursor: pointer;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 4px 4px 0 #24312E;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-cert-primary:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 #24312E;
+    }
+    .btn-cert-primary:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 #24312E;
+    }
+    .btn-cert-secondary {
+      background: #FFFDF8;
+      color: #24312E;
+      border: 2px solid #24312E;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 13.5px;
+      cursor: pointer;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 3px 3px 0 #24312E;
+      transition: all 0.2s ease;
+    }
+    .btn-cert-secondary:hover {
+      background: #EFE9DD;
+    }
+    .cert-mobile-hint {
+      margin-top: 14px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px dashed rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      padding: 10px 16px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cert-mobile-hint p {
+      color: #FFFDF8;
+      font-size: 12.5px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+  </style>
 </head>
 
 <body class="__variable_geist_0tvmz3h __variable_geist_mono_1diim1n antialiased">
@@ -1585,36 +1642,44 @@
         <p>歡迎家長與孩子在發表會現場拿著手機共同參與！點擊攤位集章、發表會現場投票、上傳現場拍立得合照與領取電子結業證書。</p>
       </div>
 
-      <!-- 1. 現場展區尋寶集章卡 -->
+      <!-- 1. 現場展區尋寶集章卡 (5 大展區) -->
       <div class="treasure-card">
         <div class="treasure-title">
-          <h3>📍 1. 現場展區尋寶打卡卡</h3>
-          <span style="font-weight: 800; color: #C96D45;" id="stamp-progress-text">已解鎖 0 / 4 展區</span>
+          <h3>🎪 1. 尚學文化祭 · 現場闖關集章卡</h3>
+          <span style="font-weight: 800; color: #C96D45;" id="stamp-progress-text">已解鎖 0 / 5 展區</span>
         </div>
-        <p style="color: #68706D; font-size: 14px; margin-bottom: 16px;">走到發表會現場攤位前，點擊下方按鈕蓋章打卡：</p>
+        <p style="color: #68706D; font-size: 14px; margin-bottom: 16px;">
+          規則：每完成一個闖關遊戲，關主將協助蓋章，集滿所有印章，則可至禮物台兌換！
+        </p>
         <div class="stamp-grid">
-          <div class="stamp-item" id="stamp-zone-1" onclick="toggleStamp(this, '食農展示區', 1)">
+          <div class="stamp-item stamp-featured" id="stamp-zone-1" onclick="toggleStamp(this, '暑期學習成果展區', 1)">
             <span class="stamp-badge">已集章 ✓</span>
-            <div class="stamp-icon">🌱</div>
-            <div class="stamp-label">食農展示區</div>
+            <div class="stamp-icon">🎓</div>
+            <div class="stamp-label">暑期學習成果展區</div>
             <div class="stamp-status">點擊蓋章</div>
           </div>
-          <div class="stamp-item" id="stamp-zone-2" onclick="toggleStamp(this, '科學探究區', 2)">
+          <div class="stamp-item" id="stamp-zone-2" onclick="toggleStamp(this, '非洲水資源展區', 2)">
             <span class="stamp-badge">已集章 ✓</span>
-            <div class="stamp-icon">🔬</div>
-            <div class="stamp-label">科學探究區</div>
+            <div class="stamp-icon">🚰</div>
+            <div class="stamp-label">非洲水資源展區</div>
             <div class="stamp-status">點擊蓋章</div>
           </div>
-          <div class="stamp-item" id="stamp-zone-3" onclick="toggleStamp(this, '寫作作品區', 3)">
+          <div class="stamp-item" id="stamp-zone-3" onclick="toggleStamp(this, '海洋永續環保展區', 3)">
             <span class="stamp-badge">已集章 ✓</span>
-            <div class="stamp-icon">✍️</div>
-            <div class="stamp-label">寫作作品區</div>
+            <div class="stamp-icon">🌊</div>
+            <div class="stamp-label">海洋永續環保展區</div>
             <div class="stamp-status">點擊蓋章</div>
           </div>
-          <div class="stamp-item" id="stamp-zone-4" onclick="toggleStamp(this, '農夫體驗區', 4)">
+          <div class="stamp-item" id="stamp-zone-4" onclick="toggleStamp(this, '難民多元文化展區', 4)">
             <span class="stamp-badge">已集章 ✓</span>
-            <div class="stamp-icon">🍍</div>
-            <div class="stamp-label">農夫體驗區</div>
+            <div class="stamp-icon">🌍</div>
+            <div class="stamp-label">難民多元文化展區</div>
+            <div class="stamp-status">點擊蓋章</div>
+          </div>
+          <div class="stamp-item" id="stamp-zone-5" onclick="toggleStamp(this, '社群挑戰展區', 5)">
+            <span class="stamp-badge">已集章 ✓</span>
+            <div class="stamp-icon">🤝</div>
+            <div class="stamp-label">社群挑戰展區</div>
             <div class="stamp-status">點擊蓋章</div>
           </div>
         </div>
@@ -1646,10 +1711,7 @@
         </div>
       </div>
 
-      
-      </div>
-
-      <!-- 5. 現場頒獎典禮 · 電子結業證書頒發 -->
+      <!-- 3. 現場頒獎典禮 · 電子結業證書頒發 -->
       <div class="certificate-card">
         <h3 style="font-family: Noto Serif TC, serif; font-size: 26px; color: #24312E; margin-bottom: 8px;">🎓 3. 2026 暑期頂尖計劃 · 電子結業證書</h3>
         <p style="color: #59615E; font-size: 15px;">成果展頒獎環節，輸入孩子與家長姓名，現場生成帶有營隊金印的紀念證書！</p>
@@ -1816,36 +1878,29 @@
     </div>
   </div>
 
-  <!-- Certificate Result Modal (關閉按鈕擺在紙張外，繪圖下載不會包含 ✕) -->
+  <!-- Certificate Result Modal (高解析 Canvas 渲染 + 原生分享/相簿下載/長按儲存) -->
   <div class="cert-modal" id="cert-modal">
-    <div style="text-align: center; max-width: 580px; width: 100%; position: relative;">
-      <!-- 關閉按鈕放在紙卡外面右上角 -->
-      <button class="lightbox-close" onclick="closeCertModal()" style="position: absolute; top: -18px; right: -18px; z-index: 10010;">✕</button>
+    <div class="cert-modal-container">
+      <button class="lightbox-close" onclick="closeCertModal()" aria-label="關閉證書視窗" style="position: absolute; top: -16px; right: -16px; z-index: 10010;">✕</button>
       
-      <div class="cert-paper" id="cert-paper-target">
-        <span class="cert-corner-flower corner-tl">✦</span>
-        <span class="cert-corner-flower corner-tr">✦</span>
-        <span class="cert-corner-flower corner-bl">✦</span>
-        <span class="cert-corner-flower corner-br">✦</span>
-        <p style="color: #C96D45; font-weight: 900; letter-spacing: 0.18em; font-size: 13px; margin-bottom: 6px;">HONOR CERTIFICATE</p>
-        <h2>2026 暑期頂尖計劃 · 結業證書</h2>
-        <p style="color: #64748B; font-size: 14px; margin-top: 8px;">特此證明學員：</p>
-        <div class="cert-child-name" id="modal-cert-child">陳小明</div>
-        <p style="color: #334155; font-size: 15px; line-height: 1.8; max-width: 450px; margin: 0 auto; font-family: Noto Serif TC, serif;">
-          完成七月至八月食農教育、科學探究、動手實作玩具、台南雙館古蹟、國際議題SDGs與宇宙創客等全系列專題課程，展現卓越的自主觀察力、探究思考力與跨域實踐力！
-        </p>
-        <p style="font-size: 14px; color: #C96D45; font-weight: 800; margin-top: 14px;" id="modal-cert-parent">
-          家長陪伴：陳爸爸
-        </p>
-        <!-- 四邊形尚學文教官方 Logo 鋼印 -->
-        <img class="cert-rect-logo" src="./shangxue-logo-transparent.png" alt="尚學文教官方 Logo"/>
-        <p style="font-size: 11px; color: #94A3B8; margin-top: 6px; letter-spacing: 0.05em;">2026 年 8 月底 · 暑期雙月成果展完結紀念版</p>
+      <div class="cert-preview-wrapper">
+        <img id="cert-preview-img" src="" alt="2026 暑期頂尖計劃結業證書"/>
       </div>
-      <div>
-        <button class="btn-download-cert" onclick="downloadCertificateImage()">
-          <span>📥 下載 / 保存金邊證書照片至手機相簿</span>
+
+      <div class="cert-actions-hub">
+        <button class="btn-cert-primary" onclick="saveCertificateImage()">
+          <span>📲 儲存至手機相簿 / 分享證書</span>
+        </button>
+        <button class="btn-cert-secondary" onclick="downloadDirectPNG()">
+          <span>📥 下載 PNG 圖檔 (電腦/安卓)</span>
         </button>
       </div>
+
+      <div class="cert-mobile-hint">
+        <p>💡 <strong>手機保存提示：</strong>若點擊按鈕未直接存檔，您也可以直接<strong>「長按上方證書圖片」</strong>，在彈出選單中點選<strong>【加入照片 / 儲存影像】</strong>直接存入手機相簿！</p>
+      </div>
+
+      <canvas id="cert-canvas" width="1200" height="850" style="display: none;"></canvas>
     </div>
   </div>
 
@@ -1977,16 +2032,22 @@
       document.getElementById('vote-count-2').innerText = persistentData.votes[2] || 18;
       document.getElementById('vote-count-3').innerText = persistentData.votes[3] || 15;
 
-      // 3. 尋寶集章狀態
+      // 3. 尋寶集章狀態 (5 大展區)
+      if (!persistentData.stamps) persistentData.stamps = [false, false, false, false, false];
+      while (persistentData.stamps.length < 5) persistentData.stamps.push(false);
       let activeCount = 0;
-      for (let i = 1; i <= 4; i++) {
+      for (let i = 1; i <= 5; i++) {
         const el = document.getElementById(`stamp-zone-${i}`);
-        if (persistentData.stamps[i - 1]) {
-          el.classList.add('active');
-          activeCount++;
+        if (el) {
+          if (persistentData.stamps[i - 1]) {
+            el.classList.add('active');
+            activeCount++;
+          } else {
+            el.classList.remove('active');
+          }
         }
       }
-      document.getElementById('stamp-progress-text').innerText = `已解鎖 ${activeCount} / 4 展區`;
+      document.getElementById('stamp-progress-text').innerText = `已解鎖 ${activeCount} / 5 展區`;
 
       // 4. 留言牆
       renderCommentsUI();
@@ -2013,157 +2074,157 @@
     // ----------------------------------------------------
     const momentsData = [
       // 5張寫作照片
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/writing/user_writing_1.jpg?v=4', title: '稿紙上一字一句專注書寫', desc: '女孩手握自動鉛筆，低頭在方格稿紙上工整寫下文章。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/writing/user_writing_2.jpg?v=4', title: '閱讀學習單構思與推敲', desc: '男孩手指著課堂學習單，認真推敲詞句並思考段落架構。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/writing/user_writing_3.jpg?v=4', title: '沉浸於文字創作的專注時光', desc: '安靜坐在木質課桌前，將腦海中的生動畫面化為細膩文字。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/writing/user_writing_4.jpg?v=4', title: '同儕相伴在課堂中投入書寫', desc: '同學們在明亮的教室中一同握筆寫作，展現高度專注力。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/writing/user_writing_5.jpg?v=4', title: '反覆檢查與修飾文章細節', desc: '閱讀自己剛寫好的句子，細心潤飾文字並準備朗讀分享。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/writing/user_writing_1.jpg?v=5', title: '稿紙上一字一句專注書寫', desc: '女孩手握自動鉛筆，低頭在方格稿紙上工整寫下文章。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/writing/user_writing_2.jpg?v=5', title: '閱讀學習單構思與推敲', desc: '男孩手指著課堂學習單，認真推敲詞句並思考段落架構。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/writing/user_writing_3.jpg?v=5', title: '沉浸於文字創作的專注時光', desc: '安靜坐在木質課桌前，將腦海中的生動畫面化為細膩文字。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/writing/user_writing_4.jpg?v=5', title: '同儕相伴在課堂中投入書寫', desc: '同學們在明亮的教室中一同握筆寫作，展現高度專注力。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/writing/user_writing_5.jpg?v=5', title: '反覆檢查與修飾文章細節', desc: '閱讀自己剛寫好的句子，細心潤飾文字並準備朗讀分享。' },
 
       // 60張全紀錄相片 (食農、科學、寫作、一日農夫)
-      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_1.jpg?v=4', title: '田間拉線標示種植區塊', desc: '孩子們在空曠田畦旁拉起粉紅定位線，仔細劃分每組的種植責任區。' },
-      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_2.jpg?v=4', title: '蹲在苗床旁細看蔬菜幼苗', desc: '兩位男孩蹲在田畦邊，近距離觀察剛冒出綠葉的小菜苗生長情形。' },
-      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_3.jpg?v=4', title: '在田埂旁討論分工與種植進度', desc: '同學們站在鄉間農地旁熱烈討論，分工負責田區澆水與除草。' },
-      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_4.jpg?v=4', title: '指認田區角落的作物發芽', desc: '男孩伸手指著田畦角落剛破土的新芽，興奮地與身旁夥伴分享。' },
-      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_5.jpg?v=4', title: '細心檢查紅線旁的幼苗根部', desc: '男孩彎腰蹲在紅色標示線旁，輕輕撥開土壤檢查菜苗根部生長。' },
-      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_6.jpg?v=4', title: '沿著田埂邊緣測量種植間距', desc: '男孩站在田畦旁低頭測量行距，確保每株菜苗都有足夠的生長空間。' },
-      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_7.jpg?v=4', title: '老師細心將標示紅線固定於木樁', desc: '老師蹲在菜園旁用鐵鉗固定標示線，為孩子們打造整齊的安全田區。' },
-      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_8.jpg?v=4', title: '在農園入口處集合盤點工具', desc: '組員們在田區旁集合，準備水桶與小鏟子，展開當天的田間照料。' },
-      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_9.jpg?v=4', title: '蹲在車庫前整理橘色灌溉水管', desc: '男孩在水泥地面上細心理順長長的橘色澆水水管，準備農園灌溉。' },
-      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_10.jpg?v=4', title: '手持紅線測量田畦直線距離', desc: '三位男孩合力拉起長線測量田間距離，學習農作物的標準種植行距。' },
-      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_11.jpg?v=4', title: '在農地旁齊心協力拉齊標示線', desc: '站在陽光下的田園中，大家分工拉緊繩線，確保種植區塊方正整齊。' },
-      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_12.jpg?v=4', title: '彎腰清理田間雜草與石塊', desc: '老師與孩子們在種滿菜苗的田畦中親手拔除雜草，給予作物良好環境。' },
-      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_13.jpg?v=4', title: '在圍線田區內細心照料小苗', desc: '兩位男孩蹲在紅色標示線內，用雙手細心覆土保護幼嫩菜苗。' },
-      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_14.jpg?v=4', title: '蹲在田埂間記錄生長狀況', desc: '在陽光灑落的農園裡，孩子專注觀察每一株作物的綠葉舒展情形。' },
-      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_15.jpg?v=4', title: '撥開泥土觀察健康的土壤結構', desc: '孩子蹲下身用手觸摸鬆軟的黑土，感受泥土的濕度與生命力。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_1.jpg?v=5', title: '田間拉線標示種植區塊', desc: '孩子們在空曠田畦旁拉起粉紅定位線，仔細劃分每組的種植責任區。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_2.jpg?v=5', title: '蹲在苗床旁細看蔬菜幼苗', desc: '兩位男孩蹲在田畦邊，近距離觀察剛冒出綠葉的小菜苗生長情形。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_3.jpg?v=5', title: '在農田旁討論種植分工', desc: '孩子們站在農地與房屋旁討論分工，準備展開田間作業。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_4.jpg?v=5', title: '站在田邊指認新冒出的幼芽', desc: '兩位男孩站在田埂旁指著泥土中的小菜苗，互相分享發現。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_5.jpg?v=5', title: '蹲在紅線旁輕撫泥土裡的綠苗', desc: '男孩蹲在紅色標示線邊，小心翼翼撥開泥土照看剛發芽的綠葉。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_6.jpg?v=5', title: '沿著田埂邊緣俯身觀察幼苗', desc: '男孩沿著拉有紅線的田畦低頭彎腰，仔細檢查每一株菜苗的間距。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_7.jpg?v=5', title: '老師用鐵鉗將標示紅線固定於木樁', desc: '老師蹲在菜園旁用鐵鉗固定標示線，為孩子們打造整齊的安全田區。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_8.jpg?v=5', title: '合力拉起橘色灌溉水管準備澆水', desc: '三位男孩在農地旁齊心拉出長長的橘色水管，準備為田畦裡的菜苗引水灌溉。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_9.jpg?v=5', title: '蹲在車庫前理順橘色澆水水管', desc: '男孩在車庫前水泥地上細心理開長長的橘色水管，準備接水澆灌。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_10.jpg?v=5', title: '拉直長繩測量田畦栽種距離', desc: '三位男孩在田裡合力拉緊繩線，測量作物生長所需的標準間隔。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_11.jpg?v=5', title: '在陽光下的田園中合力拉緊繩線', desc: '學員們分工合作拉直標示繩，確保田間菜畦方正整齊。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_12.jpg?v=5', title: '老師蹲在田間示範拔草與整地', desc: '老師蹲在綠油油的菜苗旁，親手示範如何拔除雜草而不傷及菜根。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_13.jpg?v=5', title: '兩位男孩蹲在圍線田區內細心覆土', desc: '孩子們在標有紅線的責任區內，用雙手輕輕撥土護住幼苗根部。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_14.jpg?v=5', title: '蹲在田間專注照料蔬菜幼苗', desc: '男孩蹲在農地裡，細心檢查剛移植的小菜苗是否穩固生長。' },
+      { cat: 'agri', tag: '食農教育', img: './photos/moments_extra/extra_agri_15.jpg?v=5', title: '近距離撫摸泥土感受土壤濕度', desc: '孩子蹲下身用手觸摸鬆軟的黑土，體會水分與土壤對作物的重要。' },
 
-      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_1.jpg?v=4', title: '利用膠帶圓環輔助繪製同心圓', desc: '紅衣男孩在白色繪圖紙上利用膠帶圓形外圈，專心畫出漂亮的圖案。' },
-      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_2.jpg?v=4', title: '與老師在教室討論機構原理', desc: '男孩與老師圍坐交流，比手畫腳討論連動機構的轉動支點設計。' },
-      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_3.jpg?v=4', title: '在大型海報紙上用麥克筆記錄', desc: '穿著白T恤的女孩手握麥克筆，在白紙上記錄小組實驗的變因與假設。' },
-      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_4.jpg?v=4', title: '圍繞課桌討論研究海報內容', desc: '黃衣男孩與同伴在桌前認真繪製圖表，將實驗數據轉化為視覺結論。' },
-      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_5.jpg?v=4', title: '帶著紙箱原型與海報到公園測試', desc: '孩子們手捧紙箱模型與大海報走進公園樹蔭下，準備向大眾展示。' },
-      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_6.jpg?v=4', title: '檢視紙箱外殼的開合與結構', desc: '戴口罩的男孩雙手捧著大紙箱，仔細確認紙板裁切線與卡榫接合點。' },
-      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_7.jpg?v=4', title: '小組圍坐課桌繪製實驗心智圖', desc: '同學們在教室白板前圍坐一桌，大家動手在海報上填寫各組研究步驟。' },
-      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_8.jpg?v=4', title: '圍聚在紙箱前研究連桿動作', desc: '四位男孩圍著工作桌上的紙箱，目不轉睛觀察手動拉桿的連動效果。' },
-      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_9.jpg?v=4', title: '專注調整零件與電線接頭', desc: '三位男孩低頭細心整理電線與零件，合力排除機構運轉時的卡榫問題。' },
-      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_10.jpg?v=4', title: '自信走在林蔭步道上宣傳博覽會', desc: '男孩手拿宣傳單漫步在綠樹步道上，露出大方開朗的微笑。' },
-      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_11.jpg?v=4', title: '在紙箱上精準裁切連動開口', desc: '男孩手拿工具對準紙箱邊緣小心裁切，為感測器與開蓋預留安裝孔。' },
-      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_12.jpg?v=4', title: '展示工整耐用的研究紙箱模型', desc: '孩子抱著組裝完成的紙箱原型，展示結構結實且功能齊全的成果。' },
-      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_13.jpg?v=4', title: '在白板上記錄全組實驗數據', desc: '孩子們與老師聚集在大白板前，用彩色白板筆條列各組測試數值。' },
-      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_14.jpg?v=4', title: '在公園向長輩介紹研究成果', desc: '小組拉開手繪心智圖海報，大方自信地向公園裡的長輩解說原理。' },
-      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_15.jpg?v=4', title: '小組手持海報漫步戶外宣傳', desc: '孩子們帶著自己繪製的彩色海報穿梭在社區公園，展現滿滿活力。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_1.jpg?v=5', title: '利用膠帶圓環輔助繪製同心圓', desc: '紅衣男孩在白色繪圖紙上利用膠帶圓形外圈，專心畫出漂亮的圖案。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_2.jpg?v=5', title: '與老師在教室討論機構原理', desc: '男孩與老師圍坐交流，比手畫腳討論連動機構的轉動支點設計。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_3.jpg?v=5', title: '在大型海報紙上用麥克筆記錄', desc: '穿著白T恤的女孩手握麥克筆，在白紙上記錄小組實驗的變因與假設。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_4.jpg?v=5', title: '圍繞課桌討論研究海報內容', desc: '黃衣男孩與同伴在桌前認真繪製圖表，將實驗數據轉化為視覺結論。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_5.jpg?v=5', title: '帶著紙箱原型與海報到公園測試', desc: '孩子們手捧紙箱模型與大海報走進公園樹蔭下，準備向大眾展示。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_6.jpg?v=5', title: '檢視紙箱外殼的開合與結構', desc: '戴口罩的男孩雙手捧著大紙箱，仔細確認紙板裁切線與卡榫接合點。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_7.jpg?v=5', title: '小組圍坐課桌繪製實驗心智圖', desc: '同學們在教室白板前圍坐一桌，大家動手在海報上填寫各組研究步驟。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_8.jpg?v=5', title: '圍聚在紙箱前研究連桿動作', desc: '四位男孩圍著工作桌上的紙箱，目不轉睛觀察手動拉桿的連動效果。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_9.jpg?v=5', title: '專注調整零件與電線接頭', desc: '三位男孩低頭細心整理電線與零件，合力排除機構運轉時的卡榫問題。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_10.jpg?v=5', title: '自信走在林蔭步道上宣傳博覽會', desc: '男孩手拿宣傳單漫步在綠樹步道上，露出大方開朗的微笑。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_11.jpg?v=5', title: '在紙箱上精準裁切連動開口', desc: '男孩手拿工具對準紙箱邊緣小心裁切，為感測器與開蓋預留安裝孔。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_12.jpg?v=5', title: '展示工整耐用的研究紙箱模型', desc: '孩子抱著組裝完成的紙箱原型，展示結構結實且功能齊全的成果。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_13.jpg?v=5', title: '在白板上記錄全組實驗數據', desc: '孩子們與老師聚集在大白板前，用彩色白板筆條列各組測試數值。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_14.jpg?v=5', title: '在公園向長輩介紹研究成果', desc: '小組拉開手繪心智圖海報，大方自信地向公園裡的長輩解說原理。' },
+      { cat: 'science', tag: '科學探究', img: './photos/moments_extra/extra_science_15.jpg?v=5', title: '小組手持海報漫步戶外宣傳', desc: '孩子們帶著自己繪製的彩色海報穿梭在社區公園，展現滿滿活力。' },
 
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_1.jpg?v=4', title: '圍坐課桌聆聽老師引導寫作', desc: '孩子們圍坐在教室方桌前，專注聆聽黑板旁的老師分析故事架構。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_2.jpg?v=4', title: '在白紙上繪製故事放射心智圖', desc: '戴口罩的男孩手握鉛筆，在圓形心智圖上寫下各種生動的故事關鍵字。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_3.jpg?v=4', title: '女孩專心在木桌上握筆書寫', desc: '女孩低著頭，在方格稿紙上一字一句寫下自己的夏日探險回憶。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_4.jpg?v=4', title: '老師與學生一對一討論文章細節', desc: '老師坐在孩子身旁，指著稿紙上的句子給予溫暖鼓勵與修辭建議。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_5.jpg?v=4', title: '戴眼鏡男孩認真填寫學習單', desc: '黑衣男孩手握筆桿專注填寫閱讀學習單，將思考轉化為文字紀錄。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_6.jpg?v=4', title: '藍衣男孩專注撰寫文章篇章', desc: '男孩坐在木桌前認真思考句子結構，在白紙上寫下豐富的故事內容。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_7.jpg?v=4', title: '同學們在教室中各自專心寫作', desc: '教室裡充滿了筆尖書寫沙沙聲，大家都在自己的稿紙上全神貫注。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_8.jpg?v=4', title: '男孩低頭沉浸在文字創作中', desc: '右手握筆全神貫注於紙面上，將腦海中的靈感逐步整理成篇。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_9.jpg?v=4', title: '翻閱書籍尋找寫作靈感與詞彙', desc: '戴口罩的男孩專心翻閱桌面上的讀本，吸收優美的詞句與描寫手法。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_10.jpg?v=4', title: '女孩在圓形心智圖上記錄想法', desc: '粉衣女孩低頭在印有網格的圓形學習單上，用筆勾勒故事的脈絡。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_11.jpg?v=4', title: '男孩握著綠色筆桿填寫閱讀單', desc: '專心在印有圓形圖表的紙上填寫文字，梳理出故事主角的冒險情節。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_12.jpg?v=4', title: '專注在白紙上推敲優美字句', desc: '孩子右手持筆細心推敲句子結構，力求用最生動的話語表達情感。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_13.jpg?v=4', title: '全班在教室白板下分組投入寫作', desc: '教室後方貼著大幅地圖與作品，孩子們在溫馨的木桌前共同創作。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_14.jpg?v=4', title: '在圓形發想圖上記錄生動形容詞', desc: '男孩趴在課桌上專心寫作，在圓圈裡寫滿了描繪大自然的精彩詞彙。' },
-      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_15.jpg?v=4', title: '男孩抬起頭分享自己構思的故事情節', desc: '藍衣男孩臉上帶著自信微笑，開心地向身旁的老師與同學分享點子。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_1.jpg?v=5', title: '圍坐課桌聆聽老師引導寫作', desc: '孩子們圍坐在教室方桌前，專注聆聽黑板旁的老師分析故事架構。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_2.jpg?v=5', title: '在白紙上繪製故事放射心智圖', desc: '戴口罩的男孩手握鉛筆，在圓形心智圖上寫下各種生動的故事關鍵字。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_3.jpg?v=5', title: '女孩專心在木桌上握筆書寫', desc: '女孩低著頭，在方格稿紙上一字一句寫下自己的夏日探險回憶。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_4.jpg?v=5', title: '老師與學生一對一討論文章細節', desc: '老師坐在孩子身旁，指著稿紙上的句子給予溫暖鼓勵與修辭建議。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_5.jpg?v=5', title: '戴眼鏡男孩認真填寫學習單', desc: '黑衣男孩手握筆桿專注填寫閱讀學習單，將思考轉化為文字紀錄。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_6.jpg?v=5', title: '藍衣男孩專注撰寫文章篇章', desc: '男孩坐在木桌前認真思考句子結構，在白紙上寫下豐富的故事內容。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_7.jpg?v=5', title: '同學們在教室中各自專心寫作', desc: '教室裡充滿了筆尖書寫沙沙聲，大家都在自己的稿紙上全神貫注。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_8.jpg?v=5', title: '男孩低頭沉浸在文字創作中', desc: '右手握筆全神貫注於紙面上，將腦海中的靈感逐步整理成篇。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_9.jpg?v=5', title: '翻閱書籍尋找寫作靈感與詞彙', desc: '戴口罩的男孩專心翻閱桌面上的讀本，吸收優美的詞句與描寫手法。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_10.jpg?v=5', title: '女孩在圓形心智圖上記錄想法', desc: '粉衣女孩低頭在印有網格的圓形學習單上，用筆勾勒故事的脈絡。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_11.jpg?v=5', title: '男孩握著綠色筆桿填寫閱讀單', desc: '專心在印有圓形圖表的紙上填寫文字，梳理出故事主角的冒險情節。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_12.jpg?v=5', title: '專注在白紙上推敲優美字句', desc: '孩子右手持筆細心推敲句子結構，力求用最生動的話語表達情感。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_13.jpg?v=5', title: '全班在教室白板下分組投入寫作', desc: '教室後方貼著大幅地圖與作品，孩子們在溫馨的木桌前共同創作。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_14.jpg?v=5', title: '在圓形發想圖上記錄生動形容詞', desc: '男孩趴在課桌上專心寫作，在圓圈裡寫滿了描繪大自然的精彩詞彙。' },
+      { cat: 'writing', tag: '閱讀寫作', img: './photos/moments_extra/extra_writing_15.jpg?v=5', title: '男孩抬起頭分享自己構思的故事情節', desc: '藍衣男孩臉上帶著自信微笑，開心地向身旁的老師與同學分享點子。' },
 
-      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_1.jpg?v=4', title: '戴著花布斗笠漫步果園步道', desc: '學員們戴上遮陽斗笠與花布帽，沿著農場綠意步道向前探訪。' },
-      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_2.jpg?v=4', title: '手拿保護網套包裝鮮採鳳梨', desc: '小男孩展示套上白色發泡網套的水果，眼神中充滿新奇與喜悅。' },
-      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_3.jpg?v=4', title: '在鳳梨田埂前眺望遠方山景', desc: '大家站在結實纍纍的鳳梨田邊，一邊聆聽導覽一邊欣賞雄偉山脈。' },
-      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_4.jpg?v=4', title: '戴著斗笠在火龍果支架旁漫步', desc: '孩子手拿採收籃穿梭在農場果樹支架間，享受大地尋寶的樂趣。' },
-      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_5.jpg?v=4', title: '小小領航員帶領大家探索農園', desc: '戴著斗笠的小朋友走在隊伍最前方，帶領同伴大步邁向農場果園。' },
-      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_6.jpg?v=4', title: '低頭觀察手中剛摘下的綠果實', desc: '戴眼鏡的男孩小心翼翼捧著小果實，細看表皮紋理與生長特徵。' },
-      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_7.jpg?v=4', title: '穿梭在翠綠果樹走廊間漫步', desc: '學員們跟隨導覽腳步漫步在果樹林道中，感受大自然的芬多精。' },
-      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_8.jpg?v=4', title: '雙手拿著採收袋露出燦爛笑容', desc: '小男孩雙手提著滿滿的鮮採蔬果，在果園前留下收穫滿滿的合影。' },
-      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_9.jpg?v=4', title: '探頭觀察果樹枝葉上的果實', desc: '孩子們聚集在綠意盎然的果樹下，抬頭尋找隱藏在葉片間的成熟果實。' },
-      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_10.jpg?v=4', title: '在農場室內展示滿袋採收成果', desc: '藍衣男孩雙手提著兩大袋裝滿蔬果的塑膠袋，自豪地展示採收戰利品。' },
-      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_11.jpg?v=4', title: '戴著紅色花布斗笠品嚐點心', desc: '男孩戴著傳統花布斗笠站在戶外，與同伴一同品嚐農場新鮮滋味。' },
-      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_12.jpg?v=4', title: '圍在桌前享用農場現調冰飲', desc: '大家圍在農場吧台桌前排隊盛裝現泡冰茶，大口喝下消暑解渴。' },
-      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_13.jpg?v=4', title: '粉色防曬外套女孩手捧套網鮮果', desc: '女孩戴著口罩穿著粉色連帽外套，雙手捧著保護好的水果在果園合影。' },
-      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_14.jpg?v=4', title: '收穫滿滿蔬果開朗站在農場室內', desc: '男孩提著兩袋新鮮農產品，臉上露出豐收後充實滿足的神情。' },
-      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_15.jpg?v=4', title: '老師拿麥克風主持農場活動回顧', desc: '全體學員坐在木桌前，專心聆聽老師總結一日農夫的精彩收穫。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_1.jpg?v=5', title: '戴著花布斗笠漫步果園步道', desc: '學員們戴上遮陽斗笠與花布帽，沿著農場綠意步道向前探訪。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_2.jpg?v=5', title: '手拿保護網套包裝鮮採鳳梨', desc: '小男孩展示套上白色發泡網套的水果，眼神中充滿新奇與喜悅。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_3.jpg?v=5', title: '在鳳梨田埂前眺望遠方山景', desc: '大家站在結實纍纍的鳳梨田邊，一邊聆聽導覽一邊欣賞雄偉山脈。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_4.jpg?v=5', title: '戴著斗笠在火龍果支架旁漫步', desc: '孩子手拿採收籃穿梭在農場果樹支架間，享受大地尋寶的樂趣。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_5.jpg?v=5', title: '小小領航員帶領大家探索農園', desc: '戴著斗笠的小朋友走在隊伍最前方，帶領同伴大步邁向農場果園。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_6.jpg?v=5', title: '低頭觀察手中剛摘下的綠果實', desc: '戴眼鏡的男孩小心翼翼捧著小果實，細看表皮紋理與生長特徵。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_7.jpg?v=5', title: '穿梭在翠綠果樹走廊間漫步', desc: '學員們跟隨導覽腳步漫步在果樹林道中，感受大自然的芬多精。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_8.jpg?v=5', title: '雙手拿著採收袋露出燦爛笑容', desc: '小男孩雙手提著滿滿的鮮採蔬果，在果園前留下收穫滿滿的合影。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_9.jpg?v=5', title: '探頭觀察果樹枝葉上的果實', desc: '孩子們聚集在綠意盎然的果樹下，抬頭尋找隱藏在葉片間的成熟果實。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_10.jpg?v=5', title: '在農場室內展示滿袋採收成果', desc: '藍衣男孩雙手提著兩大袋裝滿蔬果的塑膠袋，自豪地展示採收戰利品。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_11.jpg?v=5', title: '戴著紅色花布斗笠品嚐點心', desc: '男孩戴著傳統花布斗笠站在戶外，與同伴一同品嚐農場新鮮滋味。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_12.jpg?v=5', title: '圍在桌前享用農場現調冰飲', desc: '大家圍在農場吧台桌前排隊盛裝現泡冰茶，大口喝下消暑解渴。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_13.jpg?v=5', title: '粉色防曬外套女孩手捧套網鮮果', desc: '女孩戴著口罩穿著粉色連帽外套，雙手捧著保護好的水果在果園合影。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_14.jpg?v=5', title: '收穫滿滿蔬果開朗站在農場室內', desc: '男孩提著兩袋新鮮農產品，臉上露出豐收後充實滿足的神情。' },
+      { cat: 'outdoor', tag: '一日農夫', img: './photos/moments_extra/extra_outdoor_15.jpg?v=5', title: '老師拿麥克風主持農場活動回顧', desc: '全體學員坐在木桌前，專心聆聽老師總結一日農夫的精彩收穫。' },
 
       // 八月專題
-      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_1.jpg?v=4', title: '小農蔬菜義賣攤位熱情開賣', desc: '孩子們站在擺滿新鮮蔬菜的長桌前，熱情招呼前來參觀的家長。' },
-      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_2.jpg?v=4', title: '小小店長向參觀長輩介紹蔬菜', desc: '女孩拿起新鮮採收的蔬菜袋，親切大方地向長輩說明無毒種植過程。' },
-      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_3.jpg?v=4', title: '老師與孩子們在蔬菜攤位前合影', desc: '老師帶領孩子們在義賣桌前排排坐，桌上陳列著鮮採蔬果與心智圖。' },
-      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_4.jpg?v=4', title: '男孩在義賣攤位前招呼客人', desc: '站在擺滿綠色蔬菜的攤位前，孩子專注留意每一位路過的參觀民眾。' },
-      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_5.jpg?v=4', title: '家長熱情支持購買義賣農產品', desc: '家長帶著笑容在攤位前挑選新鮮蔬菜，以實際行動肯定孩子的努力。' },
-      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_6.jpg?v=4', title: '參觀家長與孩子在展位前熱絡交流', desc: '家長走進博覽會現場，認真聆聽孩子們介紹手作發明與小農蔬菜。' },
-      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_7.jpg?v=4', title: '攤位上整齊擺放自製點心與蔬菜', desc: '桌上擺著粉色布丁果凍與一袋袋青翠蔬菜，孩子們細心整理陳列。' },
-      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_8.jpg?v=4', title: '男孩站在透明玻璃海報前解說', desc: '藍衣男孩手拿資料站在貼滿研究心智圖的玻璃窗前，準備向大家報告。' },
-      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_9.jpg?v=4', title: '白衣男孩手拿名牌自信介紹', desc: '孩子掛著識別名牌站在博覽會會場，展現落落大方的小小關主風範。' },
-      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_10.jpg?v=4', title: '博覽會現場人潮滿滿熱鬧非凡', desc: '家長與孩子穿梭在各個成果攤位之間，現場充滿熱烈歡樂的討論聲。' },
+      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_1.jpg?v=5', title: '小農蔬菜義賣攤位熱情開賣', desc: '孩子們站在擺滿新鮮蔬菜的長桌前，熱情招呼前來參觀的家長。' },
+      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_2.jpg?v=5', title: '小小店長向參觀長輩介紹蔬菜', desc: '女孩拿起新鮮採收的蔬菜袋，親切大方地向長輩說明無毒種植過程。' },
+      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_3.jpg?v=5', title: '老師與孩子們在蔬菜攤位前合影', desc: '老師帶領孩子們在義賣桌前排排坐，桌上陳列著鮮採蔬果與心智圖。' },
+      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_4.jpg?v=5', title: '男孩在義賣攤位前招呼客人', desc: '站在擺滿綠色蔬菜的攤位前，孩子專注留意每一位路過的參觀民眾。' },
+      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_5.jpg?v=5', title: '家長熱情支持購買義賣農產品', desc: '家長帶著笑容在攤位前挑選新鮮蔬菜，以實際行動肯定孩子的努力。' },
+      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_6.jpg?v=5', title: '參觀家長與孩子在展位前熱絡交流', desc: '家長走進博覽會現場，認真聆聽孩子們介紹手作發明與小農蔬菜。' },
+      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_7.jpg?v=5', title: '攤位上整齊擺放自製點心與蔬菜', desc: '桌上擺著粉色布丁果凍與一袋袋青翠蔬菜，孩子們細心整理陳列。' },
+      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_8.jpg?v=5', title: '家長手提義賣蔬菜駐足閱讀心智圖海報', desc: '前來參觀的家長手提剛購買的鮮採蔬菜，認真細讀孩子們貼在門口的學習歷程與發想海報。' },
+      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_9.jpg?v=5', title: '手持連動彎管零件準備現場展示', desc: '孩子在博覽會攤位旁手持白色彎管配件，熱情向大家示範機關連動原理。' },
+      { cat: 'expo', tag: '8/1博覽會', img: './photos/august/aug_expo_10.jpg?v=5', title: '學員在熱鬧的成果攤位前顧攤', desc: '孩子站在戶外成果展攤位前，隨時準備為前來的客人導覽解說。' },
 
       // 動手實作 (全系列黏土)
-      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_1.jpg?v=4', title: '專注用雙手揉捏彩色黏土', desc: '黑衣男孩坐在木桌前，將黃色與彩色黏土按比例揉合成型。' },
-      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_2.jpg?v=4', title: '老師在教室中細心指導黏土技巧', desc: '老師蹲在桌旁溫柔指導小朋友如何掌握黏土濕度與搓圓手法。' },
-      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_3.jpg?v=4', title: '展示親手捏製的立體甜筒冰淇淋', desc: '女孩在展示墊上擺出粉色冰淇淋造型黏土，神情專注可愛。' },
-      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_4.jpg?v=4', title: '手比勝利手勢展示黏土點心作品', desc: '男孩開心地坐在木桌前，桌上擺著精緻的黏土餅乾與冰淇淋作品。' },
-      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_5.jpg?v=4', title: '女孩展示多彩杯子蛋糕黏土相框', desc: '女孩捧著完成的黏土點心作品，在繪有甜筒插畫的背景前留影。' },
-      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_6.jpg?v=4', title: '雙手搓揉黏土長條細節', desc: '戴眼鏡的男孩雙手合十在桌上來回搓揉，製作細長勻稱的黏土線條。' },
-      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_extra_1.jpg?v=4', title: '兩位男孩在透明工作墊上揉塑黏土', desc: '孩子們各自在塑膠墊上操作，身旁擺著水壺與彩泥，沉浸創作中。' },
-      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_extra_2.jpg?v=4', title: '低頭精細雕刻微縮黏土配件', desc: '黑衣男孩手握塑形工具，全神貫注刻劃黏土小玩偶的微小表情。' },
-      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_extra_3.jpg?v=4', title: '完成父親節愛心相框露出甜美笑容', desc: '粉色連帽外套女孩坐在桌前，開朗展示手作黏土相框與裝飾。' },
-      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_extra_4.jpg?v=4', title: '用工具細心壓製黏土花紋', desc: '藍衣男孩右手握筆型工具，在彩色黏土塊上小心印壓出精緻紋理。' },
+      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_1.jpg?v=5', title: '專注用雙手揉捏彩色黏土', desc: '黑衣男孩坐在木桌前，將黃色與彩色黏土按比例揉合成型。' },
+      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_2.jpg?v=5', title: '老師在教室中細心指導黏土技巧', desc: '老師蹲在桌旁溫柔指導小朋友如何掌握黏土濕度與搓圓手法。' },
+      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_3.jpg?v=5', title: '手指沾著黃色彩泥專注構思作品', desc: '坐在工作墊前，女孩手上黏著彩泥，認真思考下一個要捏塑的甜點配件。' },
+      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_4.jpg?v=5', title: '手比勝利手勢展示黏土點心作品', desc: '男孩開心地坐在木桌前，桌上擺著精緻的黏土餅乾與冰淇淋作品。' },
+      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_5.jpg?v=5', title: '女孩展示多彩杯子蛋糕黏土相框', desc: '女孩捧著完成的黏土點心作品，在繪有甜筒插畫的背景前留影。' },
+      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_6.jpg?v=5', title: '雙手搓揉黏土長條細節', desc: '戴眼鏡的男孩雙手合十在桌上來回搓揉，製作細長勻稱的黏土線條。' },
+      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_extra_1.jpg?v=5', title: '兩位男孩在透明工作墊上揉塑黏土', desc: '孩子們各自在塑膠墊上操作，身旁擺著水壺與彩泥，沉浸創作中。' },
+      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_extra_2.jpg?v=5', title: '低頭精細雕刻微縮黏土配件', desc: '黑衣男孩手握塑形工具，全神貫注刻劃黏土小玩偶的微小表情。' },
+      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_extra_3.jpg?v=5', title: '完成手作黏土露出甜美笑容', desc: '粉色連帽外套女孩坐在桌前，開朗展示手作黏土成果。' },
+      { cat: 'toys', tag: '動手實作', img: './photos/august/aug_toys_extra_4.jpg?v=5', title: '用工具細心壓製黏土花紋', desc: '藍衣男孩右手握筆型工具，在彩色黏土塊上小心印壓出精緻紋理。' },
 
       // 台南雙館古蹟走讀
-      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_1.jpg?v=4', title: '漫步司法博物館百年圓拱長廊', desc: '全體學員排著整齊隊伍走在宏偉典雅的西洋歷史建築走廊中。' },
-      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_2.jpg?v=4', title: '端坐在法庭『書記官席』體驗審判職責', desc: '男孩坐在古典木質法庭的書記官位置前，體驗嚴肅莊重的司法場景。' },
-      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_3.jpg?v=4', title: '聆聽導覽老師解說歷史拘留所牢房', desc: '孩子們圍繞在導覽老師身旁，專注聆聽古蹟法庭與牢房的歷史由來。' },
-      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_4.jpg?v=4', title: '站在鐵欄杆拘留所前探訪歷史印記', desc: '學員們透過歷史鐵門觀察內部結構，體會社會法治制度的演進。' },
-      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_5.jpg?v=4', title: '在博物館庭園邊享用清涼冷飲', desc: '男孩坐在長凳上大口喝著冰涼仙草飲品，享受走讀途中的休息時光。' },
-      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_6.jpg?v=4', title: '坐在木質長椅上記錄學習心得', desc: '孩子們靠著木製長凳休息並在學習單上隨手記錄古蹟建築亮點。' },
-      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_7.jpg?v=4', title: '女孩大口品嚐美味小點心', desc: '在古蹟園區休息區，小女孩拿著香脆餅乾大口咬下，露出滿足神情。' },
-      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_8.jpg?v=4', title: '低頭在木桌上認真完成走讀學習單', desc: '男孩雙手按在筆記本上，專心將今天在法庭與水道學到的知識寫下。' },
-      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_9.jpg?v=4', title: '兩位男孩在古蹟紅磚廣場前擺出酷帥姿勢', desc: '身穿紅藍上衣的夥伴在博物館戶外廣場並肩合影，展現好默契。' },
-      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_10.jpg?v=4', title: '紅衣男孩在博物館內綻放開朗笑容', desc: '手舉向頭頂露出無比燦爛笑容，留下這趟古蹟走讀最棒的瞬間。' },
+      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_1.jpg?v=5', title: '排隊漫步司法博物館百年圓拱長廊', desc: '全體學員排著整齊隊伍走在宏偉典雅的西洋歷史建築走廊中。' },
+      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_2.jpg?v=5', title: '端坐在法庭『書記官席』體驗審判職責', desc: '男孩坐在古典木質法庭的書記官位置前，體驗嚴肅莊重的司法場景。' },
+      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_3.jpg?v=5', title: '在歷史拘留所鐵門前聽老師解說', desc: '孩子們圍繞在導覽老師身旁，專注聆聽古蹟法庭與牢房的歷史由來。' },
+      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_4.jpg?v=5', title: '聚集在古蹟牢房鐵欄杆前觀察', desc: '學員們透過歷史鐵門觀察內部結構，體會社會法治制度的演進。' },
+      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_5.jpg?v=5', title: '坐在庭園木椅上享用清涼冷飲', desc: '男孩坐在長凳上大口喝著冰涼仙草飲品，享受走讀途中的休息時光。' },
+      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_6.jpg?v=5', title: '在博物館中庭木椅上休息交流', desc: '孩子們靠著木製長凳休息並在學習單上隨手記錄古蹟建築亮點。' },
+      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_7.jpg?v=5', title: '女孩大口品嚐美味小點心', desc: '在古蹟園區休息區，小女孩拿著香脆餅乾大口咬下，露出滿足神情。' },
+      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_8.jpg?v=5', title: '趴在木桌上認真填寫走讀學習單', desc: '男孩雙手按在筆記本上，專心將今天在法庭與水道學到的知識寫下。' },
+      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_9.jpg?v=5', title: '兩位男孩在古蹟紅磚廣場前並肩合影', desc: '身穿紅藍上衣的夥伴在博物館戶外廣場並肩合影，展現好默契。' },
+      { cat: 'museum', tag: '雙館走讀', img: './photos/august/aug_museum_10.jpg?v=5', title: '紅衣男孩在博物館內綻放開朗笑容', desc: '手舉向頭頂露出無比燦爛笑容，留下這趟古蹟走讀最棒的瞬間。' },
 
       // 國際議題
-      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_1.jpg?v=4', title: '白板前分組熱烈發想文化祭遊戲', desc: '老師站在白板前引導，孩子們圍成一圈踴躍提出有趣的闖關規則。' },
-      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_2.jpg?v=4', title: '小組圍坐木桌熱烈研討遊戲道具', desc: '四位男孩圍著課桌激烈討論，在笑聲中激盪出獨具創意的遊戲點子。' },
-      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_3.jpg?v=4', title: '全班在教室中聆聽 SDGs 簡報', desc: '課堂投影幕播放著全球議題投影片，孩子們整齊坐在桌前專注聆聽。' },
-      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_4.jpg?v=4', title: '在學習單上認真記錄地球永續任務', desc: '戴眼鏡的男孩手握鉛筆，在課堂講義上工整填寫今日的思考總結。' },
-      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_5.jpg?v=4', title: '低頭在世界地圖學習單上彩繪標記', desc: '男孩拿起鉛筆對照投影片，在世界地圖上尋找並標記各國生產鏈。' },
-      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_2_1.jpg?v=4', title: '在白板前統整各組遊戲發想亮點', desc: '老師在白板上記錄大家票選出的遊戲，全班熱情舉手表達支持。' },
-      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_2_2.jpg?v=4', title: '站在講台前向大家簡報小組構想', desc: '孩子自信站在白板投影幕旁，手拿講義清晰介紹小組設計的關卡。' },
-      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_2_3.jpg?v=4', title: '同儕相互討論並修改遊戲細節', desc: '組員們在桌前相互比對學習單，將遊戲步驟修飾得更加公平好玩。' },
-      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_2_4.jpg?v=4', title: '師生課堂互動探討氣候變遷影響', desc: '老師在白板前帶領全班思考日常減塑行動，台下孩子熱烈互動。' },
-      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_2_5.jpg?v=4', title: '小組發表文化祭攤位企劃共識', desc: '大家在座位上熱情舉手發言，帶著滿滿期待迎接文化祭的到來。' },
+      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_1.jpg?v=5', title: '圍在白板前熱烈發想文化祭遊戲', desc: '老師站在白板前引導，孩子們圍成一圈踴躍提出有趣的闖關規則。' },
+      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_2.jpg?v=5', title: '小組圍坐木桌熱烈研討遊戲道具', desc: '四位男孩圍著課桌激烈討論，在笑聲中激盪出獨具創意的遊戲點子。' },
+      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_3.jpg?v=5', title: '全班在教室中聆聽 SDGs 簡報', desc: '課堂投影幕播放著全球議題投影片，孩子們整齊坐在桌前專注聆聽。' },
+      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_4.jpg?v=5', title: '在學習單上認真記錄地球永續任務', desc: '戴眼鏡的男孩手握鉛筆，在課堂講義上工整填寫今日的思考總結。' },
+      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_5.jpg?v=5', title: '低頭在世界地圖學習單上彩繪標記', desc: '男孩拿起鉛筆對照投影片，在世界地圖上尋找並標記各國生產鏈。' },
+      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_2_1.jpg?v=5', title: '在白板前統整各組遊戲發想亮點', desc: '老師在白板上記錄大家票選出的遊戲，全班熱情舉手表達支持。' },
+      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_2_2.jpg?v=5', title: '站在講台前向大家簡報小組構想', desc: '孩子自信站在白板投影幕旁，手拿講義清晰介紹小組設計的關卡。' },
+      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_2_3.jpg?v=5', title: '同儕相互討論並修改遊戲細節', desc: '組員們在桌前相互比對學習單，將遊戲步驟修飾得更加公平好玩。' },
+      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_2_4.jpg?v=5', title: '師生課堂互動探討氣候變遷影響', desc: '老師在白板前帶領全班思考日常減塑行動，台下孩子熱烈互動。' },
+      { cat: 'sdgs', tag: '國際議題', img: './photos/august/aug_sdgs_2_5.jpg?v=5', title: '小組發表文化祭攤位企劃共識', desc: '大家在座位上熱情舉手發言，帶著滿滿期待迎接文化祭的到來。' },
 
       // 大坑休閒農場 (雨天真實行程)
-      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_1.jpg?v=4', title: '手捧自製玻璃罐冰淇淋露出燦爛笑容', desc: '男孩雙手捧著親手搖製完成的冰淇淋罐，臉上洋溢超級甜美自信的笑容。' },
-      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_2.jpg?v=4', title: '站在生態展示箱前近距離觀察昆蟲', desc: '孩子們聚集在玻璃生態箱前，好奇打量裡面的甲蟲與自然標本。' },
-      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_3.jpg?v=4', title: '雙手高舉毛巾包裹的搖搖冰淇淋罐', desc: '戴眼鏡的男孩雙手抱著厚厚毛巾包裹的冰淇淋搖罐，驚呼溫度好冰涼！' },
-      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_4.jpg?v=4', title: '兩位女孩合力抱著冰淇淋罐合影', desc: '女孩們在木桌前雙手按著包有冰塊粗鹽的毛巾罐，露出可愛微笑。' },
-      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_5.jpg?v=4', title: '圍在木桌旁準備 DIY 冰淇淋原料', desc: '孩子們圍在圓木桌旁，看著老師將新鮮乳品與材料分裝到小鋼杯中。' },
-      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_6.jpg?v=4', title: '在農場室內餐廳大廳集合準備用餐', desc: '大夥在寬敞的木質餐廳大廳內就座，準備享用熱騰騰的在地風味合菜。' },
-      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_7.jpg?v=4', title: '男孩在農場室內木地板上專注等待', desc: '身穿藍色背心的男孩席地而坐，安靜聆聽導覽人員介紹農場生態。' },
-      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_8.jpg?v=4', title: '女孩雙手扶著毛巾包裹的冰淇淋筒', desc: '粉橘上衣女孩坐在原木長椅上，認真準備開始用力搖晃冰淇淋罐。' },
-      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_9.jpg?v=4', title: '聚集在巨型木製釘子彈珠台前同樂', desc: '孩子們圍在充滿懷舊古早味的巨型彈珠台旁，興奮看著彈珠滾落軌道。' },
-      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_10.jpg?v=4', title: '小男孩站在巨型彈珠台旁專心注視', desc: '白衣小男孩目不轉睛盯著插滿鐵釘的巨大彈珠盤，體驗古早童玩魅力。' },
+      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_1.jpg?v=5', title: '手捧昆蟲琥珀標本開懷大笑', desc: '男孩雙手捧著封存甲蟲標本的透明樹脂塊，在大坑農場留下燦爛開朗的笑容。' },
+      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_2.jpg?v=5', title: '圍在窗邊觀看 DIY 冰淇淋原料分裝', desc: '孩子們聚集在木桌窗邊，專注看著老師將新鮮牛奶與配料分裝入杯。' },
+      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_3.jpg?v=5', title: '雙手高舉毛巾包裹的搖搖冰淇淋罐', desc: '戴眼鏡男孩抱著包有冰塊粗鹽的冰淇淋金屬筒，驚呼搖晃時溫度好冰涼！' },
+      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_4.jpg?v=5', title: '兩位女孩合力抱著冰淇淋筒合影', desc: '女孩們在木桌前雙手護著冰淇淋搖罐，期待親手搖出美味甜點。' },
+      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_5.jpg?v=5', title: '圍坐木桌前調配冰淇淋原料', desc: '孩子們坐在農場木桌旁，將鮮奶倒入鋼杯中準備開始搖冰淇淋。' },
+      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_6.jpg?v=5', title: '挽起袖子在農場餐廳木桌前蓄勢待發', desc: '孩子坐在大坑農場餐廳的長桌前，捲起袖子準備迎接接下來的 DIY 體驗與在地午餐。' },
+      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_7.jpg?v=5', title: '席地而坐專注聆聽農場生態導覽', desc: '身穿藍色背心的男孩安靜蹲坐在室內地板上，認真聆聽農場導覽員解說。' },
+      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_8.jpg?v=5', title: '女孩在長凳上用力搖晃冰淇淋筒', desc: '粉橘上衣女孩坐在原木長凳上，雙手緊握毛巾包裹的容器用力搖晃。' },
+      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_9.jpg?v=5', title: '聚集在巨型木製釘子彈珠台前同樂', desc: '孩子們圍在插滿鐵釘的巨大木製彈珠盤旁，興奮看著彈珠滾落軌道。' },
+      { cat: 'daking', tag: '大坑農場', img: './photos/august/aug_daking_10.jpg?v=5', title: '小男孩站在巨型彈珠台旁專心注視', desc: '白衣小男孩目不轉睛盯著插滿鐵釘的巨大彈珠盤，體驗古早童玩魅力。' },
 
       // 宇宙星球
-      { cat: 'space', tag: '宇宙星球', img: './photos/august/aug_space_1.jpg?v=4', title: '用藍色黏土捏塑浩瀚宇宙背景', desc: '男孩們在木桌前將深藍色黏土均勻鋪平，作為星球展示的宇宙底盤。' },
-      { cat: 'space', tag: '宇宙星球', img: './photos/august/aug_space_2.jpg?v=4', title: '兩位男孩低頭研究各色星球模型', desc: '孩子們趴在桌前仔細觀察黃色、綠色與紅色的小球，比對行星大小。' },
-      { cat: 'space', tag: '宇宙星球', img: './photos/august/aug_space_3.jpg?v=4', title: '同儕分工合作捏製彩色行星表面', desc: '組員們合力揉捏不同色彩的黏土，製作木星條紋與土星光環。' },
-      { cat: 'space', tag: '宇宙星球', img: './photos/august/aug_space_4.jpg?v=4', title: '開心比耶展示盛滿彩色行星的白盤', desc: '男孩笑得合不攏嘴，雙手端著擺滿五彩繽紛星球黏土的圓盤大方展示。' },
-      { cat: 'space', tag: '宇宙星球', img: './photos/august/aug_space_5.jpg?v=4', title: '全班完成的藍色宇宙星球作品俯瞰', desc: '深藍底盤上點綴著紅黃綠各色立體行星，宛如微縮的太陽系星空。' },
+      { cat: 'space', tag: '宇宙星球', img: './photos/august/aug_space_1.jpg?v=5', title: '用深藍黏土鋪平宇宙背景底盤', desc: '男孩們在木桌前將深藍色黏土均勻鋪平，作為星球展示的宇宙底盤。' },
+      { cat: 'space', tag: '宇宙星球', img: './photos/august/aug_space_2.jpg?v=5', title: '兩位男孩低頭研究各色星球模型', desc: '孩子們趴在桌前仔細觀察黃色、綠色與紅色的小球，比對行星大小。' },
+      { cat: 'space', tag: '宇宙星球', img: './photos/august/aug_space_3.jpg?v=5', title: '同儕分工合作捏製彩色行星表面', desc: '組員們合力揉捏不同色彩的黏土，製作木星條紋與土星光環。' },
+      { cat: 'space', tag: '宇宙星球', img: './photos/august/aug_space_4.jpg?v=5', title: '開心比耶展示盛滿彩色行星的白盤', desc: '男孩笑得合不攏嘴，雙手端著擺滿五彩繽紛星球黏土的圓盤大方展示。' },
+      { cat: 'space', tag: '宇宙星球', img: './photos/august/aug_space_5.jpg?v=5', title: '全班完成的藍色宇宙星球作品俯瞰', desc: '深藍底盤上點綴著紅黃綠各色立體行星，宛如微縮的太陽系星空。' },
 
       // 創客黏土
-      { cat: 'clay', tag: '創客黏土', img: './photos/august/aug_clay_1.jpg?v=4', title: '雙手捧著白色黏土裝飾相框開懷大笑', desc: '小男孩開心地雙手舉起黏土裝飾相框，露出純真燦爛的笑容。' },
-      { cat: 'clay', tag: '創客黏土', img: './photos/august/aug_clay_2.jpg?v=4', title: '戴眼鏡男孩細心為黏土小物點綴細節', desc: '坐在桌前用小工具調整彩色配件，神情專注展現工匠精神。' },
-      { cat: 'clay', tag: '創客黏土', img: './photos/august/aug_clay_3.jpg?v=4', title: '用彩色筆在立體黏土上描繪圖樣', desc: '黃衣男孩右手握筆，小心翼翼在手捏黏土上畫出精細花紋。' },
-      { cat: 'clay', tag: '創客黏土', img: './photos/august/aug_clay_4.jpg?v=4', title: '黃綠相間外套男孩為黏土著色', desc: '孩子專心握著彩色筆為黏土條逐層上色，探索多層次漸層效果。' },
-      { cat: 'clay', tag: '創客黏土', img: './photos/august/aug_clay_5.jpg?v=4', title: '手拿彩色螺紋棒棒糖黏土吊飾', desc: '男孩雙手端起五彩旋渦造型的黏土吊飾，眼神中充滿自信成就感。' },
+      { cat: 'clay', tag: '創客黏土', img: './photos/august/aug_clay_1.jpg?v=5', title: '雙手捧著白色黏土裝飾相框開懷大笑', desc: '小男孩開心地雙手舉起黏土裝飾相框，露出純真燦爛的笑容。' },
+      { cat: 'clay', tag: '創客黏土', img: './photos/august/aug_clay_2.jpg?v=5', title: '戴眼鏡男孩細心為黏土小物點綴細節', desc: '坐在桌前用小工具調整彩色配件，神情專注展現工匠精神。' },
+      { cat: 'clay', tag: '創客黏土', img: './photos/august/aug_clay_3.jpg?v=5', title: '用彩色筆在立體黏土上描繪圖樣', desc: '黃衣男孩右手握筆，小心翼翼在手捏黏土上畫出精細花紋。' },
+      { cat: 'clay', tag: '創客黏土', img: './photos/august/aug_clay_4.jpg?v=5', title: '黃綠相間外套男孩為黏土著色', desc: '孩子專心握著彩色筆為黏土條逐層上色，探索多層次漸層效果。' },
+      { cat: 'clay', tag: '創客黏土', img: './photos/august/aug_clay_5.jpg?v=5', title: '手拿彩色螺紋棒棒糖黏土吊飾', desc: '男孩雙手端起五彩旋渦造型的黏土吊飾，眼神中充滿自信成就感。' },
 
       // 小書創作
-      { cat: 'booklet', tag: '小書創作', img: './photos/august/aug_booklet_1.jpg?v=4', title: '手繪四層彩虹蛋糕小書封面特寫', desc: '封面工整寫著『我最喜歡做的勞作是彩虹黏土』，搭配鮮豔的手繪插圖。' },
-      { cat: 'booklet', tag: '小書創作', img: './photos/august/aug_booklet_2.jpg?v=4', title: '戴粉色口罩女孩在格線紙上撰寫故事', desc: '女孩在圖書教室的書架旁專心運筆，把夏天的回憶寫成溫暖短文。' },
-      { cat: 'booklet', tag: '小書創作', img: './photos/august/aug_booklet_3.jpg?v=4', title: '男孩在稿紙上一字一句完成小書內頁', desc: '灰衣男孩低頭注視稿紙，條理分明地記錄自己在營隊中最難忘的冒險。' },
-      { cat: 'booklet', tag: '小書創作', img: './photos/august/aug_booklet_4.jpg?v=4', title: '戴眼鏡男孩在白板前整理小書章節', desc: '孩子站在白板邊的長桌旁，將寫好的各頁故事依序排列準備裝訂。' },
-      { cat: 'booklet', tag: '小書創作', img: './photos/august/aug_booklet_5.jpg?v=4', title: '全班學員齊聚教室共同製作原創小書', desc: '長條木桌兩側坐滿了專注創作的孩子，每個人都在打造專屬出版品。' }
+      { cat: 'booklet', tag: '小書創作', img: './photos/august/aug_booklet_1.jpg?v=5', title: '手繪四層彩虹蛋糕小書封面特寫', desc: '封面工整寫著『我最喜歡做的勞作是彩虹黏土』，搭配鮮豔的手繪插圖。' },
+      { cat: 'booklet', tag: '小書創作', img: './photos/august/aug_booklet_2.jpg?v=5', title: '戴粉色口罩女孩在格線紙上撰寫故事', desc: '女孩在圖書教室的書架旁專心運筆，把夏天的回憶寫成溫暖短文。' },
+      { cat: 'booklet', tag: '小書創作', img: './photos/august/aug_booklet_3.jpg?v=5', title: '男孩在稿紙上一字一句完成小書內頁', desc: '灰衣男孩低頭注視稿紙，條理分明地記錄自己在營隊中最難忘的冒險。' },
+      { cat: 'booklet', tag: '小書創作', img: './photos/august/aug_booklet_4.jpg?v=5', title: '戴眼鏡男孩在白板前整理小書章節', desc: '孩子站在白板邊的長桌旁，將寫好的各頁故事依序排列準備裝訂。' },
+      { cat: 'booklet', tag: '小書創作', img: './photos/august/aug_booklet_5.jpg?v=5', title: '全班學員齊聚教室共同製作原創小書', desc: '長條木桌兩側坐滿了專注創作的孩子，每個人都在打造專屬出版品。' }
     ];
 
     // Render Moments Grid
@@ -2222,8 +2283,11 @@
       }
     });
 
-    // 1. Treasure Hunt Stamps Logic
+        // 1. Treasure Hunt Stamps Logic (5 大展區)
     function toggleStamp(elem, zoneName, zoneIdx) {
+      if (!persistentData.stamps) persistentData.stamps = [false, false, false, false, false];
+      while (persistentData.stamps.length < 5) persistentData.stamps.push(false);
+
       const isCurrentlyActive = elem.classList.contains('active');
       if (isCurrentlyActive) {
         elem.classList.remove('active');
@@ -2231,76 +2295,155 @@
       } else {
         elem.classList.add('active');
         persistentData.stamps[zoneIdx - 1] = true;
-        confetti({ particleCount: 40, spread: 50, origin: { y: 0.8 } });
+        confetti({ particleCount: 45, spread: 55, origin: { y: 0.8 } });
       }
 
       saveStoredData(persistentData);
 
       const activeCount = persistentData.stamps.filter(Boolean).length;
-      document.getElementById('stamp-progress-text').innerText = `已解鎖 ${activeCount} / 4 展區`;
+      document.getElementById('stamp-progress-text').innerText = `已解鎖 ${activeCount} / 5 展區`;
 
-      if (activeCount === 4) {
+      if (activeCount === 5) {
         setTimeout(() => {
-          showCustomModal('展區集章解鎖！', '🎉 恭喜！您已在發表會現場集滿 4 大展區蓋章！可以向現場老師領取紀念小卡！', '🎖️');
+          confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+          showCustomModal('🎉 恭喜集滿 5 大展區！', '您已完成尚學文化祭 5 大展區闖關集章！請前往現場「禮物台」向關主領取文化祭專屬紀念禮物！🎁', '🎖️');
         }, 300);
       }
     }
 
-    // 3. Live Voting Logic
-    function castVote(idx) {
-      persistentData.votes[idx] = (persistentData.votes[idx] || 10) + 1;
-      document.getElementById(`vote-count-${idx}`).innerText = persistentData.votes[idx];
-      saveStoredData(persistentData);
+    // 5. Certificate High-DPI Canvas Rendering & Mobile-Proof Save
+    let generatedCertBlob = null;
+    let generatedCertDataUrl = '';
 
-      confetti({ particleCount: 60, spread: 60, origin: { y: 0.7 } });
-      showCustomModal('現場投票成功', '感謝您的現場投票與支持！已為該組別計入 1 票 👏', '🗳️');
-    }
+    function drawCertificateCanvas(childName, parentName, callback) {
+      const canvas = document.getElementById('cert-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const w = 1200;
+      const h = 850;
+      canvas.width = w;
+      canvas.height = h;
 
-    // 4. On-site Photo Upload Logic
-    function handleOnsiteUpload(event) {
-      const file = event.target.files[0];
-      if (!file) return;
+      // Background Parchment
+      const bgGrad = ctx.createLinearGradient(0, 0, w, h);
+      bgGrad.addColorStop(0, '#FFFDF8');
+      bgGrad.addColorStop(0.5, '#FAF6EE');
+      bgGrad.addColorStop(1, '#F6EFE2');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, w, h);
 
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const src = e.target.result;
-        const rot = (Math.random() * 6 - 3).toFixed(1);
-        const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      // Gold Double Borders
+      ctx.strokeStyle = '#C59B27';
+      ctx.lineWidth = 6;
+      ctx.strokeRect(26, 26, w - 52, h - 52);
 
-        const photoObj = { src, rot, time: timeStr };
-        if (!persistentData.polaroids) persistentData.polaroids = [];
-        persistentData.polaroids.unshift(photoObj);
-        saveStoredData(persistentData);
+      ctx.strokeStyle = '#D4AF37';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(38, 38, w - 76, h - 76);
 
-        const wall = document.getElementById('onsite-photo-wall');
-        const polaroid = document.createElement('div');
-        polaroid.className = 'onsite-polaroid';
-        polaroid.style.transform = `rotate(${rot}deg)`;
-        polaroid.innerHTML = `
-          <img src="${src}" alt="現場拍立得合照"/>
-          <span>${timeStr} 成果展現場 (已自動儲存)</span>
-        `;
-        wall.prepend(polaroid);
+      // Corner Ornaments ✦
+      ctx.fillStyle = '#C59B27';
+      ctx.font = '24px "Noto Serif TC", serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('✦', 52, 52);
+      ctx.fillText('✦', w - 52, 52);
+      ctx.fillText('✦', 52, h - 52);
+      ctx.fillText('✦', w - 52, h - 52);
 
-        confetti({ particleCount: 50, spread: 50 });
-        showCustomModal('拍立得上傳成功', '已將您在發表會現場拍下的照片發佈至合照牆！', '📸');
+      // Top Tag
+      ctx.fillStyle = '#C96D45';
+      ctx.font = 'bold 15px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.fillText('HONOR CERTIFICATE · 尚學文教 2026', w / 2, 92);
+
+      // Title
+      ctx.fillStyle = '#1A2B25';
+      ctx.font = 'bold 40px "Noto Serif TC", "Songti TC", serif';
+      ctx.fillText('2026 暑期頂尖計劃 · 結業證書', w / 2, 155);
+
+      // Subtitle
+      ctx.fillStyle = '#64748B';
+      ctx.font = '19px "Noto Serif TC", serif';
+      ctx.fillText('特此證明優秀學員', w / 2, 215);
+
+      // Child Name
+      ctx.fillStyle = '#2D5A46';
+      ctx.font = 'bold 46px "Noto Serif TC", "Songti TC", serif';
+      ctx.fillText(childName, w / 2, 280);
+
+      // Decorative Gold Underline
+      ctx.strokeStyle = '#D4AF37';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      const textW = Math.max(160, ctx.measureText(childName).width + 60);
+      ctx.moveTo((w - textW) / 2, 305);
+      ctx.lineTo((w + textW) / 2, 305);
+      ctx.stroke();
+
+      // Certificate Body Text
+      ctx.fillStyle = '#334155';
+      ctx.font = '21px "Noto Serif TC", "Songti TC", serif';
+      ctx.fillText('於 2026 年暑期全心投入食農教育、科學探究、動手實作、', w / 2, 375);
+      ctx.fillText('台南雙館古蹟走讀、國際議題SDGs與文化祭等全系列專題課程，', w / 2, 420);
+      ctx.fillText('展現卓越的自主觀察力、探究思考力與跨域實踐力，表現優異，特頒此證！', w / 2, 465);
+
+      // Parent Name
+      ctx.fillStyle = '#C96D45';
+      ctx.font = 'bold 20px "Noto Serif TC", serif';
+      ctx.fillText(`家長陪伴：${parentName}`, w / 2, 535);
+
+      // Draw Logo & Footer
+      const logo = new Image();
+      logo.crossOrigin = 'anonymous';
+      logo.onload = function() {
+        const logoW = 150;
+        const logoH = (logo.height / logo.width) * logoW;
+        ctx.drawImage(logo, (w - logoW) / 2, 580, logoW, logoH);
+
+        // Date Stamp
+        ctx.fillStyle = '#94A3B8';
+        ctx.font = '14px -apple-system, BlinkMacSystemFont, sans-serif';
+        ctx.fillText('2026 年 8 月 28 日 · 暑期雙月成果展完結典藏紀念版', w / 2, 580 + logoH + 28);
+
+        // Export DataURL & Blob
+        generatedCertDataUrl = canvas.toDataURL('image/png');
+        const previewImg = document.getElementById('cert-preview-img');
+        if (previewImg) previewImg.src = generatedCertDataUrl;
+
+        canvas.toBlob(blob => {
+          generatedCertBlob = blob;
+          if (callback) callback();
+        }, 'image/png');
       };
-      reader.readAsDataURL(file);
+      logo.onerror = function() {
+        // Fallback without logo
+        ctx.fillStyle = '#94A3B8';
+        ctx.font = '14px -apple-system, BlinkMacSystemFont, sans-serif';
+        ctx.fillText('尚學文教 · 2026 年 8 月 28 日 暑期成果展完結典藏版', w / 2, 650);
+
+        generatedCertDataUrl = canvas.toDataURL('image/png');
+        const previewImg = document.getElementById('cert-preview-img');
+        if (previewImg) previewImg.src = generatedCertDataUrl;
+
+        canvas.toBlob(blob => {
+          generatedCertBlob = blob;
+          if (callback) callback();
+        }, 'image/png');
+      };
+      logo.src = './shangxue-logo-transparent.png';
     }
 
-    // 5. Certificate Generator & Image Download Logic
     function generateCertificate() {
       const childName = document.getElementById('cert-child-input').value.trim() || '陳小明';
       const parentName = document.getElementById('cert-parent-input').value.trim() || '家長';
 
-      document.getElementById('modal-cert-child').innerText = childName;
-      document.getElementById('modal-cert-parent').innerText = `家長陪伴：${parentName}`;
-      document.getElementById('cert-modal').classList.add('show');
-
-      confetti({
-        particleCount: 120,
-        spread: 80,
-        origin: { y: 0.6 }
+      drawCertificateCanvas(childName, parentName, () => {
+        document.getElementById('cert-modal').classList.add('show');
+        confetti({
+          particleCount: 100,
+          spread: 80,
+          origin: { y: 0.6 }
+        });
       });
     }
 
@@ -2308,27 +2451,47 @@
       document.getElementById('cert-modal').classList.remove('show');
     }
 
-    // 下載證書照片至手機相簿
-    function downloadCertificateImage() {
-      const target = document.getElementById('cert-paper-target');
-      showCustomModal('正在生成證書照片...', '請稍候，系統正在為您產出高畫質 PNG 結業證書！', '⏳');
+    // 儲存至手機相簿 (支援 iOS Web Share API 原生儲存 / Android & 電腦下載)
+    async function saveCertificateImage() {
+      const childName = document.getElementById('cert-child-input')?.value.trim() || '學員';
+      const fileName = `2026尚學暑期頂尖計劃_結業證書_${childName}.png`;
 
-      html2canvas(target, {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: '#FFFDF8'
-      }).then(canvas => {
-        closeCustomModal();
+      if (generatedCertBlob) {
+        const file = new File([generatedCertBlob], fileName, { type: 'image/png' });
+        // 優先呼叫原生分享/儲存面板 (iOS 15+ & Android Chrome 支援一鍵「儲存影像」)
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          try {
+            await navigator.share({
+              files: [file],
+              title: '2026 尚學文教結業證書',
+              text: `恭喜 ${childName} 榮獲 2026 暑期頂尖計劃結業證書！`
+            });
+            return;
+          } catch (err) {
+            if (err.name !== 'AbortError') {
+              console.log('Share canceled or error:', err);
+            }
+          }
+        }
+      }
+
+      // Fallback 下載
+      downloadDirectPNG();
+    }
+
+    function downloadDirectPNG() {
+      const childName = document.getElementById('cert-child-input')?.value.trim() || '學員';
+      const fileName = `2026尚學暑期頂尖計劃_結業證書_${childName}.png`;
+
+      if (generatedCertDataUrl) {
         const link = document.createElement('a');
-        const childName = document.getElementById('modal-cert-child').innerText || '學員';
-        link.download = `2026尚學暑期頂尖計劃_結業證書_${childName}.png`;
-        link.href = canvas.toDataURL('image/png');
+        link.download = fileName;
+        link.href = generatedCertDataUrl;
+        document.body.appendChild(link);
         link.click();
-        showCustomModal('證書已下載完成！', '高畫質 PNG 結業證書圖檔已儲存至您的手機下載/相簿中！', '📥');
-      }).catch(err => {
-        closeCustomModal();
-        showCustomModal('下載失敗', '請嘗試截圖保存畫面或長按證書圖片進行保存。', '⚠️');
-      });
+        document.body.removeChild(link);
+        showCustomModal('證書已產出！', '💡 若手機未自動跳出下載提示，請直接「長按證書圖片」選擇【儲存影像 / 加入照片】存入相簿！', '📥');
+      }
     }
 
     // Parent Poll Logic (家長投票區與即時統計資料)
