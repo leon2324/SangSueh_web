@@ -405,141 +405,265 @@
       }
     }
   
-    /* 尚學 Logo 與導覽列響應式黃金比例 (電腦大器典雅，手機精緻小巧不佔屏) */
+    /* ========================================================
+       現代化極簡響應式導覽系統 (Modern Clean Navigation System)
+       ======================================================== */
+    .site-header {
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 1000 !important;
+      background: rgba(247, 242, 232, 0.96) !important;
+      backdrop-filter: blur(14px) !important;
+      -webkit-backdrop-filter: blur(14px) !important;
+      border-bottom: 1px solid rgba(36, 49, 46, 0.1) !important;
+      padding: 0 4vw !important;
+      height: 64px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+    }
+    .site-header-brand {
+      display: flex !important;
+      align-items: center !important;
+    }
     .brand-logo {
-      height: 62px !important;
-      max-height: 62px !important;
+      height: 48px !important;
+      max-height: 48px !important;
       width: auto !important;
-      object-fit: contain;
+      object-fit: contain !important;
+      display: block !important;
     }
     .hero-logo {
       height: 120px !important;
       max-height: 120px !important;
       width: auto !important;
-      object-fit: contain;
+      object-fit: contain !important;
     }
     .footer-logo {
       height: 80px !important;
       max-height: 80px !important;
       width: auto !important;
-      object-fit: contain;
+      object-fit: contain !important;
     }
     .cert-rect-logo {
       height: 140px !important;
       max-height: 140px !important;
       width: auto !important;
-      object-fit: contain;
+      object-fit: contain !important;
     }
-    .site-header {
-      position: sticky !important;
-      top: 0 !important;
-      z-index: 100 !important;
-      background: rgba(247, 242, 232, 0.95) !important;
-      backdrop-filter: blur(12px) !important;
-      -webkit-backdrop-filter: blur(12px) !important;
-      border-bottom: 1px solid rgba(36, 49, 46, 0.1) !important;
-      padding: 10px 5vw !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      gap: 20px !important;
-    }
-    .site-header-top {
-      display: flex !important;
-      align-items: center !important;
-    }
-    .mobile-only {
-      display: none !important;
-    }
-    .site-nav {
+
+    /* 電腦版導覽列 (Desktop Nav) */
+    .desktop-nav {
       display: flex !important;
       align-items: center !important;
       gap: 8px !important;
       font-size: 13.5px !important;
       font-weight: 750 !important;
-      overflow-x: auto !important;
-      white-space: nowrap !important;
-      -webkit-overflow-scrolling: touch !important;
-      scrollbar-width: none !important;
     }
-    .site-nav::-webkit-scrollbar {
-      display: none !important;
-    }
-    .site-nav a {
+    .desktop-nav a {
       padding: 6px 12px !important;
       border-radius: 999px !important;
       color: #24312E !important;
-      transition: all 0.2s ease !important;
       background: rgba(36, 49, 46, 0.04) !important;
-      flex-shrink: 0 !important;
       text-decoration: none !important;
+      transition: all 0.2s ease !important;
+      flex-shrink: 0 !important;
     }
-    .site-nav a:hover {
+    .desktop-nav a:hover {
       background: rgba(36, 49, 46, 0.12) !important;
       color: #1A2B25 !important;
     }
-    .site-nav a.nav-highlight {
+    .desktop-nav a.nav-highlight {
       background: #C96D45 !important;
       color: #FFFFFF !important;
       font-weight: 900 !important;
       box-shadow: 0 2px 6px rgba(201, 109, 69, 0.25) !important;
     }
-    .site-nav a.nav-highlight:hover {
+    .desktop-nav a.nav-highlight:hover {
       background: #B35830 !important;
     }
 
-    /* 手機版極致輕量小巧 (Mobile Optimized Navbar & Logo) */
+    /* 手機版導覽按鈕區 (Mobile Actions) */
+    .mobile-header-actions {
+      display: none !important;
+    }
+
+    /* 手機版抽屜選單模組 (Bulletproof Drawer Sheet) */
+    .mobile-drawer-overlay {
+      position: fixed !important;
+      inset: 0 !important;
+      background: rgba(0, 0, 0, 0.6) !important;
+      z-index: 999999 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-end !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transition: opacity 0.25s ease, visibility 0.25s ease !important;
+    }
+    .mobile-drawer-overlay.active {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+    .mobile-drawer {
+      width: 100% !important;
+      background: #FFFDF8 !important;
+      border-radius: 24px 24px 0 0 !important;
+      max-height: 82vh !important;
+      display: flex !important;
+      flex-direction: column !important;
+      transform: translateY(100%) !important;
+      transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1) !important;
+      box-shadow: 0 -10px 40px rgba(0,0,0,0.3) !important;
+    }
+    .mobile-drawer-overlay.active .mobile-drawer {
+      transform: translateY(0) !important;
+    }
+    .drawer-header {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 16px 20px !important;
+      border-bottom: 1px solid rgba(36, 49, 46, 0.1) !important;
+      background: #FFFDF8 !important;
+      border-radius: 24px 24px 0 0 !important;
+    }
+    .drawer-title {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      font-family: Noto Serif TC, serif !important;
+      font-weight: 800 !important;
+      font-size: 16px !important;
+      color: #24312E !important;
+    }
+    .drawer-close {
+      background: rgba(36, 49, 46, 0.08) !important;
+      border: 0 !important;
+      width: 32px !important;
+      height: 32px !important;
+      border-radius: 50% !important;
+      font-size: 16px !important;
+      font-weight: 800 !important;
+      color: #24312E !important;
+      cursor: pointer !important;
+      display: grid !important;
+      place-items: center !important;
+    }
+    .drawer-content {
+      padding: 16px 20px 32px !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 18px !important;
+    }
+    .drawer-group-title {
+      font-size: 12px !important;
+      font-weight: 900 !important;
+      color: #C96D45 !important;
+      letter-spacing: 0.1em !important;
+      margin-bottom: 8px !important;
+    }
+    .drawer-link {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      padding: 11px 14px !important;
+      background: #F7F2E8 !important;
+      border-radius: 12px !important;
+      text-decoration: none !important;
+      color: #24312E !important;
+      font-size: 14px !important;
+      font-weight: 750 !important;
+      margin-bottom: 6px !important;
+      transition: background 0.15s ease !important;
+    }
+    .drawer-link:active {
+      background: #EAE3D2 !important;
+    }
+    .drawer-link .d-num {
+      background: #24312E !important;
+      color: #FFF !important;
+      font-size: 11px !important;
+      font-weight: 900 !important;
+      border-radius: 6px !important;
+      padding: 2px 6px !important;
+      min-width: 22px !important;
+      text-align: center !important;
+    }
+    .drawer-link.drawer-highlight {
+      background: #C96D45 !important;
+      color: #FFF !important;
+      font-weight: 900 !important;
+      box-shadow: 0 4px 12px rgba(201, 109, 69, 0.25) !important;
+    }
+    .drawer-link.drawer-highlight .d-num {
+      background: #FFF !important;
+      color: #C96D45 !important;
+    }
+
+    /* 手機版純淨版面 (Mobile Media Queries) */
     @media (max-width: 900px) {
       .site-header {
-        flex-direction: column !important;
-        align-items: stretch !important;
-        padding: 5px 12px 6px !important;
-        gap: 4px !important;
-        background: rgba(247, 242, 232, 0.98) !important;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+        height: 56px !important;
+        padding: 0 14px !important;
       }
-      .site-header-top {
+      .desktop-nav {
+        display: none !important;
+      }
+      .mobile-header-actions {
         display: flex !important;
         align-items: center !important;
-        justify-content: space-between !important;
-        width: 100% !important;
-        padding: 0 !important;
+        gap: 8px !important;
       }
       .brand-logo {
-        height: 32px !important;
-        max-height: 32px !important;
-        width: auto !important;
+        height: 34px !important;
+        max-height: 34px !important;
       }
-      .mobile-only {
-        display: inline-flex !important;
-        align-items: center !important;
-        padding: 4px 10px !important;
-        font-size: 11.5px !important;
-        font-weight: 800 !important;
-        border-radius: 999px !important;
+      .mobile-cta-btn {
         background: #C96D45 !important;
         color: #FFF !important;
-        border: 1px solid #C96D45 !important;
         text-decoration: none !important;
+        font-size: 12px !important;
+        font-weight: 850 !important;
+        padding: 6px 12px !important;
+        border-radius: 999px !important;
+        box-shadow: 0 2px 6px rgba(201, 109, 69, 0.3) !important;
       }
-      .site-nav {
-        width: 100% !important;
-        padding: 2px 0 2px !important;
-        gap: 6px !important;
+      .mobile-menu-btn {
+        background: #24312E !important;
+        color: #FFF !important;
+        border: 0 !important;
+        font-size: 12px !important;
+        font-weight: 850 !important;
+        padding: 6px 12px !important;
+        border-radius: 999px !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+        cursor: pointer !important;
       }
-      .site-nav a {
-        font-size: 11.5px !important;
-        padding: 3px 8px !important;
-        line-height: 1.2 !important;
+      /* 手機版首頁徹底隱藏重複的小 Logo 與重疊星星，保持純淨高級感 */
+      .hero .hero-logo {
+        display: none !important;
       }
-      .hero-logo {
-        height: 52px !important;
-        max-height: 52px !important;
-        width: auto !important;
-        margin: 0 0 8px 0 !important;
+      .scribble {
+        display: none !important;
       }
       .hero {
-        padding-top: 18px !important;
+        padding-top: 32px !important;
+      }
+      .hero h1 {
+        font-size: clamp(32px, 8.5vw, 44px) !important;
+        line-height: 1.25 !important;
+        margin: 14px 0 16px !important;
+      }
+      .hero-intro {
+        font-size: 15px !important;
+        line-height: 1.8 !important;
       }
     }
 
@@ -1189,13 +1313,14 @@
   <main>
     <!-- Site Header -->
     <header class="site-header">
-      <div class="site-header-top">
+      <div class="site-header-brand">
         <a class="brand" href="#top" aria-label="回到首頁">
           <img class="brand-logo" src="./shangxue-logo-transparent.png" alt="尚學文教"/>
         </a>
-        <a class="mini-cta mobile-only" href="#onsite">🎪 現場集章</a>
       </div>
-      <nav class="site-nav" aria-label="主要導覽">
+      
+      <!-- 電腦版完整導覽列 (Desktop Navigation) -->
+      <nav class="desktop-nav" aria-label="主要導覽">
         <a href="#about">夏日序章</a>
         <a href="#farm">食農教育</a>
         <a href="#science">科學探究</a>
@@ -1209,11 +1334,24 @@
         <a href="#moments">照片集</a>
         <a class="nav-highlight" href="#onsite">🎪 現場互動</a>
       </nav>
+
+      <!-- 手機版極致簡潔導覽按鈕 (Mobile Clean Actions) -->
+      <div class="mobile-header-actions">
+        <a class="mobile-cta-btn" href="#onsite">🎪 現場集章</a>
+        <button class="mobile-menu-btn" type="button" id="mobile-menu-trigger" aria-label="開啟專題目錄">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <span>目錄</span>
+        </button>
+      </div>
     </header>
+
+    <!-- 手機版現代化抽屜選單 (Mobile Drawer Menu Sheet) -->
+    
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="top">
-      <div class="scribble scribble-one" aria-hidden="true">✦</div>
+      
       <div class="hero-copy">
         <img class="hero-logo" src="./shangxue-logo-transparent.png" alt="尚學文教 Logo"/>
         <p class="issue">給家長的暑期學習成果 · 雙月完結篇 2026</p>
@@ -2768,5 +2906,84 @@
     renderMoments('all');
     loadPersistedUI();
   </script>
+
+
+
+  <!-- Mobile Drawer Overlay & Sheet -->
+  <div class="mobile-drawer-overlay" id="drawer-overlay" aria-hidden="true">
+      <div class="mobile-drawer" id="mobile-drawer">
+        <div class="drawer-header">
+          <div class="drawer-title">
+            <img src="./shangxue-logo-transparent.png" alt="尚學文教" style="height: 26px; width: auto;"/>
+            <span>雙月專題導覽目錄</span>
+          </div>
+          <button class="drawer-close" type="button" id="drawer-close-btn" aria-label="關閉目錄">✕</button>
+        </div>
+        <div class="drawer-content">
+          <div class="drawer-group">
+            <div class="drawer-group-title">🌱 七月核心探索</div>
+            <a class="drawer-link" href="#about"><span class="d-num">序</span>夏日序章 · 我們的故事</a>
+            <a class="drawer-link" href="#farm"><span class="d-num">01</span>食農教育 · 從土地到餐桌</a>
+            <a class="drawer-link" href="#science"><span class="d-num">02</span>科學探究 · 實驗與連動模型</a>
+            <a class="drawer-link" href="#writing"><span class="d-num">03</span>閱讀寫作 · 心智圖與情感表達</a>
+            <a class="drawer-link" href="#trip"><span class="d-num">04</span>一日農夫 · 鴻旗農場大地課堂</a>
+          </div>
+          <div class="drawer-group">
+            <div class="drawer-group-title">🎪 八月跨域專題</div>
+            <a class="drawer-link" href="#expo"><span class="d-num">05</span>科學博覽會 · 公眾展演盛會</a>
+            <a class="drawer-link" href="#toys"><span class="d-num">06</span>動手實作 · 黏土美學與玩具</a>
+            <a class="drawer-link" href="#museum"><span class="d-num">07</span>雙館走讀 · 台南司法與水道</a>
+            <a class="drawer-link" href="#sdgs"><span class="d-num">08</span>國際議題 · SDGs 與大坑農場</a>
+          </div>
+          <div class="drawer-group">
+            <div class="drawer-group-title">✨ 特輯與成果互動</div>
+            <a class="drawer-link" href="#quotes"><span class="d-num">💬</span>孩子真情金句牆</a>
+            <a class="drawer-link" href="#roadmap"><span class="d-num">🗺️</span>雙月全能成長素養旅程</a>
+            <a class="drawer-link" href="#moments"><span class="d-num">📸</span>149+ 張現場精彩全紀錄</a>
+            <a class="drawer-link drawer-highlight" href="#onsite"><span class="d-num">🏆</span>🎪 現場闖關集章 & 結業證書</a>
+          </div>
+        </div>
+      </div>
+
+  <script>
+    // Mobile Drawer Logic
+    (function() {
+      const menuTrigger = document.getElementById('mobile-menu-trigger');
+      const drawerOverlay = document.getElementById('drawer-overlay');
+      const drawerCloseBtn = document.getElementById('drawer-close-btn');
+
+      function openDrawer(e) {
+        if (e) e.preventDefault();
+        if (drawerOverlay) {
+          drawerOverlay.classList.add('active');
+          drawerOverlay.setAttribute('aria-hidden', 'false');
+        }
+        document.body.style.overflow = 'hidden';
+      }
+      function closeDrawer(e) {
+        if (e) e.preventDefault();
+        if (drawerOverlay) {
+          drawerOverlay.classList.remove('active');
+          drawerOverlay.setAttribute('aria-hidden', 'true');
+        }
+        document.body.style.overflow = '';
+      }
+
+      if (menuTrigger) menuTrigger.addEventListener('click', openDrawer);
+      if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeDrawer);
+      if (drawerOverlay) {
+        drawerOverlay.addEventListener('click', function(e) {
+          if (e.target === drawerOverlay) closeDrawer(e);
+        });
+      }
+
+      document.querySelectorAll('.drawer-link').forEach(function(link) {
+        link.addEventListener('click', function() {
+          closeDrawer();
+        });
+      });
+    })();
+  </script>
+
 </body>
 </html>
